@@ -1,0 +1,88 @@
+.height1{
+    height: 20px;
+}
+.height2{
+    height: 25px;
+}
+.height3{
+    height: 30px;
+}
+.height4{
+    height: 35px;
+}
+.height5{
+    height: 40px;
+}
+
+.width1{
+    width: 20px;
+}
+.width2{
+    width: 25px;
+}
+.width3{
+    width: 30px;
+}
+.width4{
+    width: 55px;
+}
+.width5{
+    width: 60px;
+}
+.width6{
+    width: 70px;
+}
+.width7{
+    width: 80px;
+}
+.width8{
+    width: 90px;
+}
+.width9{
+    width: 100px;
+}
+.width10{
+    width: 150px;
+}
+.width11{
+    width: 180px;
+}
+
+/*header*/
+header.loading-header .home-nav li{
+    width: 100px;
+}
+header.loading-header .home-nav li:nth-child(even){
+    width: 80px;
+}
+
+.header-btn{
+    width: 80px;
+}
+.header-btn:nth-child(even){
+    width: 100px;
+}
+
+
+@keyframes placeHolderShimmer {
+  0% {
+    background-position: -800px 0
+  }
+  100% {
+    background-position: 800px 0
+  }
+}
+
+.animated-background {
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-name: placeHolderShimmer;
+  animation-timing-function: linear;
+  background-color: #0a060d;
+  background: linear-gradient(to right, #353a40 8%, #24272c 18%, #353a40 33%);
+  background-size: 800px 104px;
+  border-radius: 6px;
+
+  position: relative;
+}

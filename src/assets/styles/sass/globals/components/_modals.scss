@@ -1,0 +1,29 @@
+// .modal-dialog{
+//     animation-name: zoomIn;
+//     animation-duration: 0.3s;
+//     animation-timing-function: ease-in-out;
+// }
+.modal-dialog {
+   
+    margin: 0;
+   
+}
+.modal {
+    position: fixed;
+   
+    right: 0;
+    bottom: 0;
+    left: 0;
+    top: auto;
+    z-index: 1050;
+    display: none;
+    overflow: hidden;
+    outline: 0;
+}
+.modal-content {
+   
+    background-clip: initial;
+    border: 0;
+    border-radius: 0;
+    outline: 0;
+}

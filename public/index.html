@@ -1,0 +1,299 @@
+ <!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8" />
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <link rel="icon" href="<%= BASE_URL %>favicon.png" />
+    <style>
+      .loading_wrap .loaders{
+        display: none;
+      }
+      .main-loader {
+          position: fixed;
+          left: 0px;
+          top: 0px;
+          width: 100%;
+          height: 100%;
+          z-index: 99999;
+          background-color: #000;
+      }
+      .main-loader img {
+          max-width: 200px;
+          max-height: 200px;
+          position: absolute;
+          top: 50%;    
+          left: 50%;
+          transform: translate(-50%, -50%);
+      }
+      #videozone img {
+        width: 200px;
+        /*height: 100px;*/
+        position: absolute;
+        top: 50%;    
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      body{
+        margin: 0;
+      }
+      .loading_wrap {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background: #000;
+        display: block;
+        position: absolute;
+      }
+      .loader_logo {
+       width: 220px;
+        /*width: 120px;*/
+        position: absolute;
+        left: calc(50% - 110px);
+        top: 35%;
+      }
+      .loader_logo img {
+        height: 100%;
+        width: 100%;
+      }
+      .loader_logo .loading {
+        border: 3px solid darkred;
+        position: absolute;
+        left: calc(50% - 35px);
+        top: 50%;
+        width: 55px;
+        height: 55px;
+        border-radius: 50%;
+        border-top-color: red;
+        animation: loader 1s ease-in-out infinite;
+        -webkit-animation: loader 1s ease-in-out infinite;
+      }
+      #videoflix_web img {
+          width: 200px;
+          /*height: 100px;*/
+          position: absolute;
+          top: 50%;    
+          left: 50%;
+          transform: translate(-50%, -50%);
+      }
+      #videotube {
+        background-color: #fff;
+      }
+      #videotube img {
+          width: 300px;
+          position: absolute;
+          top: 50%;    
+          left: 50%;
+          transform: translate(-50%, -50%);
+          animation: logo .3s;
+      }
+    </style>
+    <title>Ott</title>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  </head>
+
+  <body class="text-left scroll-body">
+    <noscript>
+      <strong>
+        We're sorry but ott doesn't work properly without JavaScript
+        enabled. Please enable it to continue.</strong>
+    </noscript>
+
+
+
+    <!-- built files will be auto injected -->
+    <div class="loading_wrap" id="loading_wrap">
+      <div class="loaders main-loader" id="main">
+          <img src="main/images/preloader.gif" alt="Seppo">
+      </div>
+      <div class="loaders main-loader" id="videostar">
+          <img src="videostar/images/logo.png" alt="videostar">
+      </div>
+      <div class="loaders main-loader" id="videostar_mobile">
+          <img src="videostar_mobile/images/preloader.gif" alt="videostar_mobile">
+      </div>
+      <div class="loaders main-loader" id="videozone_web">
+          <img src="videozone_web/images/logo.png" alt="Seppo">
+      </div>
+      <div class="loaders main-loader" id="videozone_app">
+          <img src="videozone_app/images/logo.png" alt="Seppo">
+      </div>
+      <div class="loaders loader_logo" id="videoflix_mobile">
+        <div class="image">
+            <img src="videoflix_mobile/logo.png">
+            <div class="anim"></div>
+        </div>
+        <div class="loading"></div>
+      </div>
+      <div class="loaders loader_logo" id="videoflix_app">
+        <div class="image">
+            <img src="videoflix_app/logo.png">
+            <div class="anim"></div>
+        </div>
+        <div class="loading"></div>
+      </div>
+      <div class="loaders main-loader" id="videoflix_web">
+          <img src="videoflix_web/images/logo.png" alt="Seppo">
+      </div>
+      <div class="loaders main-loader" id="videotube">
+          <img src="videotube/images/logo.png" alt="videotube">
+      </div>
+      <div class="loaders main-loader" id="videotube_app">
+          <img src="videotube_app/images/logo.png" alt="videotube_app">
+      </div>
+      <div class="loaders main-loader" id="vid_theme">
+          <img src="all-images/logo.png" alt="vid_theme">
+      </div>
+      <div class="loaders main-loader" id="t1_light">
+          <img src="all-images/logo.png" alt="t1_light">
+      </div>
+      <div class="loaders main-loader" id="vid_theme_mobile">
+          <img src="vid_theme_mobile/images/logo.png" alt="vid_theme_mobile">
+      </div>
+      <div class="loaders main-loader" id="vid_theme_app">
+          <img src="vid_theme_app/images/logo.png" alt="vid_theme_app">
+      </div>
+      <div class="loaders main-loader" id="video_live_app">
+          <img src="video_live_app/images/logo.png" alt="video_live_app">
+      </div>
+      <div class="loaders main-loader" id="video_tv_app">
+          <img src="video_tv_app/images/logo.png" alt="video_tv_app">
+      </div>
+      <div class="loaders main-loader" id="videogama_app">
+          <img src="videogama_app/images/logo.png" alt="videogama_app">
+      </div>
+      <div class="loaders main-loader" id="vspn">
+          <img src="vspn/images/logo.png" alt="vspn">
+      </div>
+      <div class="loaders main-loader" id="video_cinema_mobile">
+          <img src="video_cinema_mobile/images/logo.png" alt="video_cinema_mobile">
+      </div>
+      <div class="loaders main-loader" id="videocinema_app">
+          <img src="videocinema_app/images/logo.png" alt="videocinema_app">
+      </div>
+      <div class="loaders main-loader" id="videoplayer">
+          <img src="videoplayer/images/logo.png" alt="videoplayer">
+      </div>
+      <div class="loaders main-loader" id="video_player_mobile">
+          <img src="video_player_mobile/images/logo.png" alt="video_player_mobile">
+      </div>
+      <div class="loaders main-loader" id="video_next_mobile">
+          <img src="video_next_mobile/images/logo.png" alt="video_next_mobile">
+      </div>
+      <div class="loaders main-loader" id="video_next_app">
+          <img src="video_next_app/images/logo.png" alt="video_next_app">
+      </div>
+      <div class="loaders main-loader" id="videopage">
+          <img src="videopage/images/logo.png" alt="videopage">
+      </div>
+      <div class="loaders main-loader" id="video_tv">
+          <img src="video_tv/images/logo.png" alt="video_tv">
+      </div>
+      
+      <div class="loaders main-loader" id="videopage_mobile">
+          <img src="videopage_mobile/images/logo.png" alt="videopage_mobile">
+      </div>
+      <div class="loaders main-loader" id="videoot">
+          <img src="videoot/images/logo.png" alt="videoot">
+      </div>
+      <div class="loaders main-loader" id="videot_mobile_app">
+          <img src="videot_mobile_app/images/logo.png" alt="videot_mobile_app">
+      </div>
+      <div class="loaders main-loader" id="videogate">
+          <img src="videogate/images/logo.png" alt="videogate">
+      </div>
+      <div class="loaders main-loader" id="videoplay">
+          <img src="videoplay/images/logo.png" alt="videoplay">
+      </div>
+      <div class="loaders main-loader" id="videomusic">
+          <img src="videomusic/images/logo.png" alt="videomusic">
+      </div>
+      <div class="loaders main-loader" id="videomusic_app">
+          <img src="videomusic_app/images/logo.png" alt="videomusic_app">
+      </div>
+      <div class="loaders main-loader" id="videofy">
+          <img src="videofy/images/logo.png" alt="videofy">
+      </div>
+      <div class="loaders main-loader" id="c1">
+          <img src="all-images/logo.png" alt="c1">
+      </div>
+      <div class="loaders main-loader" id="m1">
+          <img src="m1/images/play_circle.png" alt="m1">
+          <img src="m1/images/jet_stream.png" alt="m1" style="margin-top:70px;">
+      </div>
+      <div class="loaders main-loader" id="m2">
+          <img src="m2/images/play_circle.png" alt="m2">
+          <img src="m2/images/jet_stream.png" alt="m2" style="margin-top:70px;">
+      </div>
+      <div class="loaders main-loader" id="crystal-clear">
+        <img src="crystal-clear/images/play_circle.png" alt="crystal-clear">
+        <img src="crystal-clear/images/jet_stream.png" alt="crystal-clear" style="margin-top:70px;">
+    </div>
+    </div>
+    
+
+    <script type="text/javascript">
+      var theme_name = ''
+      var current_url5554 = new URL(window.location.href);
+      if(current_url5554.searchParams.get("theme")){
+        theme_name = current_url5554.searchParams.get("theme")
+        localStorage.setItem("theme_name", theme_name)
+      }
+      if(localStorage.getItem("theme_name") && theme_name==''){
+        theme_name = localStorage.getItem("theme_name")
+        var theme_id = document.getElementById(theme_name)
+        if(theme_id){
+          theme_id.style.display = 'block'
+          var link = document.querySelector("link[rel~='icon']");
+          if (!link) {
+              link = document.createElement('link');
+              link.rel = 'icon';
+              document.getElementsByTagName('head')[0].appendChild(link);
+          }
+          link.href = theme_name+'/logo.png';
+        }else{
+          localStorage.removeItem("theme_name")
+          document.write('404 Bad gate way')
+        }
+      }else{
+        if(theme_name){
+          theme_name = theme_name
+        }else{
+          const api_url = 'http://api.ott.capcee.com'
+          // const api_url = 'http://127.0.0.1:8000'
+          var platform = 'Website' 
+          if(window.innerWidth<=768)
+          {
+            platform = 'Mobile Site' 
+          }
+          var domain = window.location.hostname
+          fetch(api_url+'/content/current_theme/?platform='+platform+'&domain='+domain, {
+              method : 'get',
+          })
+          .then((response) => {
+              return response.json()
+          })
+          .then((jsonData) => {
+            if(('http://'+domain)!=jsonData.domain_name){
+              if(domain=="localhost"){
+                localStorage.setItem("theme_name",jsonData.theme_name)
+                location.reload()
+              }else{
+                document.write('The site cannot reached')
+              }
+            }else{
+              localStorage.setItem("theme_name",jsonData.theme_name)
+              location.reload()
+            }
+          })
+        }
+      }
+    </script>
+
+    <div id="app"></div>
+
+  </body>
+
+</html>

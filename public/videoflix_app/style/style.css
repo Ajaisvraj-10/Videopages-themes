@@ -1,0 +1,114 @@
+
+
+/*videoflix-plan*/
+
+    .planGrid__featureTable, .planGrid__featureTableBody {
+    display: flex;
+    flex-direction: column;
+    border: none;
+
+}
+.planGrid__featureTable {
+    border-collapse: collapse;
+    padding-bottom: 10px;
+}
+.planGrid__featureTableCaption {
+    clip: rect(1px,1px,1px,1px);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    width: 1px;
+}
+.planGrid__featureTable, .planGrid__featureTableBody {
+    display: flex;
+    flex-direction: column;
+}
+.planGrid__featureTableRow {
+        display: flex;
+    border-bottom: 1px solid #c9c9c9;
+}
+.planGrid__featureCell {
+    fill: #333;
+    color: #333;
+    flex: 0 0 auto;
+    text-align: left;
+}
+.planGrid__cell {
+    fill: #a6a6a6;
+    box-sizing: border-box;
+    color: #a6a6a6;
+    display: block;
+    flex: 1 1 auto;
+    text-align: left;
+    border: none;
+    font-size: 15px;
+    line-height: 20px;
+
+}
+.planGrid__cell:not(.planGrid__featureCell) {
+    fill: #737373;
+    color: #737373;
+    font-weight: 500;
+    text-align: center;
+    width: 200px;
+}
+.text-gray{
+    color: #808080;
+}
+.planGrid__supportedDevicesLabel {
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 17px;
+    margin-bottom: 12px;
+    margin-top: 5px;
+}
+.planGrid__cell {
+    width: 35%;
+    padding: 20px 15px;
+}
+.plans-card-child{
+    width: 120px;
+   font-size: 18px!important;
+   color: white!important;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   border-radius: 2px;
+
+
+    aspect-ratio: 1/1;
+    background-color: #ef6b72;
+    position: relative;
+}
+.plans-card-child.active-plan{
+   
+  
+    background-color:#e60d18;
+}
+.active-plan-2{
+   
+  
+    color:#e60d18!important;
+}
+.plans-card-child.active-plan:after{
+   content: "";
+   position: absolute;
+   bottom: -10px;
+   height: 20px;
+   width: 20px;
+   transform: rotate(45deg);
+   border-radius: 1px;
+  
+    background-color:#e60d18;
+}
+td.planGrid__cell.plans-card {
+    margin: 0 auto;
+    text-align: -webkit-center;
+}
+.planGrid__featureTableRow:first-child{
+    border: none!important;
+}
+.planGrid__featureTableRow:last-child{
+    border: none!important;
+}
+

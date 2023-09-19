@@ -143,6 +143,7 @@ export default {
     };
   },
   mounted(){
+    this.$router.push('/')
     if(this.edit){
       this.start = true
     }else{

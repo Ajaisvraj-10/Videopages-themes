@@ -1833,11 +1833,11 @@ else if(theme_name=='crystal-clear'){
           name: "sign-in",
           component: () => import("./views/app/crystal-clear/sign-in"),
         },
-        // {
-        //   path: "registration-1",
-        //   name: "registration-1",
-        //   component: () => import("./views/app/crystal-clear/registration-1"),
-        // },
+        {
+          path: "registration-1",
+          name: "registration-1",
+          component: () => import("./views/app/crystal-clear/registration-1"),
+        },
         {
           path: "edit",
           name: "edit",
@@ -1872,6 +1872,11 @@ else if(theme_name=='crystal-clear'){
           path: "video",
           name: "video",
           component: () => import("./views/app/crystal-clear/video"),
+        },
+        {
+          path: "homecollapsed",
+          name: "homecollapsed",
+          component: () => import("./views/app/crystal-clear/homecollapsed"),
         },
         {
           path: "watching/:video_id/:type/:category/:slug",

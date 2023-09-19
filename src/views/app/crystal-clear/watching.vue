@@ -1,445 +1,975 @@
-
 <template>
-    <div class="main-content">
-      
-      <div class="site-wrapper">   
-              <div class="showcase3">
-          
-                  <div class="watching-videoflix">
-                      <div class="logo3 flex-align w-100">
-                          <img src="/crystal-clear/images/logo.png">
-                      </div>
+    <div class="main_content">
+      <div class="header_div">
   
-                      <div class="wrapper">
-                          <h1>Who's Watching?</h1>
-                          <div class="profile-pic-wrap">
-                              <router-link :to="{name:'main'}"><div class="profile-pic ">
-                                  <div class="profile-pic-icon profile-pic1">
-                                      <svg width="150" height="150" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" style="background:#0D7E80">
-                                        <g id="Page-1" fill="none" fill-rule="evenodd">
-                                          <g id="Account-Holder" fill="#FCFDFF">
-                                            <g id="profile-pic1">
-                                              <path d="M61 155l7-8h67c6.67 4 10 6.67 10 8 0 2 0-22-4-24s-67-2-78 1c-1.33 5.33-2 13-2 23z" id="mustache"/>
-                                              <path d="M94 77c-8.67 30-24.67 45-48 45-31 0-34-30-34-46 0-10.67 10-17 30-19h110c24.67 0 38 6 40 18 0 30-11.67 45.67-35 47-38 2-45-44-46-45-.67-.67-6.33-.67-17 0zM81 63c5.33 4.67 8 7.67 8 9h26c0-2 2.67-5 8-9H81z" id="sunglasses"/>
-                                              <path d="M111 35c1 5 4 13 4 14s45-13 70-2c-7-10-26-13-32-13-4 0-16 1-36 3-3.33-2-5.33-2.67-6-2z" id="right-brow"/>
-                                              <path d="M89 38h-7c-12.67-6.67-24.33-10-35-10-10.67 0-20.67 3-30 9 9.33-1.33 16.33-1.67 21-1 9 1 31 7 44 15 3.33-1.33 5.67-5.67 7-13z" id="left-brow"/>
-                                            </g>
-                                          </g>
-                                        </g>
-                                      </svg>
-                                  </div>
-                                  <div class="profile-pic-name">
-                                      Arunghosh
-                                  </div>
-                              </div></router-link>
-                              <router-link :to="{name:'main'}"><div class="profile-pic ">
-                                  <div class="profile-pic-icon profile-pic2">
-                                      <svg width="150" height="150" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" style="background:#D15219">
-                                        <g id="Page-1" fill="none" fill-rule="evenodd">
-                                          <g id="Adult-Child">
-                                            <g id="profile-pic2" transform="translate(13)">
-                                              <path d="M7 0C3.67 4 2 7.33 2 10c0 4 4 8 8 8s16-5 18-8-4 9-4 14 3 11 11 11c21 0 21.05-35 67-35H7z" id="hair" fill="#FCFDFF"/>
-                                              <path d="M143 121c18.23 0 33-14.77 33-33h-66c0 18.23 14.77 33 33 33z" id="right-eye-bottom" fill="#FCFDFF"/>
-                                              <path d="M33 120c18.23 0 33-14.77 33-33H0c0 18.23 14.77 33 33 33z" id="left-eye-bottom" fill="#FCFDFF"/>
-                                              <path d="M143 56c18.23 0 33 14.77 33 33h-66c0-18.23 14.77-33 33-33z" id="right-eye-top" fill="#FCFDFF"/>
-                                              <path d="M33 55c18.23 0 33 14.77 33 33H0c0-18.23 14.77-33 33-33z" id="left-eye-top" fill="#FCFDFF"/>
-                                              <circle id="left-pupil" fill="#D15219" cx="32" cy="88" r="14"/>
-                                              <circle id="right-pupil" fill="#D15219" cx="142" cy="88" r="14"/>
-                                              <path d="M67 113c4.67-8.67 10.67-13 18-13s14 4.33 20 13H67z" id="top-beak" fill="#FCFDFF"/>
-                                              <path d="M99 117H72c2.67 6 7 9 13 9s10.67-3 14-9z" id="bottom-beak" fill="#FCFDFF"/>
-                                              <path d="M82 129c2.67.67 4.67 1 6 1s3.67-1 7-3c4 8 6 14.67 6 20 0 8-6 10-6 10s-6 1-7-6c-1.33 2-3.33 2.67-6 2-3.33-1.33-5-4.33-5-9s1.67-9.67 5-15z" id="gillard" fill="#FCFDFF"/>
-                                            </g>
-                                          </g>
-                                        </g>
-                                      </svg>
-                                  </div>
-                                  <div class="profile-pic-name">
-                                      Meril
-                                  </div>
-                              </div></router-link>
-                              <router-link :to="{name:'main'}"><div class="profile-pic ">
-                                  <div class="profile-pic-icon profile-pic3">
-                                      <svg width="150" height="150" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" style="background:#86A546">
-                                        <g id="Page-1" fill="none" fill-rule="evenodd">
-                                          <g id="Never-Users-Own-profile-pic" fill="#FCFDFF">
-                                            <g id="profile-pic3" transform="translate(31 50)">
-                                              <circle id="left-eye" cx="12" cy="12" r="12"/>
-                                              <circle id="right-eye" cx="123" cy="12" r="12"/>                  
-                                                <path d="M89.5 66.67c13.55 0 27.1-5.93 40.66-17.78 1.3-.53 2.58-.2 3.87 1 1.3 1.17 1.3 2.7 0 4.54C119.5 67.48 104.67 74 89.5 74c-15.17 0-30-6.52-44.53-19.56-1.3-1.85-1.3-3.37 0-4.55 1.3-1.2 2.58-1.53 3.87-1C62.4 60.73 75.94 66.66 89.5 66.66z" id="smile">          
-                                                  <animate id="frown" attributeName="d" begin="4.5s;frown.end+9s" dur="1s"
-                                                           from="M89.5 66.67c13.55 0 27.1-5.93 40.66-17.78 1.3-.53 2.58-.2 3.87 1 1.3 1.17 1.3 2.7 0 4.54C119.5 67.48 104.67 74 89.5 74c-15.17 0-30-6.52-44.53-19.56-1.3-1.85-1.3-3.37 0-4.55 1.3-1.2 2.58-1.53 3.87-1C62.4 60.73 75.94 66.66 89.5 66.66z" 
-                                                           to="M89.5 56.67c13.55 0 27.1 4.07 40.66 12.22 1.23.73 1.5 1.77.84 3.1-.67 1.33-2 1.67-4 1-9.83-6-22.33-9-37.5-9-15.17 0-28 3.15-38.53 9.44C49 74.84 47.7 74.7 47 73c-.65-1.26-.03-2.63 1.84-4.1 13.55-8.16 27.1-12.23 40.66-12.23z" 
-                                                   />
-                                                </path>
-                                            </g>
-                                          </g>
-                                        </g>
-                                      </svg>
-                                  </div>
-                                  <div class="profile-pic-name">
-                                      Arunghosh
-                                  </div>
-                              </div></router-link>
-                              <router-link :to="{name:'main'}"><div class="profile-pic ">
-                                  <div class="profile-pic-icon profile-pic3">
-                                      <svg width="150" height="150" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" style="background:#86A546">
-                                        <g id="Page-1" fill="none" fill-rule="evenodd">
-                                          <g id="Never-Users-Own-profile-pic" fill="#FCFDFF">
-                                            <g id="profile-pic3" transform="translate(31 50)">
-                                              <circle id="left-eye" cx="12" cy="12" r="12"/>
-                                              <circle id="right-eye" cx="123" cy="12" r="12"/>                  
-                                                <path d="M89.5 66.67c13.55 0 27.1-5.93 40.66-17.78 1.3-.53 2.58-.2 3.87 1 1.3 1.17 1.3 2.7 0 4.54C119.5 67.48 104.67 74 89.5 74c-15.17 0-30-6.52-44.53-19.56-1.3-1.85-1.3-3.37 0-4.55 1.3-1.2 2.58-1.53 3.87-1C62.4 60.73 75.94 66.66 89.5 66.66z" id="smile">          
-                                                  <animate id="frown" attributeName="d" begin="4.5s;frown.end+9s" dur="1s"
-                                                           from="M89.5 66.67c13.55 0 27.1-5.93 40.66-17.78 1.3-.53 2.58-.2 3.87 1 1.3 1.17 1.3 2.7 0 4.54C119.5 67.48 104.67 74 89.5 74c-15.17 0-30-6.52-44.53-19.56-1.3-1.85-1.3-3.37 0-4.55 1.3-1.2 2.58-1.53 3.87-1C62.4 60.73 75.94 66.66 89.5 66.66z" 
-                                                           to="M89.5 56.67c13.55 0 27.1 4.07 40.66 12.22 1.23.73 1.5 1.77.84 3.1-.67 1.33-2 1.67-4 1-9.83-6-22.33-9-37.5-9-15.17 0-28 3.15-38.53 9.44C49 74.84 47.7 74.7 47 73c-.65-1.26-.03-2.63 1.84-4.1 13.55-8.16 27.1-12.23 40.66-12.23z" 
-                                                   />
-                                                </path>
-                                            </g>
-                                          </g>
-                                        </g>
-                                      </svg>
-                                  </div>
-                                  <div class="profile-pic-name">
-                                      Meril
-                                  </div>
-                              </div></router-link>
-                              
-                          </div>
-                          <a >Manage profile-pics</a>
-                      </div>
-                     
-                  </div>
+        <!-- header-section -->
   
+        <div>
+          <span class="span_1">Video</span>
+          <span class="span_2">flix</span>
+        </div>
   
-         
-              
-         
+        <div class="header_frame">
+          <div class="movie_category">
+            <div class="category_1">
+              <div class="items">Movies</div>
+            </div>
+            <div class="category_1">
+              <div class="items">TV Shows</div>
+            </div>
+            <div class="category_1">
+              <div class="items">Series</div>
+            </div>
+          </div>
+  
+          <div class="search_bar">
+            <div class="input_placeholder">What do you want to watch</div>
+            <div>
+              <svg class="search_img" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+    <path d="M24.0414 22.1557L29.7517 27.866L27.8661 29.7516L22.1558 24.0413C20.1026 25.684 17.4987 26.6667 14.6667 26.6667C8.04275 26.6667 2.66675 21.2907 2.66675 14.6667C2.66675 8.04266 8.04275 2.66666 14.6667 2.66666C21.2907 2.66666 26.6667 8.04266 26.6667 14.6667C26.6667 17.4987 25.6841 20.1025 24.0414 22.1557ZM21.3663 21.1664C22.9967 19.4861 24.0001 17.1941 24.0001 14.6667C24.0001 9.50999 19.8234 5.33332 14.6667 5.33332C9.51008 5.33332 5.33341 9.50999 5.33341 14.6667C5.33341 19.8233 9.51008 24 14.6667 24C17.1942 24 19.4862 22.9967 21.1665 21.3663L21.3663 21.1664Z" fill="white"/>
+  </svg>
+            </div>
+          </div>
+  
+          <div class="lang_select">
+              <div>
+                <svg class="globe_img" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+    <path d="M16.0001 29.3333C8.63628 29.3333 2.66675 23.3637 2.66675 16C2.66675 8.63619 8.63628 2.66666 16.0001 2.66666C23.3638 2.66666 29.3334 8.63619 29.3334 16C29.3334 23.3637 23.3638 29.3333 16.0001 29.3333ZM12.9468 26.2232C11.6633 23.5012 10.8765 20.4989 10.7032 17.3333H5.41593C5.94408 21.5687 8.95527 25.0329 12.9468 26.2232ZM13.3743 17.3333C13.5749 20.5851 14.5038 23.6396 16.0001 26.336C17.4963 23.6396 18.4253 20.5851 18.6258 17.3333H13.3743ZM26.5842 17.3333H21.297C21.1237 20.4989 20.3369 23.5012 19.0534 26.2232C23.0449 25.0329 26.0561 21.5687 26.5842 17.3333ZM5.41593 14.6667H10.7032C10.8765 11.501 11.6633 8.49875 12.9468 5.77674C8.95527 6.9671 5.94408 10.4313 5.41593 14.6667ZM13.3743 14.6667H18.6258C18.4253 11.4149 17.4963 8.36032 16.0001 5.66398C14.5038 8.36032 13.5749 11.4149 13.3743 14.6667ZM19.0534 5.77674C20.3369 8.49875 21.1237 11.501 21.297 14.6667H26.5842C26.0561 10.4313 23.0449 6.9671 19.0534 5.77674Z" fill="white"/>
+  </svg>
               </div>
+              <div class="language">Eng</div>
+              <div class="drop_down">
+                <svg class="drop_down_img" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
+    <path d="M14.0001 17.5007L9.05029 12.551L10.7002 10.901L14.0001 14.2009L17.2999 10.901L18.9498 12.551L14.0001 17.5007Z" fill="white"/>
+  </svg>
+              </div>
+            </div>
   
-  
-  
-  
-  
+            <div class="profile_img">
+              <img src="/crystal-clear/images/new_theme_profile.png" alt="">
+            </div>
+        </div>
       </div>
-    </div>
+  
+      <!-- sedebar-section -->
+  
+      <div class="sidebar_container">
+        <div class="menu_section_one">
+          <div class="menu_one">
+            <div><svg class="img_home" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+    <path d="M17.3333 25.3329H25.3333V13.3039L16 6.0446L6.66667 13.3039V25.3329H14.6667V17.3329H17.3333V25.3329ZM28 26.6663C28 27.4027 27.4031 27.9996 26.6667 27.9996H5.33333C4.59696 27.9996 4 27.4027 4 26.6663V12.6517C4 12.2403 4.18996 11.8519 4.51475 11.5993L15.1815 3.30299C15.6629 2.92851 16.3371 2.92851 16.8185 3.30299L27.4852 11.5993C27.81 11.8519 28 12.2403 28 12.6517V26.6663Z" fill="white"/>
+  </svg></div>
+            <div class="txt_home">Home</div>
+          </div>
+  
+          <div class="menu_one">
+            <div><svg class="img_home" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+    <path d="M16 29.3334C8.63616 29.3334 2.66663 23.3638 2.66663 16C2.66663 8.63622 8.63616 2.66669 16 2.66669C23.3637 2.66669 29.3333 8.63622 29.3333 16C29.3333 23.3638 23.3637 29.3334 16 29.3334ZM16 26.6667C21.891 26.6667 26.6666 21.8911 26.6666 16C26.6666 10.109 21.891 5.33335 16 5.33335C10.1089 5.33335 5.33329 10.109 5.33329 16C5.33329 21.8911 10.1089 26.6667 16 26.6667ZM22 10L18.6666 18.6667L9.99996 22L13.3333 13.3334L22 10ZM16 17.3334C16.7364 17.3334 17.3333 16.7364 17.3333 16C17.3333 15.2636 16.7364 14.6667 16 14.6667C15.2636 14.6667 14.6666 15.2636 14.6666 16C14.6666 16.7364 15.2636 17.3334 16 17.3334Z" fill="white"/>
+  </svg></div>
+            <div class="txt_home">Discover</div>
+          </div>
+  
+          <div class="menu_one">
+            <div><svg class="img_home" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+    <path d="M16 30.6667C21.5228 30.6667 26 26.1895 26 20.6667C26 19.5127 25.6929 18.4043 25.3333 17.3728C23.1111 19.5687 21.4223 20.6667 20.2667 20.6667C25.5939 11.3333 22.6667 7.33333 14.6667 2C15.3333 8.66601 10.9387 11.6983 9.14905 13.3821C7.21048 15.206 6 17.7949 6 20.6667C6 26.1895 10.4771 30.6667 16 30.6667ZM16.9459 6.97997C21.2681 10.647 21.2888 13.4964 17.9507 19.3448C16.936 21.1225 18.2197 23.3333 20.2667 23.3333C21.1845 23.3333 22.1121 23.0656 23.0919 22.5401C22.2639 25.6827 19.4025 28 16 28C11.9499 28 8.66667 24.7168 8.66667 20.6667C8.66667 18.6144 9.51039 16.7035 10.9763 15.3243C11.1443 15.1663 11.9967 14.4108 12.033 14.3781C12.5982 13.8695 13.0637 13.4217 13.5239 12.929C15.1644 11.1724 16.3428 9.22175 16.9459 6.97997Z" fill="white"/>
+  </svg></div>
+            <div class="txt_home">Trending</div>
+          </div>
+          <div class="coming_soon_menu">
+            <div class="sub_coming_soon">
+                <div><svg class="coming_soon_img" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+      <path d="M15.9988 29.3335C9.37144 29.3335 3.99886 23.961 3.99886 17.3335C3.99886 10.7061 9.37144 5.33351 15.9988 5.33351C22.6263 5.33351 27.9988 10.7061 27.9988 17.3335C27.9988 23.961 22.6263 29.3335 15.9988 29.3335ZM15.9988 26.6668C21.1535 26.6668 25.3321 22.4882 25.3321 17.3335C25.3321 12.1788 21.1535 8.00018 15.9988 8.00018C10.8442 8.00018 6.66552 12.1788 6.66552 17.3335C6.66552 22.4882 10.8442 26.6668 15.9988 26.6668ZM17.3321 17.3335H21.3321V20.0002H14.6655V10.6668H17.3321V17.3335ZM2.32812 8.37682L7.04218 3.66278L8.92779 5.54839L4.21375 10.2624L2.32812 8.37682ZM24.9556 3.66278L29.6696 8.37682L27.784 10.2624L23.0699 5.54839L24.9556 3.66278Z" fill="white"/>
+    </svg>
+                </div>
+                <div class="txt_coming_soon">Coming Soon</div>
+            </div>
+  
+            <div class="notifications">
+              <div>
+                <svg class="green_circle" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
+    <circle cx="14" cy="14" r="14" fill="#00925D"/>
+  </svg>
+              </div>
+              <div class="num_five">5</div>
+            </div>
+          </div>
+        </div>
+  
+        <!-- sidebar-section-2 -->
+  
+        <div class="menu_section_two">
+          <div class="menu_two">
+            <div><svg class="img_home" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+    <path d="M5.33329 25.3333V6.66667H12.781L15.4477 9.33333H26.6666V25.3333H5.33329ZM28 6.66667H16.5522L13.8856 4H3.99996C3.26359 4 2.66663 4.59696 2.66663 5.33333V26.6667C2.66663 27.4031 3.26359 28 3.99996 28H28C28.7364 28 29.3333 27.4031 29.3333 26.6667V8C29.3333 7.26363 28.7364 6.66667 28 6.66667ZM20.001 16.8893L13.4958 12.5525C13.4082 12.4941 13.3053 12.4629 13.2 12.4629C12.9054 12.4629 12.6666 12.7017 12.6666 12.9962V21.6699C12.6666 21.7752 12.6978 21.8781 12.7562 21.9657C12.9196 22.2108 13.2508 22.2771 13.4958 22.1136L20.001 17.7768C20.0596 17.7377 20.1098 17.6875 20.1489 17.6289C20.3124 17.3839 20.2461 17.0527 20.001 16.8893Z" fill="white"/>
+  </svg></div>
+            <div class="txt_home2">Library</div>
+          </div>
+  
+          <div class="menu_two">
+            <div><svg class="img_home" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+    <path d="M2.66663 15.9997C2.66663 14.8471 2.81289 13.7285 3.08789 12.6617C4.54159 12.7371 5.9846 12.0135 6.76236 10.6664C7.53952 9.32033 7.44537 7.71028 6.65491 6.48934C8.24468 4.92705 10.2244 3.76029 12.4347 3.14844C13.0962 4.44513 14.4444 5.33309 16 5.33309C17.5556 5.33309 18.9037 4.44513 19.5653 3.14844C21.7756 3.76029 23.7553 4.92705 25.345 6.48934C24.5545 7.71028 24.4604 9.32033 25.2376 10.6664C26.0153 12.0135 27.4584 12.7371 28.9121 12.6617C29.187 13.7285 29.3333 14.8471 29.3333 15.9997C29.3333 17.1524 29.187 18.2709 28.9121 19.3377C27.4584 19.2624 26.0153 19.986 25.2376 21.3331C24.4604 22.6792 24.5545 24.2892 25.345 25.5101C23.7553 27.0724 21.7756 28.2392 19.5653 28.8511C18.9037 27.5544 17.5556 26.6664 16 26.6664C14.4444 26.6664 13.0962 27.5544 12.4347 28.8511C10.2244 28.2392 8.24468 27.0724 6.65491 25.5101C7.44537 24.2892 7.53952 22.6792 6.76236 21.3331C5.9846 19.986 4.54159 19.2624 3.08789 19.3377C2.81289 18.2709 2.66663 17.1524 2.66663 15.9997ZM9.07176 19.9997C9.91189 21.4549 10.1527 23.1279 9.8242 24.6981C10.3679 25.0851 10.9467 25.4203 11.5531 25.6988C12.749 24.6283 14.3189 23.9997 16 23.9997C17.681 23.9997 19.2509 24.6283 20.4468 25.6988C21.0532 25.4203 21.632 25.0851 22.1757 24.6981C21.8472 23.1279 22.088 21.4549 22.9282 19.9997C23.7682 18.5447 25.0966 17.4997 26.6206 16.9991C26.6512 16.6687 26.6666 16.3355 26.6666 15.9997C26.6666 15.6641 26.6512 15.3308 26.6206 15.0005C25.0966 14.4999 23.7682 13.4549 22.9282 11.9998C22.088 10.5446 21.8472 8.8717 22.1757 7.3014C21.632 6.9145 21.0532 6.57929 20.4468 6.30069C19.2509 7.37125 17.681 7.99976 16 7.99976C14.3189 7.99976 12.749 7.37125 11.5531 6.30069C10.9467 6.57929 10.3679 6.9145 9.8242 7.3014C10.1527 8.8717 9.91189 10.5446 9.07176 11.9998C8.23164 13.4549 6.90335 14.4999 5.37931 15.0005C5.34872 15.3308 5.33329 15.6641 5.33329 15.9997C5.33329 16.3355 5.34872 16.6687 5.37931 16.9991C6.90335 17.4997 8.23164 18.5447 9.07176 19.9997ZM16 19.9997C13.7908 19.9997 12 18.2089 12 15.9997C12 13.7907 13.7908 11.9998 16 11.9998C18.2092 11.9998 20 13.7907 20 15.9997C20 18.2089 18.2092 19.9997 16 19.9997ZM16 17.3331C16.7364 17.3331 17.3333 16.7361 17.3333 15.9997C17.3333 15.2633 16.7364 14.6664 16 14.6664C15.2636 14.6664 14.6666 15.2633 14.6666 15.9997C14.6666 16.7361 15.2636 17.3331 16 17.3331Z" fill="white"/>
+  </svg></div>
+            <div class="txt_home2">Settings</div>
+          </div>
+  
+          <div class="menu_two">
+            <div><svg class="img_home" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+    <path d="M16 29.3333C8.63616 29.3333 2.66663 23.3637 2.66663 16C2.66663 8.63616 8.63616 2.66663 16 2.66663C23.3637 2.66663 29.3333 8.63616 29.3333 16C29.3333 23.3637 23.3637 29.3333 16 29.3333ZM16 26.6666C21.891 26.6666 26.6666 21.891 26.6666 16C26.6666 10.1089 21.891 5.33329 16 5.33329C10.1089 5.33329 5.33329 10.1089 5.33329 16C5.33329 21.891 10.1089 26.6666 16 26.6666ZM14.6666 20H17.3333V22.6666H14.6666V20ZM17.3333 17.8068V18.6666H14.6666V16.6666C14.6666 15.9302 15.2636 15.3333 16 15.3333C17.1045 15.3333 18 14.4378 18 13.3333C18 12.2287 17.1045 11.3333 16 11.3333C15.0297 11.3333 14.2208 12.0243 14.0384 12.941L11.423 12.4179C11.8485 10.2789 13.736 8.66663 16 8.66663C18.5773 8.66663 20.6666 10.756 20.6666 13.3333C20.6666 15.4473 19.2609 17.233 17.3333 17.8068Z" fill="white"/>
+  </svg></div>
+            <div class="txt_home2">About & Help</div>
+          </div>
+        </div>
+  
+  
+        <div class="arrow_section">
+              <div><svg class="green_circle" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
+        <circle cx="24" cy="24" r="24" fill="#00925D"/>
+      </svg>
+              </div>
+              <div class="arrow_box">
+                <div>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+    <path d="M10.8284 12.0007L15.7782 16.9504L14.364 18.3646L8 12.0007L14.364 5.63672L15.7782 7.05093L10.8284 12.0007Z" fill="black"/>
+  </svg>
+                </div>
+              </div>
+        </div>
+      </div>
+  
+      <!-- home-movie-section -->
+      <div class="movie_carousel">
+        <div><img src="/crystal-clear/images/new_theme_movie_corousel.png" alt=""></div>
+      </div>
+  
+      <!-- movie-posters -->
+      <div class="all_movies_section">
+        <div class="categories_1">
+          <div class="txt_section">
+            <div class="txt_main">Most popular movies</div>
+            <div class="view_all">
+            <div class="txt_view_all">View All</div>
+            <div><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+    <path d="M12.1717 12.0005L9.34326 9.17203L10.7575 7.75781L15.0001 12.0005L10.7575 16.2431L9.34326 14.8289L12.1717 12.0005Z" fill="white"/>
+  </svg></div>
+          </div>
+          </div>
+         
+  
+          <div class="movie_posters_section">
+            <div class="movie_card">
+              <div><img src="/crystal-clear/images/new_theme_movie_poster.png" alt=""></div>
+              <div class="movie_title_container">
+                <div class="title_section">
+                  <div class="title">Opponheimer</div>
+                  <div class="time">02h53m</div>
+                </div>
+                <div class="rating_section">
+                  <div>
+                    <svg class="star" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+    <path d="M12.0008 17L6.12295 20.5902L7.72105 13.8906L2.49023 9.40983L9.35577 8.85942L12.0008 2.5L14.6458 8.85942L21.5114 9.40983L16.2806 13.8906L17.8787 20.5902L12.0008 17Z" fill="#F8B70F"/>
+  </svg>
+                  </div>
+                  <div class="rating">4.8</div>
+                </div>
+              </div>
+            </div>
+  
+            <!-- card2 -->
+  
+            <div class="movie_card">
+              <div><img src="/crystal-clear/images/new_theme_movie_poster.png" alt=""></div>
+              <div class="movie_title_container">
+                <div class="title_section">
+                  <div class="title">Opponheimer</div>
+                  <div class="time">02h53m</div>
+                </div>
+                <div class="rating_section">
+                  <div>
+                    <svg class="star" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+    <path d="M12.0008 17L6.12295 20.5902L7.72105 13.8906L2.49023 9.40983L9.35577 8.85942L12.0008 2.5L14.6458 8.85942L21.5114 9.40983L16.2806 13.8906L17.8787 20.5902L12.0008 17Z" fill="#F8B70F"/>
+  </svg>
+                  </div>
+                  <div class="rating">4.8</div>
+                </div>
+              </div>
+            </div>
+  
+            <!-- card3 -->
+  
+            <div class="movie_card">
+              <div><img src="/crystal-clear/images/new_theme_movie_poster.png" alt=""></div>
+              <div class="movie_title_container">
+                <div class="title_section">
+                  <div class="title">Opponheimer</div>
+                  <div class="time">02h53m</div>
+                </div>
+                <div class="rating_section">
+                  <div>
+                    <svg class="star" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+    <path d="M12.0008 17L6.12295 20.5902L7.72105 13.8906L2.49023 9.40983L9.35577 8.85942L12.0008 2.5L14.6458 8.85942L21.5114 9.40983L16.2806 13.8906L17.8787 20.5902L12.0008 17Z" fill="#F8B70F"/>
+  </svg>
+                  </div>
+                  <div class="rating">4.8</div>
+                </div>
+              </div>
+            </div>
+  
+            <!-- card4 -->
+  
+            <div class="movie_card">
+              <div><img src="/crystal-clear/images/new_theme_movie_poster.png" alt=""></div>
+              <div class="movie_title_container">
+                <div class="title_section">
+                  <div class="title">Opponheimer</div>
+                  <div class="time">02h53m</div>
+                </div>
+                <div class="rating_section">
+                  <div>
+                    <svg class="star" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+    <path d="M12.0008 17L6.12295 20.5902L7.72105 13.8906L2.49023 9.40983L9.35577 8.85942L12.0008 2.5L14.6458 8.85942L21.5114 9.40983L16.2806 13.8906L17.8787 20.5902L12.0008 17Z" fill="#F8B70F"/>
+  </svg>
+                  </div>
+                  <div class="rating">4.8</div>
+                </div>
+              </div>
+            </div>
+  
+            <!-- card5 -->
+  
+            <div class="movie_card">
+              <div><img src="/crystal-clear/images/new_theme_movie_poster.png" alt=""></div>
+              <div class="movie_title_container">
+                <div class="title_section">
+                  <div class="title">Opponheimer</div>
+                  <div class="time">02h53m</div>
+                </div>
+                <div class="rating_section">
+                  <div>
+                    <svg class="star" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+    <path d="M12.0008 17L6.12295 20.5902L7.72105 13.8906L2.49023 9.40983L9.35577 8.85942L12.0008 2.5L14.6458 8.85942L21.5114 9.40983L16.2806 13.8906L17.8787 20.5902L12.0008 17Z" fill="#F8B70F"/>
+  </svg>
+                  </div>
+                  <div class="rating">4.8</div>
+                </div>
+              </div>
+            </div>
+  
+            <!-- card6 -->
+  
+            <div class="movie_card">
+              <div><img src="/crystal-clear/images/new_theme_movie_poster.png" alt=""></div>
+              <div class="movie_title_container">
+                <div class="title_section">
+                  <div class="title">Opponheimer</div>
+                  <div class="time">02h53m</div>
+                </div>
+                <div class="rating_section">
+                  <div>
+                    <svg class="star" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+    <path d="M12.0008 17L6.12295 20.5902L7.72105 13.8906L2.49023 9.40983L9.35577 8.85942L12.0008 2.5L14.6458 8.85942L21.5114 9.40983L16.2806 13.8906L17.8787 20.5902L12.0008 17Z" fill="#F8B70F"/>
+  </svg>
+                  </div>
+                  <div class="rating">4.8</div>
+                </div>
+              </div>
+            </div>
+  
+            <!-- card7 -->
+  
+            <div class="movie_card">
+              <div><img src="/crystal-clear/images/new_theme_movie_poster.png" alt=""></div>
+              <div class="movie_title_container">
+                <div class="title_section">
+                  <div class="title">Opponheimer</div>
+                  <div class="time">02h53m</div>
+                </div>
+                <div class="rating_section">
+                  <div>
+                    <svg class="star" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+    <path d="M12.0008 17L6.12295 20.5902L7.72105 13.8906L2.49023 9.40983L9.35577 8.85942L12.0008 2.5L14.6458 8.85942L21.5114 9.40983L16.2806 13.8906L17.8787 20.5902L12.0008 17Z" fill="#F8B70F"/>
+  </svg>
+                  </div>
+                  <div class="rating">4.8</div>
+                </div>
+              </div>
+            </div>
+      
+          </div>
+        </div>
+  
+        <!-- trending-category -->
+  
+        <div class="categories_1">
+          <div class="txt_section">
+            <div class="txt_main">Trending movies</div>
+            <div class="view_all">
+            <div class="txt_view_all">View All</div>
+            <div><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+    <path d="M12.1717 12.0005L9.34326 9.17203L10.7575 7.75781L15.0001 12.0005L10.7575 16.2431L9.34326 14.8289L12.1717 12.0005Z" fill="white"/>
+  </svg></div>
+          </div>
+          </div>
+         
+  
+          <div class="movie_posters_section">
+            <div class="movie_card">
+              <div><img src="/crystal-clear/images/new_theme_movie_poster.png" alt=""></div>
+              <div class="movie_title_container">
+                <div class="title_section">
+                  <div class="title">Opponheimer</div>
+                  <div class="time">02h53m</div>
+                </div>
+                <div class="rating_section">
+                  <div>
+                    <svg class="star" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+    <path d="M12.0008 17L6.12295 20.5902L7.72105 13.8906L2.49023 9.40983L9.35577 8.85942L12.0008 2.5L14.6458 8.85942L21.5114 9.40983L16.2806 13.8906L17.8787 20.5902L12.0008 17Z" fill="#F8B70F"/>
+  </svg>
+                  </div>
+                  <div class="rating">4.8</div>
+                </div>
+              </div>
+            </div>
+  
+            <!-- card2 -->
+  
+            <div class="movie_card">
+              <div><img src="/crystal-clear/images/new_theme_movie_poster.png" alt=""></div>
+              <div class="movie_title_container">
+                <div class="title_section">
+                  <div class="title">Opponheimer</div>
+                  <div class="time">02h53m</div>
+                </div>
+                <div class="rating_section">
+                  <div>
+                    <svg class="star" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+    <path d="M12.0008 17L6.12295 20.5902L7.72105 13.8906L2.49023 9.40983L9.35577 8.85942L12.0008 2.5L14.6458 8.85942L21.5114 9.40983L16.2806 13.8906L17.8787 20.5902L12.0008 17Z" fill="#F8B70F"/>
+  </svg>
+                  </div>
+                  <div class="rating">4.8</div>
+                </div>
+              </div>
+            </div>
+  
+            <!-- card3 -->
+  
+            <div class="movie_card">
+              <div><img src="/crystal-clear/images/new_theme_movie_poster.png" alt=""></div>
+              <div class="movie_title_container">
+                <div class="title_section">
+                  <div class="title">Opponheimer</div>
+                  <div class="time">02h53m</div>
+                </div>
+                <div class="rating_section">
+                  <div>
+                    <svg class="star" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+    <path d="M12.0008 17L6.12295 20.5902L7.72105 13.8906L2.49023 9.40983L9.35577 8.85942L12.0008 2.5L14.6458 8.85942L21.5114 9.40983L16.2806 13.8906L17.8787 20.5902L12.0008 17Z" fill="#F8B70F"/>
+  </svg>
+                  </div>
+                  <div class="rating">4.8</div>
+                </div>
+              </div>
+            </div>
+  
+            <!-- card4 -->
+  
+            <div class="movie_card">
+              <div><img src="/crystal-clear/images/new_theme_movie_poster.png" alt=""></div>
+              <div class="movie_title_container">
+                <div class="title_section">
+                  <div class="title">Opponheimer</div>
+                  <div class="time">02h53m</div>
+                </div>
+                <div class="rating_section">
+                  <div>
+                    <svg class="star" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+    <path d="M12.0008 17L6.12295 20.5902L7.72105 13.8906L2.49023 9.40983L9.35577 8.85942L12.0008 2.5L14.6458 8.85942L21.5114 9.40983L16.2806 13.8906L17.8787 20.5902L12.0008 17Z" fill="#F8B70F"/>
+  </svg>
+                  </div>
+                  <div class="rating">4.8</div>
+                </div>
+              </div>
+            </div>
+  
+            <!-- card5 -->
+  
+            <div class="movie_card">
+              <div><img src="/crystal-clear/images/new_theme_movie_poster.png" alt=""></div>
+              <div class="movie_title_container">
+                <div class="title_section">
+                  <div class="title">Opponheimer</div>
+                  <div class="time">02h53m</div>
+                </div>
+                <div class="rating_section">
+                  <div>
+                    <svg class="star" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+    <path d="M12.0008 17L6.12295 20.5902L7.72105 13.8906L2.49023 9.40983L9.35577 8.85942L12.0008 2.5L14.6458 8.85942L21.5114 9.40983L16.2806 13.8906L17.8787 20.5902L12.0008 17Z" fill="#F8B70F"/>
+  </svg>
+                  </div>
+                  <div class="rating">4.8</div>
+                </div>
+              </div>
+            </div>
+  
+            <!-- card6 -->
+  
+            <div class="movie_card">
+              <div><img src="/crystal-clear/images/new_theme_movie_poster.png" alt=""></div>
+              <div class="movie_title_container">
+                <div class="title_section">
+                  <div class="title">Opponheimer</div>
+                  <div class="time">02h53m</div>
+                </div>
+                <div class="rating_section">
+                  <div>
+                    <svg class="star" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+    <path d="M12.0008 17L6.12295 20.5902L7.72105 13.8906L2.49023 9.40983L9.35577 8.85942L12.0008 2.5L14.6458 8.85942L21.5114 9.40983L16.2806 13.8906L17.8787 20.5902L12.0008 17Z" fill="#F8B70F"/>
+  </svg>
+                  </div>
+                  <div class="rating">4.8</div>
+                </div>
+              </div>
+            </div>
+  
+            <!-- card7 -->
+  
+            <div class="movie_card">
+              <div><img src="/crystal-clear/images/new_theme_movie_poster.png" alt=""></div>
+              <div class="movie_title_container">
+                <div class="title_section">
+                  <div class="title">Opponheimer</div>
+                  <div class="time">02h53m</div>
+                </div>
+                <div class="rating_section">
+                  <div>
+                    <svg class="star" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+    <path d="M12.0008 17L6.12295 20.5902L7.72105 13.8906L2.49023 9.40983L9.35577 8.85942L12.0008 2.5L14.6458 8.85942L21.5114 9.40983L16.2806 13.8906L17.8787 20.5902L12.0008 17Z" fill="#F8B70F"/>
+  </svg>
+                  </div>
+                  <div class="rating">4.8</div>
+                </div>
+              </div>
+            </div>
+      
+          </div>
+        </div>
+  
+        <!-- -top10-category -->
+  
+        <div class="categories_1">
+          <div class="txt_section">
+            <div class="txt_main">Top 10 Movies</div>
+            <div class="view_all">
+            <div class="txt_view_all">View All</div>
+            <div><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+    <path d="M12.1717 12.0005L9.34326 9.17203L10.7575 7.75781L15.0001 12.0005L10.7575 16.2431L9.34326 14.8289L12.1717 12.0005Z" fill="white"/>
+  </svg></div>
+          </div>
+          </div>
+         
+  
+          <div class="movie_posters_section">
+            <div class="movie_card">
+              <div><img src="/crystal-clear/images/new_theme_movie_poster.png" alt=""></div>
+              <div class="movie_title_container">
+                <div class="title_section">
+                  <div class="title">Opponheimer</div>
+                  <div class="time">02h53m</div>
+                </div>
+                <div class="rating_section">
+                  <div>
+                    <svg class="star" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+    <path d="M12.0008 17L6.12295 20.5902L7.72105 13.8906L2.49023 9.40983L9.35577 8.85942L12.0008 2.5L14.6458 8.85942L21.5114 9.40983L16.2806 13.8906L17.8787 20.5902L12.0008 17Z" fill="#F8B70F"/>
+  </svg>
+                  </div>
+                  <div class="rating">4.8</div>
+                </div>
+              </div>
+            </div>
+  
+            <!-- card2 -->
+  
+            <div class="movie_card">
+              <div><img src="/crystal-clear/images/new_theme_movie_poster.png" alt=""></div>
+              <div class="movie_title_container">
+                <div class="title_section">
+                  <div class="title">Opponheimer</div>
+                  <div class="time">02h53m</div>
+                </div>
+                <div class="rating_section">
+                  <div>
+                    <svg class="star" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+    <path d="M12.0008 17L6.12295 20.5902L7.72105 13.8906L2.49023 9.40983L9.35577 8.85942L12.0008 2.5L14.6458 8.85942L21.5114 9.40983L16.2806 13.8906L17.8787 20.5902L12.0008 17Z" fill="#F8B70F"/>
+  </svg>
+                  </div>
+                  <div class="rating">4.8</div>
+                </div>
+              </div>
+            </div>
+  
+            <!-- card3 -->
+  
+            <div class="movie_card">
+              <div><img src="/crystal-clear/images/new_theme_movie_poster.png" alt=""></div>
+              <div class="movie_title_container">
+                <div class="title_section">
+                  <div class="title">Opponheimer</div>
+                  <div class="time">02h53m</div>
+                </div>
+                <div class="rating_section">
+                  <div>
+                    <svg class="star" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+    <path d="M12.0008 17L6.12295 20.5902L7.72105 13.8906L2.49023 9.40983L9.35577 8.85942L12.0008 2.5L14.6458 8.85942L21.5114 9.40983L16.2806 13.8906L17.8787 20.5902L12.0008 17Z" fill="#F8B70F"/>
+  </svg>
+                  </div>
+                  <div class="rating">4.8</div>
+                </div>
+              </div>
+            </div>
+  
+            <!-- card4 -->
+  
+            <div class="movie_card">
+              <div><img src="/crystal-clear/images/new_theme_movie_poster.png" alt=""></div>
+              <div class="movie_title_container">
+                <div class="title_section">
+                  <div class="title">Opponheimer</div>
+                  <div class="time">02h53m</div>
+                </div>
+                <div class="rating_section">
+                  <div>
+                    <svg class="star" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+    <path d="M12.0008 17L6.12295 20.5902L7.72105 13.8906L2.49023 9.40983L9.35577 8.85942L12.0008 2.5L14.6458 8.85942L21.5114 9.40983L16.2806 13.8906L17.8787 20.5902L12.0008 17Z" fill="#F8B70F"/>
+  </svg>
+                  </div>
+                  <div class="rating">4.8</div>
+                </div>
+              </div>
+            </div>
+  
+            <!-- card5 -->
+  
+            <div class="movie_card">
+              <div><img src="/crystal-clear/images/new_theme_movie_poster.png" alt=""></div>
+              <div class="movie_title_container">
+                <div class="title_section">
+                  <div class="title">Opponheimer</div>
+                  <div class="time">02h53m</div>
+                </div>
+                <div class="rating_section">
+                  <div>
+                    <svg class="star" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+    <path d="M12.0008 17L6.12295 20.5902L7.72105 13.8906L2.49023 9.40983L9.35577 8.85942L12.0008 2.5L14.6458 8.85942L21.5114 9.40983L16.2806 13.8906L17.8787 20.5902L12.0008 17Z" fill="#F8B70F"/>
+  </svg>
+                  </div>
+                  <div class="rating">4.8</div>
+                </div>
+              </div>
+            </div>
+  
+            <!-- card6 -->
+  
+            <div class="movie_card">
+              <div><img src="/crystal-clear/images/new_theme_movie_poster.png" alt=""></div>
+              <div class="movie_title_container">
+                <div class="title_section">
+                  <div class="title">Opponheimer</div>
+                  <div class="time">02h53m</div>
+                </div>
+                <div class="rating_section">
+                  <div>
+                    <svg class="star" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+    <path d="M12.0008 17L6.12295 20.5902L7.72105 13.8906L2.49023 9.40983L9.35577 8.85942L12.0008 2.5L14.6458 8.85942L21.5114 9.40983L16.2806 13.8906L17.8787 20.5902L12.0008 17Z" fill="#F8B70F"/>
+  </svg>
+                  </div>
+                  <div class="rating">4.8</div>
+                </div>
+              </div>
+            </div>
+  
+            <!-- card7 -->
+  
+            <div class="movie_card">
+              <div><img src="/crystal-clear/images/new_theme_movie_poster.png" alt=""></div>
+              <div class="movie_title_container">
+                <div class="title_section">
+                  <div class="title">Opponheimer</div>
+                  <div class="time">02h53m</div>
+                </div>
+                <div class="rating_section">
+                  <div>
+                    <svg class="star" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+    <path d="M12.0008 17L6.12295 20.5902L7.72105 13.8906L2.49023 9.40983L9.35577 8.85942L12.0008 2.5L14.6458 8.85942L21.5114 9.40983L16.2806 13.8906L17.8787 20.5902L12.0008 17Z" fill="#F8B70F"/>
+  </svg>
+                  </div>
+                  <div class="rating">4.8</div>
+                </div>
+              </div>
+            </div>
+      
+          </div>
+        </div>  
+        
+      </div>
+  </div>
   </template>
-  <script>
   
-  export default {
-    metaInfo: {
+  <style>
+  @media (min-width: 1025px) {
+      .main_content {
       
-    },
-    data() {
-      return {
-          
+        margin: 0 auto;
+        width: 100%;
+        height: 100vh;
+        background: #0D0C0F;
+        overflow-y: auto;
+        overflow-x: hidden;
+        scroll-behavior: smooth;
+      }
+  }
+    body{
+      background: #0D0C0F;
+    }
   
-      };
-    },
-   
+  .header_div{
+    display: flex;
+    width: 100%;
+    padding: 0px 50px;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #838383;
+    background: #0D0C0F;
+    position: fixed;
+  }
+  .span_1{
+    color: #00925D;
+   font-family :system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   
-    
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  }
+  .span_2{
+    color: #FFF;
+  font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   
-  };
-  </script>
-  <style scoped>
-    
-    @import '/crystal-clear/style/style.css';
-    @import '/crystal-clear/style/style-2.css';
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  }
+  .header_frame{
+    display: flex;
+  align-items: center;
+  gap: 32px;
+  }
+  .movie_category{
+    display: flex;
+  align-items: flex-start;
+  }
+  .category_1{
+    color: #FFF;
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   
-  
-    .showcase3 {
-      width: 100%;
-      height: 100vh;
-      position: relative;
-      
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  }
+  .items{
+    display: flex;
+    padding: 24px 48px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+  }
+  .search_bar{
+    display: flex;
+  width: 645px;
+  height: 55px;
+  padding: 24px 32px;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid rgba(0, 146, 93, 0.70);
+  background: linear-gradient(348deg, rgba(0, 146, 93, 0.10) 10.16%, rgba(255, 255, 255, 0.00) 66.56%);
+  }
+  .input_placeholder{
+    color: #838383;
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  ;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  }
+  .lang_select{
+    display: flex;
+  padding: 24px 0px;
+  align-items: center;
+  gap: 8px;
+  }
+  .language{
+    color: #FFF;
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  ;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  }
+  .drop_down_img{
+    height: 20px;
+  }
+  .search_img{
+    height: 20px;
+  }
+  .globe_img{
+    height: 20px;
+  }
+  .profile_img{
+    border-radius: 46px;
+  border: 1px solid #FFF;
+  }
+  .profile_img img{
+    height: 30px;
   }
   
+  /* sidebar-section */
   
-  
-  .logo3 {
-      position: relative;
-      z-index: 2;
-      height: 90px;
-      padding:0 40px;
+  .sidebar_container{
+    display: inline-flex;
+    height: 100vh;
+    margin-top: 69px;
+    width: 15%;flex-direction: column;
+    align-items: flex-start;
+    gap: 200px;
+    flex-shrink: 0;
+    border-right: 1px solid #D9D9D9;
+    background: #0D0C0F;
+    position: fixed;
   }
-  
-  .logo3 img {
-      width: 150px;
-      
-      
+  .menu_section_one{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 3px;
   }
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-   @keyframes fade-in {
-       0% {
-           opacity: 0;
-           transform: scale(1.2);
-      }
-       100% {
-           opacity: 1;
-           transform: scale(1);
-      }
+  .menu_one{
+    display: flex;
+    width: 230px;
+    padding: 20px 64px 20px 40px;
+    align-items: center;
+    gap: 12px;
   }
-  
-   .showcase3 .wrapper {
-       margin: 100px 20px;
-       text-align: center;
-       justify-content: center;
+  .img_home{
+    height: 20px;
   }
-   .profile-pic {
-       width: 150px;
-       margin: 20px;
+  .txt_home{
+    color: #FFF;
+   font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  ;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
   }
-   .profile-pic-wrap {
-       display: flex;
-       flex-wrap: wrap;
-       justify-content: space-between;
-       max-width: 800px;
-       margin: 50px auto;
+  .coming_soon_menu{
+    display: flex;
+    width: 231px;
+      padding: 20px 5px 20px 40px;
+  align-items: center;
+  gap: 10px;
   }
-   .profile-pic-icon {
-       width: 150px;
-       height: 150px;
-       border: 6px solid #1f1f1f;
-       transition: all 100ms ease;
+  .sub_coming_soon{
+    display: flex;
+  align-items: center;
+  gap: 12px;
   }
-   .profile-pic-name {
-       margin: 20px 0;
-       line-height: 1.25em;
-       transition: all 300ms ease;
-       color: white;
+  .txt_coming_soon{
+    color: #FFF;
+   font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  ;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
   }
-   .profile-pic:hover .profile-pic-icon {
-       border: 6px solid #ebecec;
+  .green_circle{
+    height: 25px;
   }
-   .profile-pic:hover .profile-pic-name {
-       color: #ebecec;
+  .notifications{
+    width: 28px;
+  height: 28px;
+  flex-shrink: 0;
   }
-   .profile-pic1 #left-brow {
-       transform-origin: center 80%;
-       animation: raise 10s ease-in-out infinite;
+  .num_five{
+    color: #10141D;
+   font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+   ;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  margin-top: -22px;
+  text-align: center;}
+  .coming_soon_img{
+  height: 20px;
   }
-   .profile-pic1 #sunglasses {
-       transform-origin: center 100%;
-       animation: tilt 10s 250ms ease infinite;
+  .menu_section_two{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 3px;
   }
-   .profile-pic1 #mustache {
-       transform-origin: center 90%;
-       animation: mustache 10s 0ms ease infinite;
+  .menu_two{
+      display: flex;
+      width: 230px;
+      padding: 20px 40px 20px 40px;
+      align-items: center;
+      gap: 12px;
   }
-   @keyframes raise {
-       0% {
-           transform: translateY(0px) rotate(0deg);
-      }
-       10% {
-           transform: translateY(-10px) rotate(5deg);
-      }
-       20% {
-           transform: translateY(-10px) rotate(5deg);
-      }
-       25% {
-           transform: translateY(0px) rotate(0deg);
-      }
-       100% {
-           transform: translateY(0px);
-      }
+  .img_home2{
+    height: 20px;
   }
-   @keyframes tilt {
-       0% {
-           transform: translateY(0px) rotate(0deg);
-      }
-       10% {
-           transform: translateY(-2px) rotate(5deg);
-      }
-       20% {
-           transform: translateY(-2px) rotate(5deg);
-      }
-       25% {
-           transform: translateY(0px) rotate(0deg);
-      }
-       100% {
-           transform: translateY(0px);
-      }
+  .txt_home2{
+    color: #FFF;
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  ;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
   }
-   @keyframes mustache {
-       20% {
-           transform: translateY(0px) scale(1);
-      }
-       30% {
-           transform: translateY(4px) rotate(-3deg) scale(1.03);
-      }
-       40% {
-           transform: translateY(0px) scale(1);
-      }
+  .arrow_section{
+    position: absolute;
+  right: -24px;
+  top: 320px;
   }
-   .profile-pic2 #left-pupil, .profile-pic2 #right-pupil {
-       animation: side-to-side 10s ease-in-out infinite alternate;
+  .arrow_box{
+    display: flex;
+  width: 24px;
+  height: 24px;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  margin-top: -25px;
+      margin-left: 10px;
   }
-   .profile-pic2 #left-eye-top, .profile-pic2 #right-eye-top {
-       transform-origin: center bottom;
-       animation: wide-open 10s ease-in-out infinite alternate;
+  /* end of sidebar */
+  .movie_carousel{
+    display: flex;
+  width: 1588px;
+  height: 439px;
+  padding: 128px 0px 48px 48px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 25px;
+  flex-shrink: 0;
   }
-   .profile-pic2 #bottom-beak, .profile-pic2 #gillard {
-       transform-origin: center top;
-       animation: chew 20s ease-in-out infinite;
+  .movie_carousel img{
+    width: 85%;
+    margin-left: 180px;
+    margin-top: -20px;
   }
-   .profile-pic2 #hair {
-       animation: hair 4s ease infinite alternate;
+
+  .categories_1{
+    display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 32px;
+  width: 100%;
   }
-   @keyframes side-to-side {
-       0% {
-           transform: translateX(0px);
-      }
-       5% {
-           transform: translateX(-5px);
-      }
-       10% {
-           transform: translateX(-5px);
-      }
-       20% {
-           transform: translateX(5px);
-      }
-       25% {
-           transform: translateX(5px);
-      }
-       35% {
-           transform: translateX(-5px);
-      }
-       40% {
-           transform: translateX(-5px);
-      }
-       45% {
-           transform: translateX(0px);
-      }
+  .txt_section{
+    display: flex;
+    width: 100%;
+  justify-content: space-between;
+  align-items: flex-start;
   }
-   @keyframes wide-open {
-       0% {
-           opacity: 0;
-      }
-       40% {
-           opacity: 0;
-           transform: scale(1, 0);
-      }
-       42% {
-           opacity: 1;
-           transform: scale(1, 1);
-      }
-       100% {
-           opacity: 1;
-           transform: scale(1, 1);
-      }
+  .txt_main{
+    color: #FFF;
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  ;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
   }
-   @keyframes chew {
-       0% {
-           transform: translateY(0px) rotate(0deg);
-      }
-       2% {
-           transform: translateY(3px) rotate(-3deg);
-      }
-       4% {
-           transform: translateY(0px) rotate(0deg);
-      }
-       6% {
-           transform: translateY(3px) rotate(-3deg);
-      }
-       8% {
-           transform: translateY(0px) rotate(0deg);
-      }
-       10% {
-           transform: translateY(3px) rotate(-3deg);
-      }
-       12% {
-           transform: translateY(0px) rotate(0deg);
-      }
-       14% {
-           transform: translateY(3px) rotate(0deg);
-      }
-       18% {
-           transform: translateY(0px) rotate(0deg);
-      }
-       26% {
-           transform: translateY(15px);
-      }
-       78% {
-           transform: translateY(15px);
-      }
-       80% {
-           transform: translateY(0px) rotate(0deg);
-      }
-       100% {
-           transform: translateY(0px) rotate(0deg);
-      }
+  .view_all{
+    display: flex;
+  align-items: center;
+  gap: 3px;
   }
-   @keyframes hair {
-       0% {
-           transform: scale(1);
-      }
-       50% {
-           transform: scale(1, 0.8);
-      }
-       100% {
-           transform: scale(1);
-      }
+  .txt_view_all{
+    color: #FFF;
+   font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  ;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
   }
-   .profile-pic3 svg {
-       animation: bg-fade 10s ease infinite;
+  .movie_posters_section{
+    display: flex;
+  width: 1496px;
+  padding-right: 0px;
+  align-items: center;
+  gap: 32px;
   }
-   .profile-pic3 svg #smile {
-       width: 100px;
+  /*  */
+  .movie_card{
+    display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
   }
-   @keyframes bg-fade {
-       0% {
-           background: #86a546;
-      }
-       40% {
-           background: #86a546;
-      }
-       45% {
-           background: #e09927;
-      }
-       55% {
-           background: #e09927;
-      }
-       60% {
-           background: #86a546;
-      }
+  .movie_card img{
+    height: 190px;
   }
-   .profile-pic4 {
-       background-image: url('https://i.gyazo.com/aa72f20bdacb2e23beb7b065a6b43739.png');
-       background-size: cover;
+  .movie_title_container{
+    display: flex;
+  align-items: flex-start;
+  gap: 5px;
   }
-   @media screen and (max-width: 440px) {
-  
-  .profile-pic-icon {
-      width: 130px;
-      height: 130px;
-      }
-  .profile-pic {
-      width: 130px;
-      margin: 10px;
+  .title_section{
+    display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 11px;
   }
-  .profile-pic svg {
-      width: 130px;
-      height: 130px;
+  .rating_section{
+    display: flex;
+  align-items: center;
+  gap: 3px;
   }
-  .profile-pic-wrap{
-      
-      justify-content: center!important;
-      
+  .star{
+    height: 15px;
   }
+  .rating{
+    color: #FFF;
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  ;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  }
+  .title{
+    color: #FFF;
+   font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  ;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  }
+  .time{
+    color: #838383;
+  font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  ;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
   }
   </style>
-  

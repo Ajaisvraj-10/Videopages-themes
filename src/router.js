@@ -1879,6 +1879,11 @@ else if(theme_name=='crystal-clear'){
           component: () => import("./views/app/crystal-clear/homecollapsed"),
         },
         {
+          path: "sidebar",
+          name: "sidebar",
+          component: () => import("./views/app/crystal-clear/sidebar"),
+        },
+        {
           path: "watching/:video_id/:type/:category/:slug",
           name: "watching",
           component: () => import("./views/app/crystal-clear/watching"),

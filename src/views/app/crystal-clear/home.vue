@@ -1,84 +1,9 @@
 <template>
   <div class="main_frame">
 
-      <!-- header-section -->
-      <div class="header_div">
-  
-  <!-- header-section -->
-
-  <div>
-    <span class="span_1">Video</span>
-    <span class="span_2">flix</span>
-  </div>
-
-  <div class="header_frame">
-    <div class="movie_category">
-      <div class="category_1">
-        <div class="items">Movies</div>
-      </div>
-      <div class="category_1">
-        <div class="items">TV Shows</div>
-      </div>
-      <div class="category_1">
-        <div class="items">Series</div>
-      </div>
-    </div>
-
-    <div class="search_bar">
-      <div class="input_placeholder">What do you want to watch</div>
-      <div>
-        <svg class="search_img" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
-<path d="M24.0414 22.1557L29.7517 27.866L27.8661 29.7516L22.1558 24.0413C20.1026 25.684 17.4987 26.6667 14.6667 26.6667C8.04275 26.6667 2.66675 21.2907 2.66675 14.6667C2.66675 8.04266 8.04275 2.66666 14.6667 2.66666C21.2907 2.66666 26.6667 8.04266 26.6667 14.6667C26.6667 17.4987 25.6841 20.1025 24.0414 22.1557ZM21.3663 21.1664C22.9967 19.4861 24.0001 17.1941 24.0001 14.6667C24.0001 9.50999 19.8234 5.33332 14.6667 5.33332C9.51008 5.33332 5.33341 9.50999 5.33341 14.6667C5.33341 19.8233 9.51008 24 14.6667 24C17.1942 24 19.4862 22.9967 21.1665 21.3663L21.3663 21.1664Z" fill="white"/>
-</svg>
-      </div>
-    </div>
-
-    <div class="lang_select">
-        <div>
-          <svg class="globe_img" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
-<path d="M16.0001 29.3333C8.63628 29.3333 2.66675 23.3637 2.66675 16C2.66675 8.63619 8.63628 2.66666 16.0001 2.66666C23.3638 2.66666 29.3334 8.63619 29.3334 16C29.3334 23.3637 23.3638 29.3333 16.0001 29.3333ZM12.9468 26.2232C11.6633 23.5012 10.8765 20.4989 10.7032 17.3333H5.41593C5.94408 21.5687 8.95527 25.0329 12.9468 26.2232ZM13.3743 17.3333C13.5749 20.5851 14.5038 23.6396 16.0001 26.336C17.4963 23.6396 18.4253 20.5851 18.6258 17.3333H13.3743ZM26.5842 17.3333H21.297C21.1237 20.4989 20.3369 23.5012 19.0534 26.2232C23.0449 25.0329 26.0561 21.5687 26.5842 17.3333ZM5.41593 14.6667H10.7032C10.8765 11.501 11.6633 8.49875 12.9468 5.77674C8.95527 6.9671 5.94408 10.4313 5.41593 14.6667ZM13.3743 14.6667H18.6258C18.4253 11.4149 17.4963 8.36032 16.0001 5.66398C14.5038 8.36032 13.5749 11.4149 13.3743 14.6667ZM19.0534 5.77674C20.3369 8.49875 21.1237 11.501 21.297 14.6667H26.5842C26.0561 10.4313 23.0449 6.9671 19.0534 5.77674Z" fill="white"/>
-</svg>
-        </div>
-        <div class="language">Eng</div>
-        <div class="drop_down">
-          <svg class="drop_down_img" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
-<path d="M14.0001 17.5007L9.05029 12.551L10.7002 10.901L14.0001 14.2009L17.2999 10.901L18.9498 12.551L14.0001 17.5007Z" fill="white"/>
-</svg>
-        </div>
-      </div>
-
-      <div class="profile_img">
-        <img src="/crystal-clear/images/new_theme_profile.png" alt="">
-      </div>
-  </div>
-</div>
-<!-- 2header -->
-      <div class="header_div_main">
-          <div class="section_one">
-                  <div><svg class="menu_option" xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
-  <path d="M3 4.5H21V6.5H3V4.5ZM3 11.5H21V13.5H3V11.5ZM3 18.5H21V20.5H3V18.5Z" fill="white"/>
-  </svg>          
-                  </div>
-                  <div>
-                      <span class="span1">Video</span>
-                      <span class="span2">flix</span>
-                  </div>
-          </div>
-
-          <div class="section_two">
-              <div>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
-<path d="M18.031 17.1168L22.3137 21.3995L20.8995 22.8137L16.6168 18.531C15.0769 19.763 13.124 20.5 11 20.5C6.032 20.5 2 16.468 2 11.5C2 6.532 6.032 2.5 11 2.5C15.968 2.5 20 6.532 20 11.5C20 13.624 19.263 15.5769 18.031 17.1168ZM16.0247 16.3748C17.2475 15.1146 18 13.3956 18 11.5C18 7.6325 14.8675 4.5 11 4.5C7.1325 4.5 4 7.6325 4 11.5C4 15.3675 7.1325 18.5 11 18.5C12.8956 18.5 14.6146 17.7475 15.8748 16.5247L16.0247 16.3748Z" fill="white"/>
-</svg>
-              </div>
-              <div>
-                  <img class="profile_img" src="/crystal-clear/images/new_theme_profile.png" alt="">
-              </div>
-          </div>
-      </div>
-
+    <MainHeader></MainHeader>
+    <!-- <Sidebar></Sidebar> -->
       <!-- sidebar-section -->
-
 
       <div class="sidebar_container">
         <div class="menu_section_one">
@@ -165,6 +90,7 @@
 
 
       <!-- end-of-sidebar -->
+
 
       <!-- category-section -->
 
@@ -1158,7 +1084,19 @@
   </div>
 </template>
 
+<script>
+import MainHeader from '/src/views/app/crystal-clear/header.vue'
+export default {
+  components:{
+    MainHeader,
+  }
+}
 
+</script>
+<style>
+  @import '/crystal-clear/style/style.css';
+
+</style>
 <style>
 @media (max-width: 767px) {
 .main_frame{
@@ -1564,6 +1502,7 @@ font-weight: 700;
 line-height: normal;
 }
 }
+
 
 /* sidebar-section */
 @media (max-width: 767px) {

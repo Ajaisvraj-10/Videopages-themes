@@ -634,6 +634,23 @@ height: 30px;
 }
 
 @media (max-width: 767px) {
+.section_two{
+    display: flex;
+    align-items: center;
+gap: 18px;
+}
+}
+@media (min-width: 768px) {
+.section_two{
+    display: flex;
+    align-items: center;
+gap: 18px;
+}
+}
+
+
+
+@media (max-width: 767px) {
 .span1{
     color: #00925D;
     font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;

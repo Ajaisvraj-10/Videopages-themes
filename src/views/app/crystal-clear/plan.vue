@@ -1,933 +1,1720 @@
 <template>
-  <div class="plan-page">
-    <div class="background"></div>
-    <div class="content1">
-      
-      <div class="plan-options">
-        <!-- <div class="plan-option1">
-          <h3 class="price">Lite</h3>
-          <p class="access">Access to basic features</p>
-          <p class="scnd-ptag">For creators focused on growing a <br> small video membership online</p>
-          <hr />
-          <h1 class="price-main">$149/mo</h1>
-          <p class="thrd-ptag">+$1.99 per paid member/mo</p>
-          <div class="points">
-          <li>0% fee on one-time purchases</li>
-          <li>Netflix-style video catalog</li>
-          <li>Live streaming up to 1 hour</li>
-          <li class="decor">Community up to 5 channels</li>
-        </div>
-          <button class="slct-btn" >Select</button><br>
-          <div class="learn-more" ><a href="#">Learn more</a></div>
-        </div> -->
+  <div class="main_frame">
+    <MainHeader></MainHeader>
+      <!-- sidebar-section -->
 
-        <div class="plan-option" v-for="plan in plans" :style="plan.id==current_plan.id?'background: #673ab714; border-radius:6px;':'border-radius:6px;'" @click="current_plan=plan">
-          <!-- <div class="recomd-plan"></div> -->
-          <h3 class="price">{{plan.name}}</h3>
-          <p class="access">Access to standard features</p>
-          <p class="scnd-ptag">For serious creators growing a robust <br> community on mobile & web</p>
-          <hr />
-          <h1 class="price-main">{{plan.price}}</h1>
-          <p class="thrd-ptag"> {{plan.duration}} {{plan.date_type}} plan</p>
-          <div class="points">
-              {{plan.description}}
-        </div>
-          <button class="slct-btn" v-if="current_plan.id" @click="handleButtonClick(plan)">Continue with {{current_plan.currency_symbol}}{{current_plan.price}}</button><br>
-          <div class="learn-more" ><a href="#">Learn more</a></div>
-        </div>
-
-
-
-        <div class="popup-container" v-if="showPopup">
-    <div class="popup-content">
-      <div class="pop-up">
-          <div class="plan-sec2 px-3 mt-5" >
-        <h6 class="text-white text-11 font-weight-400 mb-2">Step 2 of 3</h6>
-        <h6 class="text-white text-14 font-weight-500 mb-2">Payment Methods</h6>
-        <div class="plan-card2 row mx-0">
-          <div class="col-md-12 plan-card-col">
-            <h6 class="text-20 font-weight-700 my-2 mb-4">Select Payment Method</h6>
-
-            <button class="btn btn-primary rounded2 py-2 w-100 my-2" v-for="payment_method in payment_methods" @click="payment_method.name=='Razorpay'?setRazorpay(payment_method):setStripe()">{{payment_method.name}}</button>
-            <h6 class="text-center text-12 mt-2" @click="crnt_tab='plans'">Change plan</h6>
-
-            <div class="or-sec">Or</div>
-            <div class="d-flex justify-content-center plans-social-icons my-3" style="gap:20px;">
-              <img src="/crystal-clear/images/apple.svg" style="width:40px;">
-              <img src="/crystal-clear/images/google.svg" style="width:40px;">
-              <img src="/crystal-clear/images/fb.svg" style="width:40px;">
-              <img src="/crystal-clear/images/twitter.svg" style="width:40px;">
+      <div class="sidebar_container">
+        <div class="menu_section_one">
+          <div class="menu_one">
+            <div><svg class="img_home" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+    <path d="M17.3333 25.3329H25.3333V13.3039L16 6.0446L6.66667 13.3039V25.3329H14.6667V17.3329H17.3333V25.3329ZM28 26.6663C28 27.4027 27.4031 27.9996 26.6667 27.9996H5.33333C4.59696 27.9996 4 27.4027 4 26.6663V12.6517C4 12.2403 4.18996 11.8519 4.51475 11.5993L15.1815 3.30299C15.6629 2.92851 16.3371 2.92851 16.8185 3.30299L27.4852 11.5993C27.81 11.8519 28 12.2403 28 12.6517V26.6663Z" fill="white"/>
+  </svg></div>
+            <div class="txt_home">Home</div>
+          </div>
+  
+          <div class="menu_one">
+            <div><svg class="img_home" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+    <path d="M16 29.3334C8.63616 29.3334 2.66663 23.3638 2.66663 16C2.66663 8.63622 8.63616 2.66669 16 2.66669C23.3637 2.66669 29.3333 8.63622 29.3333 16C29.3333 23.3638 23.3637 29.3334 16 29.3334ZM16 26.6667C21.891 26.6667 26.6666 21.8911 26.6666 16C26.6666 10.109 21.891 5.33335 16 5.33335C10.1089 5.33335 5.33329 10.109 5.33329 16C5.33329 21.8911 10.1089 26.6667 16 26.6667ZM22 10L18.6666 18.6667L9.99996 22L13.3333 13.3334L22 10ZM16 17.3334C16.7364 17.3334 17.3333 16.7364 17.3333 16C17.3333 15.2636 16.7364 14.6667 16 14.6667C15.2636 14.6667 14.6666 15.2636 14.6666 16C14.6666 16.7364 15.2636 17.3334 16 17.3334Z" fill="white"/>
+  </svg></div>
+            <div class="txt_home">Discover</div>
+          </div>
+  
+          <div class="menu_one">
+            <div><svg class="img_home" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+    <path d="M16 30.6667C21.5228 30.6667 26 26.1895 26 20.6667C26 19.5127 25.6929 18.4043 25.3333 17.3728C23.1111 19.5687 21.4223 20.6667 20.2667 20.6667C25.5939 11.3333 22.6667 7.33333 14.6667 2C15.3333 8.66601 10.9387 11.6983 9.14905 13.3821C7.21048 15.206 6 17.7949 6 20.6667C6 26.1895 10.4771 30.6667 16 30.6667ZM16.9459 6.97997C21.2681 10.647 21.2888 13.4964 17.9507 19.3448C16.936 21.1225 18.2197 23.3333 20.2667 23.3333C21.1845 23.3333 22.1121 23.0656 23.0919 22.5401C22.2639 25.6827 19.4025 28 16 28C11.9499 28 8.66667 24.7168 8.66667 20.6667C8.66667 18.6144 9.51039 16.7035 10.9763 15.3243C11.1443 15.1663 11.9967 14.4108 12.033 14.3781C12.5982 13.8695 13.0637 13.4217 13.5239 12.929C15.1644 11.1724 16.3428 9.22175 16.9459 6.97997Z" fill="white"/>
+  </svg></div>
+            <div class="txt_home">Trending</div>
+          </div>
+          <div class="coming_soon_menu">
+            <div class="sub_coming_soon">
+                <div><svg class="coming_soon_img" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+      <path d="M15.9988 29.3335C9.37144 29.3335 3.99886 23.961 3.99886 17.3335C3.99886 10.7061 9.37144 5.33351 15.9988 5.33351C22.6263 5.33351 27.9988 10.7061 27.9988 17.3335C27.9988 23.961 22.6263 29.3335 15.9988 29.3335ZM15.9988 26.6668C21.1535 26.6668 25.3321 22.4882 25.3321 17.3335C25.3321 12.1788 21.1535 8.00018 15.9988 8.00018C10.8442 8.00018 6.66552 12.1788 6.66552 17.3335C6.66552 22.4882 10.8442 26.6668 15.9988 26.6668ZM17.3321 17.3335H21.3321V20.0002H14.6655V10.6668H17.3321V17.3335ZM2.32812 8.37682L7.04218 3.66278L8.92779 5.54839L4.21375 10.2624L2.32812 8.37682ZM24.9556 3.66278L29.6696 8.37682L27.784 10.2624L23.0699 5.54839L24.9556 3.66278Z" fill="white"/>
+    </svg>
+                </div>
+                <div class="txt_coming_soon">Coming Soon</div>
+            </div>
+  
+            <div class="notifications">
+              <div>
+                <svg class="green_circle" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
+    <circle cx="14" cy="14" r="14" fill="#00925D"/>
+  </svg>
+              </div>
+              <div class="num_five">5</div>
             </div>
           </div>
         </div>
-      </div>  
-      <div class="plan-sec2 px-3 mt-5">
-        <h6 class="text-white text-11 font-weight-400 mb-2">Step 3 of 3</h6>
-        <h6 class="text-white text-14 font-weight-500 mb-2">Payment</h6>
-        <div class="plan-card2 row mx-0">
-          <div class="col-md-12 plan-card-col">
-            <h6 class="text-22 font-weight-600 my-2 mb-4">{{current_method.name}}</h6>
-            <div class="text-center">
-              <img :src="current_method.logo" style="height:100px">
-            </div>
-            <h3 class="text-success text-center">{{current_plan.currency_symbol}}{{current_plan.price}}</h3>
-            <button class="btn btn-primary rounded2 py-2 w-100 my-2" @click="purchasePlan()" v-if="razorpay_options.key">Pay Now</button>
-            <button class="close-btn" @click="closePopup">Close</button>
-            <h6 class="text-center text-12 mt-2" @click="crnt_tab='payment_methods'">Change method</h6>
-           
+  
+        <!-- sidebar-section-2 -->
+  
+        <div class="menu_section_two">
+          <div class="menu_two">
+            <div><svg class="img_home" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+    <path d="M5.33329 25.3333V6.66667H12.781L15.4477 9.33333H26.6666V25.3333H5.33329ZM28 6.66667H16.5522L13.8856 4H3.99996C3.26359 4 2.66663 4.59696 2.66663 5.33333V26.6667C2.66663 27.4031 3.26359 28 3.99996 28H28C28.7364 28 29.3333 27.4031 29.3333 26.6667V8C29.3333 7.26363 28.7364 6.66667 28 6.66667ZM20.001 16.8893L13.4958 12.5525C13.4082 12.4941 13.3053 12.4629 13.2 12.4629C12.9054 12.4629 12.6666 12.7017 12.6666 12.9962V21.6699C12.6666 21.7752 12.6978 21.8781 12.7562 21.9657C12.9196 22.2108 13.2508 22.2771 13.4958 22.1136L20.001 17.7768C20.0596 17.7377 20.1098 17.6875 20.1489 17.6289C20.3124 17.3839 20.2461 17.0527 20.001 16.8893Z" fill="white"/>
+  </svg></div>
+            <div class="txt_home2">Library</div>
+          </div>
+  
+          <div class="menu_two">
+            <div><svg class="img_home" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+    <path d="M2.66663 15.9997C2.66663 14.8471 2.81289 13.7285 3.08789 12.6617C4.54159 12.7371 5.9846 12.0135 6.76236 10.6664C7.53952 9.32033 7.44537 7.71028 6.65491 6.48934C8.24468 4.92705 10.2244 3.76029 12.4347 3.14844C13.0962 4.44513 14.4444 5.33309 16 5.33309C17.5556 5.33309 18.9037 4.44513 19.5653 3.14844C21.7756 3.76029 23.7553 4.92705 25.345 6.48934C24.5545 7.71028 24.4604 9.32033 25.2376 10.6664C26.0153 12.0135 27.4584 12.7371 28.9121 12.6617C29.187 13.7285 29.3333 14.8471 29.3333 15.9997C29.3333 17.1524 29.187 18.2709 28.9121 19.3377C27.4584 19.2624 26.0153 19.986 25.2376 21.3331C24.4604 22.6792 24.5545 24.2892 25.345 25.5101C23.7553 27.0724 21.7756 28.2392 19.5653 28.8511C18.9037 27.5544 17.5556 26.6664 16 26.6664C14.4444 26.6664 13.0962 27.5544 12.4347 28.8511C10.2244 28.2392 8.24468 27.0724 6.65491 25.5101C7.44537 24.2892 7.53952 22.6792 6.76236 21.3331C5.9846 19.986 4.54159 19.2624 3.08789 19.3377C2.81289 18.2709 2.66663 17.1524 2.66663 15.9997ZM9.07176 19.9997C9.91189 21.4549 10.1527 23.1279 9.8242 24.6981C10.3679 25.0851 10.9467 25.4203 11.5531 25.6988C12.749 24.6283 14.3189 23.9997 16 23.9997C17.681 23.9997 19.2509 24.6283 20.4468 25.6988C21.0532 25.4203 21.632 25.0851 22.1757 24.6981C21.8472 23.1279 22.088 21.4549 22.9282 19.9997C23.7682 18.5447 25.0966 17.4997 26.6206 16.9991C26.6512 16.6687 26.6666 16.3355 26.6666 15.9997C26.6666 15.6641 26.6512 15.3308 26.6206 15.0005C25.0966 14.4999 23.7682 13.4549 22.9282 11.9998C22.088 10.5446 21.8472 8.8717 22.1757 7.3014C21.632 6.9145 21.0532 6.57929 20.4468 6.30069C19.2509 7.37125 17.681 7.99976 16 7.99976C14.3189 7.99976 12.749 7.37125 11.5531 6.30069C10.9467 6.57929 10.3679 6.9145 9.8242 7.3014C10.1527 8.8717 9.91189 10.5446 9.07176 11.9998C8.23164 13.4549 6.90335 14.4999 5.37931 15.0005C5.34872 15.3308 5.33329 15.6641 5.33329 15.9997C5.33329 16.3355 5.34872 16.6687 5.37931 16.9991C6.90335 17.4997 8.23164 18.5447 9.07176 19.9997ZM16 19.9997C13.7908 19.9997 12 18.2089 12 15.9997C12 13.7907 13.7908 11.9998 16 11.9998C18.2092 11.9998 20 13.7907 20 15.9997C20 18.2089 18.2092 19.9997 16 19.9997ZM16 17.3331C16.7364 17.3331 17.3333 16.7361 17.3333 15.9997C17.3333 15.2633 16.7364 14.6664 16 14.6664C15.2636 14.6664 14.6666 15.2633 14.6666 15.9997C14.6666 16.7361 15.2636 17.3331 16 17.3331Z" fill="white"/>
+  </svg></div>
+            <div class="txt_home2">Settings</div>
+          </div>
+  
+          <div class="menu_two">
+            <div><svg class="img_home" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+    <path d="M16 29.3333C8.63616 29.3333 2.66663 23.3637 2.66663 16C2.66663 8.63616 8.63616 2.66663 16 2.66663C23.3637 2.66663 29.3333 8.63616 29.3333 16C29.3333 23.3637 23.3637 29.3333 16 29.3333ZM16 26.6666C21.891 26.6666 26.6666 21.891 26.6666 16C26.6666 10.1089 21.891 5.33329 16 5.33329C10.1089 5.33329 5.33329 10.1089 5.33329 16C5.33329 21.891 10.1089 26.6666 16 26.6666ZM14.6666 20H17.3333V22.6666H14.6666V20ZM17.3333 17.8068V18.6666H14.6666V16.6666C14.6666 15.9302 15.2636 15.3333 16 15.3333C17.1045 15.3333 18 14.4378 18 13.3333C18 12.2287 17.1045 11.3333 16 11.3333C15.0297 11.3333 14.2208 12.0243 14.0384 12.941L11.423 12.4179C11.8485 10.2789 13.736 8.66663 16 8.66663C18.5773 8.66663 20.6666 10.756 20.6666 13.3333C20.6666 15.4473 19.2609 17.233 17.3333 17.8068Z" fill="white"/>
+  </svg></div>
+            <div class="txt_home2">About & Help</div>
+          </div>
+        </div>
+  
+  
+        <div class="arrow_section">
+              <div><svg class="green_circle" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
+        <circle cx="24" cy="24" r="24" fill="#00925D"/>
+      </svg>
+              </div>
+              <div class="arrow_box">
+                <div>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+    <path d="M10.8284 12.0007L15.7782 16.9504L14.364 18.3646L8 12.0007L14.364 5.63672L15.7782 7.05093L10.8284 12.0007Z" fill="black"/>
+  </svg>
+                </div>
+              </div>
+        </div>
+      </div>
+      <!-- end-of-sidebar -->
 
+      <!-- segments_top -->
+
+      <div class="segment_section">
+        <div class="segment_box1">
+          <div >
+            <svg class="left_arrow" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <path d="M7.82843 10.9999H20V12.9999H7.82843L13.1924 18.3638L11.7782 19.778L4 11.9999L11.7782 4.22168L13.1924 5.63589L7.82843 10.9999Z" fill="white"/>
+</svg>
+          </div>
+          <div class="segment_inner_one">
+            <div class="txt_one">Profile</div>
+          </div>
+        </div>
+
+        <div class="segment_box2">
+          <div class="segment_inner_two">
+            <div class="txt_one">Purchase History</div>
+          </div>
+        </div>
+
+        <div class="segment_box2">
+          <div class="segment_inner_two">
+            <div class="txt_one">Payment & Billing</div>
+          </div>
+        </div>
+
+        <div class="segment_box2">
+          <div class="segment_inner_three">
+            <div class="txt_two">Pricing & Plans</div>
           </div>
         </div>
       </div>
-     
+
+      <!-- plan-table-section -->
+
+      <div class="main_table">
+
+        <!-- container-1 -->
+
+
+        <div class="plan_container_1">
+          <div class="part_one">
+            <div class="txt_plans">Silver</div>
+            <div class="txt_two_plans">Access to standard features</div>
+          </div>
+          <!--  -->
+          <div class="part_two">
+            <div class="prices">Free</div>
+            <div class="month_year">For a Lifetime</div>
+          </div>
+          <!--  -->
+          <div class="button_plan">Current Plan</div>
+          <!--  -->
+          <div class="part_three">
+            <div class="frst_sect">
+              <div>
+                <svg class="tick_cross" xmlns="http://www.w3.org/2000/svg" width="33" height="32" viewBox="0 0 33 32" fill="none">
+  <path d="M13.8343 20.2282L26.0908 7.97168L27.9764 9.85729L13.8343 23.9994L5.349 15.5142L7.23461 13.6286L13.8343 20.2282Z" fill="#00925D"/>
+</svg>
+              </div>
+              <div class="plan_dtls">For serious creators growing a <br> robustcommunity on mobile & web</div>
+            </div>
+            <!--  -->
+            <div class="frst_sect">
+              <div>
+                <svg class="tick_cross" xmlns="http://www.w3.org/2000/svg" width="33" height="32" viewBox="0 0 33 32" fill="none">
+  <path d="M13.8343 20.2282L26.0908 7.97168L27.9764 9.85729L13.8343 23.9994L5.349 15.5142L7.23461 13.6286L13.8343 20.2282Z" fill="#00925D"/>
+</svg>
+              </div>
+              <div class="plan_dtls">For serious creators growing a <br> robustcommunity on mobile & web</div>
+            </div>
+            <!--  -->
+            <div class="frst_sect">
+              <div>
+                <svg class="tick_cross" xmlns="http://www.w3.org/2000/svg" width="33" height="32" viewBox="0 0 33 32" fill="none">
+  <path d="M16.5009 14.1153L23.1005 7.51562L24.9861 9.40124L18.3865 16.0009L24.9861 22.6005L23.1005 24.4861L16.5009 17.8865L9.90124 24.4861L8.01562 22.6005L14.6153 16.0009L8.01562 9.40124L9.90124 7.51562L16.5009 14.1153Z" fill="#FF5D5D"/>
+</svg>
+              </div>
+              <div class="plan_dtls">For serious creators growing a <br> robustcommunity on mobile & web</div>
+            </div>
+            <!--  -->
+            <div class="frst_sect">
+              <div>
+                <svg class="tick_cross" xmlns="http://www.w3.org/2000/svg" width="33" height="32" viewBox="0 0 33 32" fill="none">
+  <path d="M16.5009 14.1153L23.1005 7.51562L24.9861 9.40124L18.3865 16.0009L24.9861 22.6005L23.1005 24.4861L16.5009 17.8865L9.90124 24.4861L8.01562 22.6005L14.6153 16.0009L8.01562 9.40124L9.90124 7.51562L16.5009 14.1153Z" fill="#FF5D5D"/>
+</svg>
+              </div>
+              <div class="plan_dtls">For serious creators growing a <br> robustcommunity on mobile & web</div>
+            </div>
+          </div>
         </div>
-        
-    </div>
-  </div>
+
+        <!-- plan_container2 -->
 
 
-       
-    
-
-
-
-      
-<!-- 
-        <div class="plan-option3">
-          <h3 class="price">Premium</h3>
-          <p class="access">Access to premium features</p>
-          <p class="scnd-ptag">For established creators needing full  brand control on all devices</p>
-          <hr />
-          <h1 class="price-main">Custom Pricing</h1>
-          <p class="thrd-ptag">Custom per paid member pricing</p>
-          <div class="points">
-          <li>Full-featured mobile apps</li>
-          <li>TV streaming apps</li>
-          <li>Custom live stream packages</li>
-          <li>API access</li>
+        <div class="plan_container_1">
+          <div class="part_one">
+            <div class="txt_plans">Platinum</div>
+            <div class="txt_two_plans">Access to standard features</div>
+          </div>
+          <!--  -->
+          <div class="part_two">
+            <div class="prices">₹55</div>
+            <div class="month_year">/ 5 month</div>
+          </div>
+          <!--  -->
+          <div class="button_plan2">Current Plan</div>
+          <!--  -->
+          <div class="part_three">
+            <div class="frst_sect">
+              <div>
+                <svg class="tick_cross" xmlns="http://www.w3.org/2000/svg" width="33" height="32" viewBox="0 0 33 32" fill="none">
+  <path d="M13.8343 20.2282L26.0908 7.97168L27.9764 9.85729L13.8343 23.9994L5.349 15.5142L7.23461 13.6286L13.8343 20.2282Z" fill="#00925D"/>
+</svg>
+              </div>
+              <div class="plan_dtls">For serious creators growing a <br> robustcommunity on mobile & web</div>
+            </div>
+            <!--  -->
+            <div class="frst_sect">
+              <div>
+                <svg class="tick_cross" xmlns="http://www.w3.org/2000/svg" width="33" height="32" viewBox="0 0 33 32" fill="none">
+  <path d="M13.8343 20.2282L26.0908 7.97168L27.9764 9.85729L13.8343 23.9994L5.349 15.5142L7.23461 13.6286L13.8343 20.2282Z" fill="#00925D"/>
+</svg>
+              </div>
+              <div class="plan_dtls">For serious creators growing a <br> robustcommunity on mobile & web</div>
+            </div>
+            <!--  -->
+            <div class="frst_sect">
+              <div>
+                <svg class="tick_cross" xmlns="http://www.w3.org/2000/svg" width="33" height="32" viewBox="0 0 33 32" fill="none">
+  <path d="M13.8343 20.2282L26.0908 7.97168L27.9764 9.85729L13.8343 23.9994L5.349 15.5142L7.23461 13.6286L13.8343 20.2282Z" fill="#00925D"/>
+</svg>
+              </div>
+              <div class="plan_dtls">For serious creators growing a <br> robustcommunity on mobile & web</div>
+            </div>
+            <!--  -->
+            <div class="frst_sect">
+              <div>
+                <svg class="tick_cross" xmlns="http://www.w3.org/2000/svg" width="33" height="32" viewBox="0 0 33 32" fill="none">
+  <path d="M13.8343 20.2282L26.0908 7.97168L27.9764 9.85729L13.8343 23.9994L5.349 15.5142L7.23461 13.6286L13.8343 20.2282Z" fill="#00925D"/>
+</svg>
+              </div>
+              <div class="plan_dtls">For serious creators growing a <br> robustcommunity on mobile & web</div>
+            </div>
+          </div>
         </div>
-          <button class="slct-btn">Select</button><br>
-          <div class="learn-more" ><a href="#">Learn more</a></div>
-        </div> -->
+
+        <!-- plan_container3 -->
+
+        <div class="plan_container_1">
+          <div class="part_one">
+            <div class="txt_plans">Gold</div>
+            <div class="txt_two_plans">Access to standard features</div>
+          </div>
+          <!--  -->
+          <div class="part_two">
+            <div class="prices">₹98</div>
+            <div class="month_year">/ year</div>
+          </div>
+          <!--  -->
+          <div class="button_plan3">Purchase Plan</div>
+          <!--  -->
+          <div class="part_three">
+            <div class="frst_sect">
+              <div>
+                <svg class="tick_cross" xmlns="http://www.w3.org/2000/svg" width="33" height="32" viewBox="0 0 33 32" fill="none">
+  <path d="M13.8343 20.2282L26.0908 7.97168L27.9764 9.85729L13.8343 23.9994L5.349 15.5142L7.23461 13.6286L13.8343 20.2282Z" fill="#00925D"/>
+</svg>
+              </div>
+              <div class="plan_dtls">For serious creators growing a <br> robustcommunity on mobile & web</div>
+            </div>
+            <!--  -->
+            <div class="frst_sect">
+              <div>
+                <svg class="tick_cross" xmlns="http://www.w3.org/2000/svg" width="33" height="32" viewBox="0 0 33 32" fill="none">
+  <path d="M13.8343 20.2282L26.0908 7.97168L27.9764 9.85729L13.8343 23.9994L5.349 15.5142L7.23461 13.6286L13.8343 20.2282Z" fill="#00925D"/>
+</svg>
+              </div>
+              <div class="plan_dtls">For serious creators growing a <br> robustcommunity on mobile & web</div>
+            </div>
+            <!--  -->
+            <div class="frst_sect">
+              <div>
+                <svg class="tick_cross" xmlns="http://www.w3.org/2000/svg" width="33" height="32" viewBox="0 0 33 32" fill="none">
+  <path d="M13.8343 20.2282L26.0908 7.97168L27.9764 9.85729L13.8343 23.9994L5.349 15.5142L7.23461 13.6286L13.8343 20.2282Z" fill="#00925D"/>
+</svg>
+              </div>
+              <div class="plan_dtls">For serious creators growing a <br> robustcommunity on mobile & web</div>
+            </div>
+            <!--  -->
+            <div class="frst_sect">
+              <div>
+                <svg class="tick_cross" xmlns="http://www.w3.org/2000/svg" width="33" height="32" viewBox="0 0 33 32" fill="none">
+  <path d="M13.8343 20.2282L26.0908 7.97168L27.9764 9.85729L13.8343 23.9994L5.349 15.5142L7.23461 13.6286L13.8343 20.2282Z" fill="#00925D"/>
+</svg>
+              </div>
+              <div class="plan_dtls">For serious creators growing a <br> robustcommunity on mobile & web</div>
+            </div>
+          </div>
+        </div>
+        <!-- end_of plan section -->
+
+
+        <!-- mobile_view-plan_page -->
+        <div class="mob_plan_frame">
+          <div class="mob_container_one">
+            <div class="mob_part_one">
+              <div class="mob_plan_head">
+                <div class="txt_plans2">Silver</div>
+                <div class="txt_two_plans2">Access to standard features</div>
+              </div>
+              <!--  -->
+              <div class="mob_price_sect">
+                <div class="prices2">Free</div>
+                <div class="month_year2">/ 5 month</div>
+              </div>
+              <!--  -->
+              <div class="button_plan">Current Plan</div>
+            </div>
+
+            <!-- price-dtls-sect -->
+
+            <div class="mob_descrpt_sect">
+              <div class="dtls_container">
+                <div>
+                  <svg class="tick_cross" xmlns="http://www.w3.org/2000/svg" width="33" height="32" viewBox="0 0 33 32" fill="none">
+  <path d="M13.8343 20.2282L26.0908 7.97168L27.9764 9.85729L13.8343 23.9994L5.349 15.5142L7.23461 13.6286L13.8343 20.2282Z" fill="#00925D"/>
+</svg>
+                </div>
+                <div class="plan_dtls">For serious creators growing a <br> robustcommunity on mobile & <br> web</div>
+              </div>
+              <!--  -->
+              <div class="dtls_container">
+                <div>
+                  <svg class="tick_cross" xmlns="http://www.w3.org/2000/svg" width="33" height="32" viewBox="0 0 33 32" fill="none">
+  <path d="M13.8343 20.2282L26.0908 7.97168L27.9764 9.85729L13.8343 23.9994L5.349 15.5142L7.23461 13.6286L13.8343 20.2282Z" fill="#00925D"/>
+</svg>
+                </div>
+                <div class="plan_dtls">For serious creators growing a <br> robustcommunity on mobile & <br> web</div>
+              </div>
+              <!--  -->
+
+              <div class="dtls_container">
+                <div>
+                  <svg  class="tick_cross" xmlns="http://www.w3.org/2000/svg" width="33" height="32" viewBox="0 0 33 32" fill="none">
+  <path d="M16.5009 14.1153L23.1005 7.51562L24.9861 9.40124L18.3865 16.0009L24.9861 22.6005L23.1005 24.4861L16.5009 17.8865L9.90124 24.4861L8.01562 22.6005L14.6153 16.0009L8.01562 9.40124L9.90124 7.51562L16.5009 14.1153Z" fill="#FF5D5D"/>
+</svg>
+                </div>
+                <div class="plan_dtls">For serious creators growing a <br> robustcommunity on mobile & <br> web</div>
+              </div>
+              <!--  -->
+
+              <div class="dtls_container">
+                <div>
+                  <svg  class="tick_cross" xmlns="http://www.w3.org/2000/svg" width="33" height="32" viewBox="0 0 33 32" fill="none">
+  <path d="M16.5009 14.1153L23.1005 7.51562L24.9861 9.40124L18.3865 16.0009L24.9861 22.6005L23.1005 24.4861L16.5009 17.8865L9.90124 24.4861L8.01562 22.6005L14.6153 16.0009L8.01562 9.40124L9.90124 7.51562L16.5009 14.1153Z" fill="#FF5D5D"/>
+</svg>
+                </div>
+                <div class="plan_dtls">For serious creators growing a <br> robustcommunity on mobile & <br> web</div>
+              </div>
+
+              <div class="show_less_btn">Show less</div>
+            </div>
+          </div>
+
+          <!-- mob_container2 -->
+
+          <div class="mob_container_one">
+            <div class="mob_part_one">
+              <div class="mob_plan_head">
+                <div class="txt_plans2">Platinum</div>
+                <div class="txt_two_plans2">Access to standard features</div>
+              </div>
+              <!--  -->
+              <div class="mob_price_sect">
+                <div class="prices2">₹55</div>
+                <div class="month_year2">/ 5 month</div>
+              </div>
+              <!--  -->
+              <div class="button_plan2">Purchase Plan</div>
+            </div>
+
+            <!-- price-dtls-sect -->
+
+            <div class="mob_descrpt_sect">
+              <div class="dtls_container">
+                <div>
+                  <svg class="tick_cross" xmlns="http://www.w3.org/2000/svg" width="33" height="32" viewBox="0 0 33 32" fill="none">
+  <path d="M13.8343 20.2282L26.0908 7.97168L27.9764 9.85729L13.8343 23.9994L5.349 15.5142L7.23461 13.6286L13.8343 20.2282Z" fill="#00925D"/>
+</svg>
+                </div>
+                <div class="plan_dtls">For serious creators growing a <br> robustcommunity on mobile & <br> web</div>
+              </div>
+              <!--  -->
+              <div class="dtls_container">
+                <div>
+                  <svg class="tick_cross" xmlns="http://www.w3.org/2000/svg" width="33" height="32" viewBox="0 0 33 32" fill="none">
+  <path d="M13.8343 20.2282L26.0908 7.97168L27.9764 9.85729L13.8343 23.9994L5.349 15.5142L7.23461 13.6286L13.8343 20.2282Z" fill="#00925D"/>
+</svg>
+                </div>
+                <div class="plan_dtls">For serious creators growing a <br> robustcommunity on mobile & <br> web</div>
+              </div>
+              <!--  -->
+
+              <div class="dtls_container">
+                <div>
+                  <svg class="tick_cross" xmlns="http://www.w3.org/2000/svg" width="33" height="32" viewBox="0 0 33 32" fill="none">
+  <path d="M13.8343 20.2282L26.0908 7.97168L27.9764 9.85729L13.8343 23.9994L5.349 15.5142L7.23461 13.6286L13.8343 20.2282Z" fill="#00925D"/>
+</svg>
+                </div>
+                <div class="plan_dtls">For serious creators growing a <br> robustcommunity on mobile & <br> web</div>
+              </div>
+              <!--  -->
+
+              <div class="dtls_container">
+                <div>
+                  <svg class="tick_cross" xmlns="http://www.w3.org/2000/svg" width="33" height="32" viewBox="0 0 33 32" fill="none">
+  <path d="M13.8343 20.2282L26.0908 7.97168L27.9764 9.85729L13.8343 23.9994L5.349 15.5142L7.23461 13.6286L13.8343 20.2282Z" fill="#00925D"/>
+</svg>
+                </div>
+                <div class="plan_dtls">For serious creators growing a <br> robustcommunity on mobile & <br> web</div>
+              </div>
+
+              <div class="show_less_btn">Show less</div>
+            </div>
+          </div>
+
+          <!-- mob_container3 -->
+
+
+          <div class="mob_container_one">
+            <div class="mob_part_one">
+              <div class="mob_plan_head">
+                <div class="txt_plans2">Gold</div>
+                <div class="txt_two_plans2">Access to standard features</div>
+              </div>
+              <!--  -->
+              <div class="mob_price_sect">
+                <div class="prices2">₹98</div>
+                <div class="month_year2">/ year</div>
+              </div>
+              <!--  -->
+              <div class="button_plan">Purchase Plan</div>
+            </div>
+
+            <!-- price-dtls-sect -->
+
+            <div class="mob_descrpt_sect">
+              <div class="dtls_container">
+                <div>
+                  <svg class="tick_cross" xmlns="http://www.w3.org/2000/svg" width="33" height="32" viewBox="0 0 33 32" fill="none">
+  <path d="M13.8343 20.2282L26.0908 7.97168L27.9764 9.85729L13.8343 23.9994L5.349 15.5142L7.23461 13.6286L13.8343 20.2282Z" fill="#00925D"/>
+</svg>
+                </div>
+                <div class="plan_dtls">For serious creators growing a <br> robustcommunity on mobile & <br> web</div>
+              </div>
+              <!--  -->
+              <div class="dtls_container">
+                <div>
+                  <svg class="tick_cross" xmlns="http://www.w3.org/2000/svg" width="33" height="32" viewBox="0 0 33 32" fill="none">
+  <path d="M13.8343 20.2282L26.0908 7.97168L27.9764 9.85729L13.8343 23.9994L5.349 15.5142L7.23461 13.6286L13.8343 20.2282Z" fill="#00925D"/>
+</svg>
+                </div>
+                <div class="plan_dtls">For serious creators growing a <br> robustcommunity on mobile & <br> web</div>
+              </div>
+              <!--  -->
+
+              <div class="dtls_container">
+                <div>
+                  <svg class="tick_cross" xmlns="http://www.w3.org/2000/svg" width="33" height="32" viewBox="0 0 33 32" fill="none">
+  <path d="M13.8343 20.2282L26.0908 7.97168L27.9764 9.85729L13.8343 23.9994L5.349 15.5142L7.23461 13.6286L13.8343 20.2282Z" fill="#00925D"/>
+</svg>
+                </div>
+                <div class="plan_dtls">For serious creators growing a <br> robustcommunity on mobile & <br> web</div>
+              </div>
+              <!--  -->
+
+              <div class="dtls_container">
+                <div>
+                  <svg class="tick_cross" xmlns="http://www.w3.org/2000/svg" width="33" height="32" viewBox="0 0 33 32" fill="none">
+  <path d="M13.8343 20.2282L26.0908 7.97168L27.9764 9.85729L13.8343 23.9994L5.349 15.5142L7.23461 13.6286L13.8343 20.2282Z" fill="#00925D"/>
+</svg>
+                </div>
+                <div class="plan_dtls">For serious creators growing a <br> robustcommunity on mobile & <br> web</div>
+              </div>
+
+              <div class="show_less_btn">Show less</div>
+            </div>
+          </div>
+          <!-- end of mob_container -->
+        </div>
+
       </div>
-    </div>
+
   </div>
 </template>
 
 <script>
-
+import MainHeader from '/src/views/app/crystal-clear/header.vue'
 export default {
-  props: ['edit','blocks','current_block'],
-  data() {
-    return {
-      showPopup: false,
-      start:false,
-      current_page:{},
-      menu_click:false,
-      crnt_tab:'plans',
-      plans:[],
-      current_plan:{},
-      payment_methods:[],
-      current_method:{},
-      razorpay_options:{
-            key: "",
-            amount: "",
-            currency: "",
-            name: "Purchase Now",
-            order_id: "",
-            callback_url: "",
-      },
-
-     
-
-    };
-  },
-  mounted(){
-    this.$router.push('/')
-    if(this.edit){
-      this.start = true
-    }else{
-        this.edit=false
-        this.blocks = [{},{},{}]
-        this.getPage()
-    }
-    console.log(this.userId)
-    this.getPlans()
-  },
-  methods: {
-      handleButtonClick(plan) {
-  this.openPopup();
-  this.current_plan = plan; 
-  this.getPaymentMethods();
-},
-      openPopup() {
-          console.log('Opening pop-up');
-    this.showPopup = true; 
-  },
-  closePopup() {
-      console.log('Closing pop-up');
-    this.showPopup = false; 
-  },
-    getPlans() {
-      var headers = new Headers();
-      headers.append("Authorization", "Bearer "+(this.$root.token?this.$root.token:this.$root.admin_token));
-      fetch(this.api_url+'/content/plans/', {
-          method : 'get',
-          headers: headers,
-      })
-      .then((response) => {
-          return response.json()
-      })
-      .then((jsonData) => {
-          this.plans = jsonData
-          if(jsonData.length>0){
-            this.current_plan = jsonData[0]
-          }
-      })
-    },
-    createPlan() {
-      var formdata = new FormData()
-      formdata.append('user', this.userId)
-      formdata.append('plan', this.current_plan.id)
-      formdata.append('price', this.current_plan.price)
-      var headers = new Headers();
-      headers.append("Authorization", "Bearer "+this.$root.token);
-      fetch(this.api_url+'/users/user_plans/', {
-          method : 'post',
-          headers: headers,
-          body : formdata
-      })
-      .then((response) => {
-          return response.json()
-      })
-      .then((jsonData) => {
-        if(jsonData.id>0){
-          this.showAlert('Plan purchased successfully!')
-          this.$router.push('/')
-        }else{
-          this.showAlert('Something Wrong!')
-        }
-      })
-    },
-    getPaymentMethods() {
-      var headers = new Headers();
-      headers.append("Authorization", "Bearer "+(this.$root.token?this.$root.token:this.$root.admin_token));
-      fetch(this.api_url+'/content/payment_settings/', {
-          method : 'get',
-          headers: headers,
-      })
-      .then((response) => {
-          return response.json()
-      })
-      .then((jsonData) => {
-        this.payment_methods = jsonData
-      })
-    },
-    setRazorpay(payment_method){
-      if(!this.$root.token){
-        this.$router.push('/sign-in')
-      }
-      this.current_method = payment_method
-      var headers = new Headers();
-      headers.append("Authorization", "Bearer "+this.$root.token);
-      fetch(this.api_url+'/payments/razorpay_payment/?data_type=plan&plan_id='+this.current_plan.id, {
-        method : 'get',
-        headers: headers,
-      })
-      .then((response) => {
-        return response.json()
-      })
-      .then((jsonData) => {
-          this.razorpay_options = {
-              key: jsonData.razorpay_merchant_key,
-              amount: jsonData.razorpay_amount,
-              currency: jsonData.currency,
-              name: "Purchase Now",
-              order_id: jsonData.razorpay_order_id,
-              callback_url: this.api_url+jsonData.callback_url,
-          };
-      })
-    },
-    purchasePlan(e){
-      var rzp1 = new Razorpay(this.razorpay_options);
-      rzp1.open();
-      e.preventDefault()
-    },
-    getPage() {
-      var headers = new Headers();
-      headers.append("Authorization", "Bearer "+(this.$root.token?this.$root.token:this.$root.admin_token));
-      fetch(this.api_url+'/content/pages_contents/?theme='+theme_name+'&page=/plan', {
-          method : 'get',
-          headers: headers,
-      })
-      .then((response) => {
-          return response.json()
-      })
-      .then((jsonData) => {
-
-        this.is_start = true
-
-
-        this.current_page = jsonData
-        this.blocks = jsonData.blocks
-        this.start = true
-      })
-    },
-    selectContent(block){
-        if(this.edit){
-            this.blocks.forEach(function(blk){
-                blk.is_edit = false
-            })
-            block.is_edit=true
-            this.$emit('selectedContent', block)
-        }
-    }
+  components:{
+    MainHeader,
   }
+}
 
-};
 </script>
 
-<style scoped>
-
-@import '/crystal-clear/style/style.css';
-@import '/crystal-clear/style/style-2.css';
-
-
-
-
-
-.popup-container {
-position: fixed;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background overlay */
-display: flex;
-align-items: center;
-justify-content: center;
-z-index: 999; /* Ensure the pop-up is above other content */
+<style>
+@media (max-width: 767px) {
+.main_frame{
+    width: calc(114.33% - 20px);
+    background: #000000;
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
 }
 
-/* Style for the pop-up content */
-.popup-content {
-background-color: #fff;
-padding: 20px;
-border-radius: 5px;
-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
-}
-.close-btn{
-  background-color: #333333;
-}
-
-.btn-primary {
- 
- background-color: #673ab7!Important;
- border-color: #673ab7!Important;
-}
-.btn {
-  font-weight: 300;
-  padding: 0.375rem 0.75rem;
-  font-size: initial;
-  line-height: 1.5;
-  border-radius: 0.15rem;
-}
-
-.showcase3 {
-  width: 100%;
-  height: 100vh;
-  position: relative;
-  background-color:#f3f3f3;
-  
-}
-
-.reg-videoflix {
-  background-color: white;
-}
-
-.logo2 {
-  position: relative;
-  z-index: 2;
-  height: 90px;
-  padding:0 40px;
-}
-
-.logo2 img {
-  max-width: 170px;
-  max-height:60px;
-  object-fit:contain;
-  padding:5px;
-  
-  
-}
-.formm3 .info select{
-  height: 60px!important;
-  border: 1px solid #000!important;
-  border-radius: 0!important;
-}
-input:-webkit-autofill,
-input:-webkit-autofill:hover, 
-input:-webkit-autofill:focus, 
-input:-webkit-autofill:active{
-  -webkit-box-shadow: 0 0 0 30px white inset !important;
-}
-.showcase3-content-2 {
-  position: relative;
-  z-index: 2;
-  width: 520px;
-  min-height: 350px;
- 
+@media (min-width: 768px) {
+.main_frame{
   margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  text-align: left;
-  padding: 40px;
+        width: 100%;
+        height: 100vh;
+        background: #0D0C0F;
+        overflow-y: auto;
+        overflow-x: hidden;
+        scroll-behavior: smooth;
 }
-
-.formm3 h1 {
-  margin-bottom: 20px;
-  font-weight:500;
-  font-size:30px;
-  color:black;
 }
-
-.formm3 {
-  width: 100%;
-  margin-bottom: 40px;
-}
-
-.formm3 .info {
-  padding: 5px 0;
-  /* margin-bottom: 20px; */
-}
-
-.formm3 .info .email {
- 
-  width: 100%;
-  height: 50px;
-  border-radius: 5px;
-  border: none;
-  padding: 10px;
-  font-size: inherit;
-}
-.formm3 .info input {
-  
-  height: 60px!important;
-  border:1px solid #000!important;
-  border-radius:0!important;
-  
-}
-.formm3 .info input.required {
-  
-
-  border:1px solid #e50914!important;
- 
-  
-}
-.formm3 .info input.filled{
-  
- 
-  border:1px solid green!important;
-  
-  
+body{
+  background-color: #000000;
 }
 
 
-.formm3 .btn {
-  margin-bottom: 10px;
-  width: 100%;
-  padding:0;
-}
-
-.formm3 .btn-primary {
-  width: 100%;
-  max-width: 430px;
-
-  height: 60px;
-  border-radius: 5px;
-  background-color: #e50914;
- 
-  color: #fff;
-  font-size: inherit;
-  font-weight: bold;
-  border: none;
-  cursor: pointer;
-  outline: none;
-  font-size:22px;
-  font-weight:400;
-  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.45);
-}
-.plan-form.showcase3-content-2{
-  width: 80%;
-  max-height: 100%;
-}
-.email-2 .text-primary {
-  
- color: #017cf6!important;
-  
-}
-
-.help {
-  display: flex;
-  justify-content: space-between;
-  font-size: 0.8rem;
-}
-
-.help a {
-  color: #999;
-  font-weight:500;
-}
-
-.help a:hover {
-  text-decoration: underline;
-}
-
-/* ------ input ------- */
-
-formm3 input[type=checkbox] {
-  background: white;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  border-radius: 2px;
-  border: 0;
-  height: 16px;
-  left: -20px;
-  width: 16px;
-  margin-right: 5px;
-}
-
-
-
-/* ------ input end ------- */
-
-.fcbk {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  font-size: 0.8em;
-}
-.pop-up{
-  background-color: #000;
-}
-.pl-3, .px-3 {
-  padding-left: 1rem !important;
-  /* margin-top: 200px; */
-  margin-bottom: 5px;
-}
-
-.fcbk img {
-  width: 20px;
-  margin-right: 10px;
-}
-
-.signup {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-}
-
-.signup p {
-  margin-right: 5px;
-}
-
-.more {
-  font-size: 0.8em;
-  line-height: 1.1em;
-}
-
-.more a {
-  color: rgb(17, 108, 228);
-}
-
-.more a:hover,
-.signup a:hover {
-  text-decoration: underline;
-}
-
-/* ------ FOOTER ------- */
-
-.reg-footer {
-  position: absolute;
- 
-  padding: 20px 0;
-
-  z-index: 2;
-  background: #f3f3f3;
-  width: 100%;
-  height: auto;
-  border-top:1px solid #d3d3d361;
-
-}
-
-.ftr-content {
-  margin: 0 10%;
-  padding-top: 20px;
-  font-size: 1em;
-}
-
-.reg-footer .ftr-content a {
-  color: gray;
-}
-
-.ftr-content a:hover {
-  text-decoration: underline;
-}
-
-.contact {
-  margin-bottom: 30px;
-}
-
-.contact a:hover {
-  text-decoration: underline;
-}
-
-.ftr {
-  margin-bottom: 30px;
-  width: 100%;
-  font-size: 0.8em;
-  display: flex;
-  justify-content: space-between;
-}
-
-.select select {
-  width: 100px;
-  height: 40px;
-  border: none;
-  font-size: inherit;
-  padding-left: 10px;
-  background: #333333;
-}
-.reg-footer .button-3{
-  background-color: white;
-  border: 1px solid #adadad;
-  color:#000;
-}
-.radio-input input {
- 
- 
-  width: 1.3rem;
-  height: 1.3em;
-}
-.hide-showcase{
-  margin-right:-200px;
-  opacity:0;
-  transition:.4s;
-  display:none
-}
-.sticky-plan{
-  position: sticky;
-  top: 0;
-}
-@media screen and (max-width: 1200px) {
-
-.plan-form.showcase3-content-2{
-  width: 100%;
-  padding:40px 20px;
-}
-.showcase3 table {
- 
-  padding: 0px;
- 
-}
-
-}
-@media screen and (max-width: 860px) {
-
-.plans-card-child {
-  width: 100px;
- 
-}
-
-}
-@media screen and (max-width: 768px) {
-
-
-.planGrid__featureTableRow {
-  min-height:90px;
-  position:relative;
-  padding-top: 37px;
-}
-.planGrid__featureTableRow:first-child {
- 
-  padding-top: 0;
-}
-.planGrid__cell:first-child{
-  position:absolute;
-  top:0;
-  left:50%;
-  transform:translate(-50%);
-  text-align:center;
-  width: 100%;
-}
-.planGrid__cell {
-  
-  color: #000;
-}
-}
-@media screen and (max-width: 680px) {
-
-  .plans-card-child{
-  width: 100px;
-}
-.planGrid__cell {
- 
-  padding: 20px 5px;
- 
-}
-}
-@media screen and (max-width: 560px) {
-
-
-.showcase3::after {
-  content: '';
-  
-   background: #f3f3f3;
-   box-shadow: initial;
- 
+/* sidebar-section */
+@media (max-width: 767px) {
+.sidebar_container{
+    display: inline-flex;
+    height: 100vh;
+    margin-top: 69px;
+    width: 15%;flex-direction: column;
+    align-items: flex-start;
+    gap: 200px;
+    flex-shrink: 0;
+    border-right: 1px solid #D9D9D9;
+    background: #0D0C0F;
+    position: fixed;
+    display: none;
   }
-
-.showcase3-content-2 {
-  
-  width: auto;
-  padding: 20px;
-
-
 }
-.logo2 img{
-  width: 80px;
- 
- 
-}
-.logo2 {
- 
-  height: 40px;
-  background-color:white;
-  padding: 0 20px
-}
-.ftr-content {
-  margin: 0;
-  padding: 20px;
-  font-size: 1em;
-}
-.ftr{
-  margin-bottom: 30px;
-  width: 100%;
-  
- 
-}
-
-.reg-footer {
- 
-  border-top:1px solid gray;
-}
-.reg-videoflix{
-  min-height:calc(100vh - 320px);
-  overflow:auto;
-}
-.email-2 .text-primary {
-  font-size:16px;
-}
-.more p{
-  font-size:16px;
-  line-height:20px;
-}
-
-
-
-}
-@media screen and (max-width: 500px) {
-  .plans-card-child {
-  width: 90px;
-  font-size: 14px!important;
-
-  
-}
-.plan-form.showcase3-content-2 {
- 
-  padding: 20px 10px;
-}
-.reg-videoflix .logo2 {
-  
- 
-  padding: 0 10px;
-}
-}
-
-@media screen and (max-width: 440px) {
-  .plans-card-child {
-  width: 80px;
- 
-  
-}
-
-.profile {
-  width: 130px;
-  margin: 10px;
-}
-.profile-wrap{
-  
-  justify-content: center!important;
-  
-}
-}
-@media screen and (max-width: 380px) {
-  .plans-card-child {
-  width: 65px;
-  font-size: 12px!important;
-
-
-  
-}
-}
-
-.formm3 .btn-primary:hover, .formm3 .btn-outline-primary:hover {
-  background: red;
+@media (min-width: 768px) {
+.sidebar_container{
+    display: inline-flex;
+    height: 100vh;
+    margin-top: 82px;
+    width: 235px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 200px;
+    flex-shrink: 0;
+    border-right: 1px solid #D9D9D9;
+    background: #0D0C0F;
+    position: fixed;
   }
-  .formm3 .btn-primary:not(:disabled):not(.disabled):active, .formm3 .btn-primary:not(:disabled):not(.disabled).active, .show > .formm3 .btn-primary.dropdown-toggle {
-  color: #fff;
-  background-color: red;
-  border-color: red;
+}
+@media (max-width: 767px) {
+.span2{
+    color: #FFF;
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+font-size: 24px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+}
+}
+@media (min-width: 768px) {
+.span2{
+    color: #FFF;
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+font-size: 24px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+}
 }
 
-.plan-page {
-  position: relative;
-  height: 100vh;
-  display: flex;
+
+
+@media (max-width: 767px) {
+  .menu_section_one{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 3px;
+  }
+}
+@media (min-width: 768px) {
+  .menu_section_one{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 3px;
+  }
+}
+
+
+@media (max-width: 767px) {
+  .menu_one{
+    display: flex;
+    width: 230px;
+    padding: 20px 64px 20px 40px;
+    align-items: center;
+    gap: 12px;
+  }
+}
+@media (min-width: 768px) {
+  .menu_one{
+    display: flex;
+    width: 230px;
+    padding: 20px 64px 20px 40px;
+    align-items: center;
+    gap: 12px;
+  }
+}
+
+
+
+@media (max-width: 767px) {
+  .img_home{
+    height: 20px;
+  }
+}
+@media (min-width: 768px) {
+  .img_home{
+    height: 20px;
+  }
+}
+
+
+
+@media (max-width: 767px) {
+  .txt_home{
+    color: #FFF;
+   font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  ;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  }
+}
+@media (min-width: 768px) {
+  .txt_home{
+    color: #FFF;
+   font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  ;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  }
+}
+
+
+@media (max-width: 767px) {
+  .coming_soon_menu{
+    display: flex;
+    width: 231px;
+      padding: 20px 5px 20px 40px;
   align-items: center;
+  gap: 10px;
+  }
+}
+@media (min-width: 768px) {
+  .coming_soon_menu{
+    display: flex;
+    width: 231px;
+      padding: 20px 5px 20px 40px;
+  align-items: center;
+  gap: 10px;
+  }
+}
+
+
+@media (max-width: 767px) {
+  .sub_coming_soon{
+    display: flex;
+  align-items: center;
+  gap: 12px;
+  }
+}
+@media (min-width: 768px) {
+  .sub_coming_soon{
+    display: flex;
+  align-items: center;
+  gap: 12px;
+  }
+}
+
+
+@media (max-width: 767px) {
+  .txt_coming_soon{
+    color: #FFF;
+   font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  ;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  }
+}
+@media (min-width: 768px) {
+  .txt_coming_soon{
+    color: #FFF;
+   font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  ;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  }
+}
+
+
+
+@media (max-width: 767px) {
+  .green_circle{
+    height: 25px;
+  }
+}
+@media (min-width: 768px) {
+  .green_circle{
+    height: 25px;
+  }
+}
+
+
+
+@media (max-width: 767px) {
+  .notifications{
+    width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  }
+}
+@media (min-width: 768px) {
+  .notifications{
+    width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  }
+}
+
+
+@media (max-width: 767px) {
+  .num_five{
+    color: #10141D;
+   font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  margin-top: -22px;
+  text-align: center;}
+  .coming_soon_img{
+  height: 20px;
+  }
+}
+@media (min-width: 768px) {
+  .num_five{
+    color: #10141D;
+   font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  margin-top: -22px;
+  text-align: center;}
+  .coming_soon_img{
+  height: 20px;
+  }
+}
+
+
+
+@media (max-width: 767px) {
+  .menu_section_two{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 3px;
+  }
+}
+@media (min-width: 768px) {
+  .menu_section_two{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 3px;
+  }
+}
+
+
+@media (max-width: 767px) {
+  .menu_two{
+      display: flex;
+      width: 230px;
+      padding: 20px 40px 20px 40px;
+      align-items: center;
+      gap: 12px;
+  }
+}
+@media (min-width: 768px) {
+  .menu_two{
+      display: flex;
+      width: 230px;
+      padding: 20px 40px 20px 40px;
+      align-items: center;
+      gap: 12px;
+  }
+}
+
+
+
+@media (max-width: 767px) {
+  .img_home2{
+    height: 20px;
+  }
+}
+@media (min-width: 768px) {
+  .img_home2{
+    height: 20px;
+  }
+}
+
+
+
+@media (max-width: 767px) {
+  .txt_home2{
+    color: #FFF;
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  ;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  }
+}
+@media (min-width: 768px) {
+  .txt_home2{
+    color: #FFF;
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  ;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  }
+}
+
+
+@media (max-width: 767px) {
+  .arrow_section{
+    position: absolute;
+  right: -24px;
+  top: 320px;
+  }
+}
+@media (min-width: 768px) {
+  .arrow_section{
+    position: absolute;
+  right: -24px;
+  top: 320px;
+  }
+}
+
+
+
+@media (max-width: 767px) {
+  .arrow_box{
+    display: flex;
+  width: 24px;
+  height: 24px;
   justify-content: center;
-  overflow: hidden;
+  align-items: center;
+  flex-shrink: 0;
+  margin-top: -25px;
+      margin-left: 10px;
+  }
+}
+@media (min-width: 768px) {
+  .arrow_box{
+    display: flex;
+  width: 24px;
+  height: 24px;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  margin-top: -25px;
+      margin-left: 10px;
+  }
 }
 
-.background {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url('/ott/letter-v.png');
-  background-size: cover;
-  filter: blur(20px); 
+/* end of sidebar */
+
+/* segment-section */
+@media (max-width: 767px) {
+.segment_section{
+display: none;
 }
-
-.content1 {
-  z-index: 1;
-  text-align: center;
-  padding: 20px;
-  background: rgb(255 255 255 / 38%);
-  border-radius: 10px;
-  margin-top: -40px;
-
 }
-
-h2 {
-  margin-bottom: 20px;
-}
-
-.plan-options {
-  height: 660px;
+@media (min-width: 768px) {
+.segment_section{
   display: flex;
-  justify-content: center;
+  width: 1285px;
+padding-left: 30px;
+align-items: flex-start;
+gap: 24px;
+margin-top: 80px;
+margin-left: 235px;
+border-bottom: 1px solid #8C8B8B;
+background: #0D0C0F;
+}
 }
 
-.plan-option {
-  width: 270px;
-  padding: 20px;
-  margin: 0 10px;
-  border: 2px solid #f60000;
-  border-radius: 10px;
-  background: #ffffffd4;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s;
+@media (max-width: 767px) {
+.segment_box1{
+display: none;
 }
-.plan-option1 {
-  width: 270px;
-  padding: 20px;
-  margin: 0 10px;
-  border: 5px solid #0000000d;
-  border-radius: 10px;
-  background: #ffffffd4;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s;
 }
-.plan-option3 {
-  width: 270px;
-  padding: 20px;
-  margin: 0 10px;
-  border: 5px solid #0000000d;
-  border-radius: 10px;
-  background: #ffffffd4;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s;
+@media (min-width: 768px) {
+.segment_box1{
+  display: flex;
+align-items: center;
+gap: 24px;
+}
 }
 
-.plan-option:hover {
-  transform: scale(1.05);
+@media (max-width: 767px) {
+.segment_inner_one{
+display: flex;
+padding: 24px 18px;
+justify-content: center;
+align-items: center;
+gap: 8px;
+display: none;
+}
+}
+@media (min-width: 768px) {
+.segment_inner_one{
+display: flex;
+padding: 24px 18px;
+justify-content: center;
+align-items: center;
+gap: 8px;
+}
 }
 
-button {
-  padding: 10px 20px;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background 0.3s;
-  
+@media (max-width: 767px) {
+.left_arrow{
+display: none;
 }
-.slct-btn{
-  border-radius: 30px;
-  width: 220px;
-  margin-top: 55px;
-  background: #dd5b5b;
 }
-.slct-btn:hover{
-  background: #ff0000;
+
+@media (min-width: 768px) {
+.left_arrow{
+  height: 18px;
 }
-.recomd-plan{
-  padding-top: 2px;
-  border-radius: 9px;
-  height: 30px;
-  background-color: red;
-  margin-top: -21px;
-  color: white;
-  font-size: initial;
-  font-weight: 700; 
 }
-.learn-more{
-  margin-top: 15px;
-  text-decoration: underline; 
-  color: black;
+
+
+
+@media (max-width: 767px) {
+.txt_one{
+  color: #838383;
+  font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+font-size: 13px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+display: none;
+
 }
-.price{
-  color: black;
-  font-size: xx-large;
-  font-weight: 700;
 }
-.access{
-color: black;
+@media (min-width: 768px) {
+.txt_one{
+  color: #838383;
+  font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+font-size: 13px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+}
+}
+
+@media (max-width: 767px) {
+.segment_box2{
+  display: flex;
+align-items: center;
+gap: 24px;
+display: none;
+}
+}
+@media (min-width: 768px) {
+.segment_box2{
+  display: flex;
+align-items: center;
+gap: 24px;
+}
+}
+
+@media (max-width: 767px) {
+.segment_inner_two{
+  display: flex;
+padding: 24px 18px;
+justify-content: center;
+align-items: center;
+gap: 8px;
+display: none;
+}
+}
+@media (min-width: 768px) {
+.segment_inner_two{
+  display: flex;
+padding: 24px 18px;
+justify-content: center;
+align-items: center;
+gap: 8px;
+}
+}
+
+
+@media (max-width: 767px) {
+.segment_inner_three{
+  display: flex;
+padding: 24px 18px;
+justify-content: center;
+align-items: center;
+gap: 8px;
+border-bottom: 8px solid #00925D;
+display: none;
+}
+}
+@media (min-width: 768px) {
+.segment_inner_three{
+  display: flex;
+padding: 24px 18px;
+justify-content: center;
+align-items: center;
+gap: 8px;
+border-bottom: 4px solid #00925D;
+}
+}
+
+@media (max-width: 767px) {
+.txt_two{
+  color: #FFF;
+  font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+font-size: 13px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+display: none;
+}
+}
+@media (min-width: 768px) {
+.txt_two{
+  color: #FFF;
+  font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+font-size: 13px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+}
+}
+/* end of segment */
+
+/* table-section */
+@media (max-width: 767px) {
+.main_table{
+  display: inline-flex;
+align-items: flex-end;
+gap: 24px;
+/* display: none; */
+}
+}
+@media (min-width: 768px) {
+.main_table{
+  display: inline-flex;
+align-items: flex-end;
+gap: 24px;
+margin-left: 275px;
+margin-top: 30px;
+}
+}
+
+@media (max-width: 767px) {
+.plan_container_1{
+  display: flex;
+width: 430px;
+padding: 48px 32px;
+flex-direction: column;
+justify-content: center;
+align-items: flex-start;
+gap: 32px;
+border: 1px solid #3A3A3A;
+display: none;
+}
+}
+@media (min-width: 768px) {
+.plan_container_1{
+  display: flex;
+  width: 385px;
+height: 560px;
+padding: 48px 32px;
+flex-direction: column;
+justify-content: center;
+align-items: flex-start;
+gap: 30px;
+border: 1px solid #3A3A3A;
+}
+}
+
+
+
+@media (max-width: 767px) {
+.part_one{
+  display: flex;
+flex-direction: column;
+align-items: flex-start;
+gap: 14px;
+display: none;
+
+}
+}
+@media (min-width: 768px) {
+.part_one{
+  display: flex;
+flex-direction: column;
+align-items: flex-start;
+gap: 14px;
+}
+}
+
+@media (max-width: 767px) {
+.txt_plans{
+  color: #FFF;
+  font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+font-size: 32px;
+font-style: normal;
 font-weight: 600;
+line-height: normal;
+display: none;
 }
-.price-main{
-color: red;
-font-size: revert;
+}
+@media (min-width: 768px) {
+.txt_plans{
+  color: #FFF;
+  font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+font-style: normal;
 font-weight: 600;
-}
-.points{
-text-align: center;
-color: black;
+line-height: normal;
+font-size: 25px;
 
 }
-.decor{
-text-decoration: line-through;
-color: black;
 }
-.scnd-ptag{
-  color: black;
+
+@media (max-width: 767px) {
+.txt_two_plans{
+  color: #838383;
+  font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+font-size: 20px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+display: none;
+
 }
-.thrd-ptag{
-  color: black;
+}
+@media (min-width: 768px) {
+.txt_two_plans{
+  color: #838383;
+  font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+font-size: 15px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+}
+}
+
+
+@media (max-width: 767px) {
+.part_two{
+  display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: flex-start;
+gap: 12px;
+display: none;
+
+}
+}
+
+@media (min-width: 768px) {
+.part_two{
+  display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: flex-start;
+gap: 12px;
+}
+}
+
+
+
+@media (max-width: 767px) {
+.prices{
+  color: #FFF;
+  font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+font-size: 30px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+display: none;
+
+}
+}
+@media (min-width: 768px) {
+.prices{
+  color: #FFF;
+  font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+font-size: 30px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+}
+}
+
+
+@media (max-width: 767px) {
+.month_year{
+  color: #838383;
+  font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+font-size: 15px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+display: none;
+
+}
+}
+@media (min-width: 768px) {
+.month_year{
+  color: #838383;
+  font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+font-size: 15px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+}
+}
+
+@media (max-width: 767px) {
+.button_plan{
+  display: flex;
+justify-content: center;
+align-items: center;
+gap: 8px;
+align-self: stretch;
+background-color: #000000;
+border: 1px solid #8C8B8B;
+cursor: pointer;
+height: 50px;
+width: 125%;
+
+
+color: #8C8B8B;
+font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+font-size: 20px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+}
+}
+@media (min-width: 768px) {
+.button_plan{
+  display: flex;
+padding: 15px 0px;
+justify-content: center;
+align-items: center;
+gap: 8px;
+align-self: stretch;
+background-color: #000000;
+cursor: pointer;
+height: 45px;
+
+
+color: #8C8B8B;
+font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+font-size: 20px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+}
+}
+
+@media (max-width: 767px) {
+.button_plan2{
+  display: flex;
+  padding: 15px 50px;
+justify-content: center;
+align-items: center;
+gap: 8px;
+align-self: stretch;
+background: #00925D;
+cursor: pointer;
+height: 45px;
+
+color: #FFF;
+font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+font-size: 20px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+}
+}
+@media (min-width: 768px) {
+.button_plan2{
+  display: flex;
+padding: 15px 0px;
+justify-content: center;
+align-items: center;
+gap: 8px;
+align-self: stretch;
+background: #00925D;
+cursor: pointer;
+height: 45px;
+
+color: #FFF;
+font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+font-size: 20px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+}
+}
+
+
+
+
+@media (max-width: 767px) {
+.button_plan3{
+  display: flex;
+padding: 18px 0px;
+justify-content: center;
+align-items: center;
+gap: 8px;
+align-self: stretch;
+/* display: none; */
+
+}
+}
+@media (min-width: 768px) {
+.button_plan3{
+  display: flex;
+padding: 15px 0px;
+justify-content: center;
+align-items: center;
+gap: 8px;
+align-self: stretch;
+background-color: #000000;
+cursor: pointer;
+height: 45px;
+
+color: #FFF;
+font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+font-size: 20px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+}
+}
+
+
+
+
+
+
+@media (max-width: 767px) {
+.part_three{
+  display: flex;
+width: 421px;
+padding: 24px;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+gap: 32px;
+display: none;
+
+}
+}
+@media (min-width: 768px) {
+.part_three{
+  display: flex;
+  width: 310px;
+    padding: 5px;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+gap: 32px;
+margin-left: -10px;
+}
+}
+
+@media (max-width: 767px) {
+.frst_sect{
+  display: flex;
+align-items: center;
+gap: 24px;
+display: none;
+
+}
+}
+@media (min-width: 768px) {
+.frst_sect{
+  display: flex;
+align-items: center;
+gap: 24px;
+}
+}
+
+@media (max-width: 767px) {
+.plan_dtls{
+  color: #BCB7B7;
+  font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 13px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+
+}
+}
+@media (min-width: 768px) {
+.plan_dtls{
+  color: #BCB7B7;
+  font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+font-size: 12px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+}
+}
+
+@media (max-width: 767px) {
+.tick_cross{
+  height: 20px;
+}
+}
+@media (min-width: 768px) {
+.tick_cross{
+  height: 20px;
+}
+}
+/* end_of_plan_page-lap */
+
+
+/* mobile_view_plan-page */ 
+@media (max-width: 767px) {
+.mob_plan_frame{
+  display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+gap: 24px;
+margin-left: 45px;
+    margin-top: 90px;
+
+}
+}
+
+@media (max-width: 767px) {
+.mob_container_one{
+display: flex;
+width: 308px;
+padding: 32px;
+flex-direction: column;
+justify-content: center;
+align-items: flex-start;
+gap: 24px;
+border: 1px solid #3A3A3A;
+}
+}
+
+@media (max-width: 767px) {
+.mob_part_one{
+  display: flex;
+flex-direction: column;
+align-items: flex-start;
+gap: 16px;
+}
+}
+
+@media (max-width: 767px) {
+.mob_plan_head{
+  display: flex;
+flex-direction: column;
+align-items: flex-start;
+gap: 8px;
+}
+}
+
+@media (max-width: 767px) {
+.txt_plans2{
+  color: #FFF;
+  font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+font-size: 20px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+}
+}
+
+@media (max-width: 767px) {
+.txt_two_plans2{
+  color: #838383;
+  font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+font-size: 15px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+}
+}
+
+@media (max-width: 767px) {
+.mob_price_sect{
+  display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: flex-start;
+gap: 6px;
+}
+}
+
+@media (max-width: 767px) {
+.prices2{
+  color: #FFF;
+  font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 25px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+
+}
+}
+
+@media (max-width: 767px) {
+.month_year2{
+  color: #838383;
+  font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+font-size: 15px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+}
+}
+
+
+@media (max-width: 767px) {
+.mob_descrpt_sect{
+  display: flex;
+width: 244px;
+flex-direction: column;
+justify-content: center;
+align-items: flex-start;
+gap: 24px;
+}
+}
+
+@media (max-width: 767px) {
+.dtls_container{
+  display: flex;
+align-items: center;
+gap: 12px;
+align-self: stretch;
+}
+}
+
+@media (max-width: 767px) {
+.show_less_btn{
+  color: #FFF;
+  font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+font-size: 14px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+text-decoration-line: underline;
+}
+}
+/* min */
+@media (min-width: 768px) {
+.mob_plan_frame{
+  display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+gap: 24px;
+margin-left: 45px;
+    margin-top: 90px;
+    display: none;
+}
+}
+
+@media (min-width: 768px) {
+.mob_container_one{
+display: flex;
+width: 308px;
+padding: 32px;
+flex-direction: column;
+justify-content: center;
+align-items: flex-start;
+gap: 24px;
+border: 1px solid #3A3A3A;
+}
+}
+
+@media (min-width: 768px) {
+.mob_part_one{
+  display: flex;
+flex-direction: column;
+align-items: flex-start;
+gap: 16px;
+}
+}
+
+@media (min-width: 768px) {
+.mob_plan_head{
+  display: flex;
+flex-direction: column;
+align-items: flex-start;
+gap: 8px;
+}
+}
+
+@media (min-width: 768px) {
+.txt_plans2{
+  color: #FFF;
+  font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+font-size: 20px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+}
+}
+
+@media (min-width: 768px) {
+.txt_two_plans2{
+  color: #838383;
+  font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+font-size: 15px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+}
+}
+
+@media (min-width: 768px) {
+.mob_price_sect{
+  display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: flex-start;
+gap: 6px;
+}
+}
+
+@media (min-width: 768px) {
+.prices2{
+  color: #FFF;
+  font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 25px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+
+}
+}
+
+@media (min-width: 768px) {
+.month_year2{
+  color: #838383;
+  font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+font-size: 15px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+}
+}
+
+
+@media (min-width: 768px) {
+.mob_descrpt_sect{
+  display: flex;
+width: 244px;
+flex-direction: column;
+justify-content: center;
+align-items: flex-start;
+gap: 24px;
+}
+}
+
+@media (min-width: 768px) {
+.dtls_container{
+  display: flex;
+align-items: center;
+gap: 12px;
+align-self: stretch;
+}
+}
+
+@media (min-width: 768px) {
+.show_less_btn{
+  color: #FFF;
+  font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+font-size: 14px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+text-decoration-line: underline;
+}
 }
 </style>

@@ -2,7 +2,6 @@
   <div class="main_frame">
 
     <MainHeader></MainHeader>
-    <!-- <Sidebar></Sidebar> -->
       <!-- sidebar-section -->
 
       <div class="sidebar_container">
@@ -196,7 +195,6 @@
 </div>
 </div>
 
-        <!-- end of mobile-view-btns -->
       </div>
       <!-- end of btns & tittle -->
 
@@ -1118,7 +1116,6 @@ export default {
         overflow-x: hidden;
         scroll-behavior: smooth;
 }
-
 }
 body{
   background-color: #000000;
@@ -2109,10 +2106,12 @@ p{
 
 @media (min-width: 768px) {
 p{
-  width: 25%;
-  color: darkgray;
-  font-size: 14px;
-  letter-spacing: 1px;
+  width: 22%;
+    color: darkgray;
+    font-size: 11px;
+    letter-spacing: 1px;
+    font-family: 'Roboto';
+    word-spacing: 1px;
 
 }
 }

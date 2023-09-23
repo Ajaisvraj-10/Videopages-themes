@@ -97,7 +97,7 @@
 </svg>
           </div>
           <div class="segment_inner_one">
-            <div class="txt_one">Profile</div>
+            <div class="txt_two">Profile</div>
           </div>
         </div>
 
@@ -545,7 +545,7 @@ body{
     width: 235px;
     flex-direction: column;
     align-items: flex-start;
-    gap: 200px;
+    gap: 120px;
     flex-shrink: 0;
     border-right: 1px solid #D9D9D9;
     background: #0D0C0F;
@@ -590,8 +590,12 @@ line-height: normal;
     align-items: start;
     gap: 3px;
   }
-}
+  .menu_section_one :hover{
+    background-color: #00925D;
+    cursor: pointer;
 
+  }
+}
 
 @media (max-width: 767px) {
   .menu_one{
@@ -605,13 +609,13 @@ line-height: normal;
 @media (min-width: 768px) {
   .menu_one{
     display: flex;
-    width: 230px;
-    padding: 20px 64px 20px 40px;
+    width: 235px;
+    padding: 20px 64px 13px 40px;
     align-items: center;
     gap: 12px;
   }
-}
 
+}
 
 
 @media (max-width: 767px) {
@@ -622,6 +626,7 @@ line-height: normal;
 @media (min-width: 768px) {
   .img_home{
     height: 20px;
+    pointer-events: none !important;
   }
 }
 
@@ -663,8 +668,8 @@ line-height: normal;
 @media (min-width: 768px) {
   .coming_soon_menu{
     display: flex;
-    width: 231px;
-      padding: 20px 5px 20px 40px;
+    width: 235px;
+    padding: 15px 5px 15px 40px;
   align-items: center;
   gap: 10px;
   }
@@ -785,9 +790,14 @@ line-height: normal;
     display: flex;
     flex-direction: column;
     align-items: start;
-    gap: 3px;
+    /* gap: 3px; */
+  }
+  .menu_section_two :hover{
+    background-color: #00925D;
+    cursor: pointer;
   }
 }
+
 
 
 @media (max-width: 767px) {
@@ -802,8 +812,8 @@ line-height: normal;
 @media (min-width: 768px) {
   .menu_two{
       display: flex;
-      width: 230px;
-      padding: 20px 40px 20px 40px;
+      width: 235px;
+      padding: 15px 40px 15px 40px;
       align-items: center;
       gap: 12px;
   }
@@ -961,13 +971,13 @@ display: none;
 
 @media (max-width: 767px) {
 .txt_one{
-  color: #838383;
+  color: #ffffff;
   font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 font-size: 13px;
 font-style: normal;
 font-weight: 500;
 line-height: normal;
-display: none;
+/* display: none; */
 
 }
 }

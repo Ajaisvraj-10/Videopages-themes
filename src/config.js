@@ -25,6 +25,7 @@ Vue.mixin({
     };
   },
   mounted() {
+    
   },
   watch: {
 

@@ -1,4 +1,4 @@
-<!-- <template>
+<template>
     <div class="main_content">
       <div class="header_div">
   
@@ -1039,4 +1039,4 @@
   font-weight: 500;
   line-height: normal;
   }
-  </style> -->
+  </style>

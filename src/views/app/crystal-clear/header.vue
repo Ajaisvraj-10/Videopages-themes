@@ -25,9 +25,10 @@
       </div>
     </div>
 
-    <div class="search_bar">
-      <div class="input_placeholder">What do you want to watch</div>
-      <div>
+    <div class="input_div">
+      <input type="text" placeholder="What do you want to watch">
+      <!-- <div class="input_placeholder">What do you want to watch</div> -->
+      <div style="margin-top:-30px">
         <svg class="search_img" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
 <path d="M24.0414 22.1557L29.7517 27.866L27.8661 29.7516L22.1558 24.0413C20.1026 25.684 17.4987 26.6667 14.6667 26.6667C8.04275 26.6667 2.66675 21.2907 2.66675 14.6667C2.66675 8.04266 8.04275 2.66666 14.6667 2.66666C21.2907 2.66666 26.6667 8.04266 26.6667 14.6667C26.6667 17.4987 25.6841 20.1025 24.0414 22.1557ZM21.3663 21.1664C22.9967 19.4861 24.0001 17.1941 24.0001 14.6667C24.0001 9.50999 19.8234 5.33332 14.6667 5.33332C9.51008 5.33332 5.33341 9.50999 5.33341 14.6667C5.33341 19.8233 9.51008 24 14.6667 24C17.1942 24 19.4862 22.9967 21.1665 21.3663L21.3663 21.1664Z" fill="white"/>
 </svg>
@@ -40,12 +41,15 @@
 <path d="M16.0001 29.3333C8.63628 29.3333 2.66675 23.3637 2.66675 16C2.66675 8.63619 8.63628 2.66666 16.0001 2.66666C23.3638 2.66666 29.3334 8.63619 29.3334 16C29.3334 23.3637 23.3638 29.3333 16.0001 29.3333ZM12.9468 26.2232C11.6633 23.5012 10.8765 20.4989 10.7032 17.3333H5.41593C5.94408 21.5687 8.95527 25.0329 12.9468 26.2232ZM13.3743 17.3333C13.5749 20.5851 14.5038 23.6396 16.0001 26.336C17.4963 23.6396 18.4253 20.5851 18.6258 17.3333H13.3743ZM26.5842 17.3333H21.297C21.1237 20.4989 20.3369 23.5012 19.0534 26.2232C23.0449 25.0329 26.0561 21.5687 26.5842 17.3333ZM5.41593 14.6667H10.7032C10.8765 11.501 11.6633 8.49875 12.9468 5.77674C8.95527 6.9671 5.94408 10.4313 5.41593 14.6667ZM13.3743 14.6667H18.6258C18.4253 11.4149 17.4963 8.36032 16.0001 5.66398C14.5038 8.36032 13.5749 11.4149 13.3743 14.6667ZM19.0534 5.77674C20.3369 8.49875 21.1237 11.501 21.297 14.6667H26.5842C26.0561 10.4313 23.0449 6.9671 19.0534 5.77674Z" fill="white"/>
 </svg>
         </div>
-        <div class="language">Eng</div>
+        <!-- <div class="language">Eng</div>
         <div class="drop_down">
           <svg class="drop_down_img" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
 <path d="M14.0001 17.5007L9.05029 12.551L10.7002 10.901L14.0001 14.2009L17.2999 10.901L18.9498 12.551L14.0001 17.5007Z" fill="white"/>
 </svg>
-        </div>
+        </div> -->
+        <select name="ENG" id="">
+          <option value="">ENG</option>
+        </select>
       </div>
       <router-link :to="{ name: 'sign-in'}">
       <div class="profile_img">
@@ -230,7 +234,7 @@ export default {
 .header_div{
     display: flex;
     width: 100%;
-    padding: 6px 50px;
+    padding: 3px 50px;
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid #838383;
@@ -297,8 +301,7 @@ export default {
   .header_frame{
     display: flex;
   align-items: center;
-  gap: 10px;
-    margin-right: -32px;
+  gap: 25px;
   }
 }
 
@@ -445,15 +448,31 @@ align-self: stretch;
 @media (min-width: 768px) {
   .items{
     display: flex;
-    padding: 24px 48px;
+    padding: 1px 25px;
     justify-content: center;
     align-items: center;
     gap: 8px;
+    cursor: pointer;
   }
 }
 
+
+/* @media (max-width: 767px) {
+.input_div{
+
+}
+}
+@media (min-width: 768px) {
+.input_div{
+
+}
+} */
+
+
+
+
 @media (max-width: 767px) {
-  .search_bar{
+  input{
     display: flex;
   width: 645px;
   height: 55px;
@@ -465,20 +484,28 @@ align-self: stretch;
   }
 }
 @media (min-width: 768px) {
-  .search_bar{
+  input{
     display: flex;
-  width: 645px;
-  height: 55px;
-  padding: 24px 32px;
+  width: 540px;
+  height: 45px;
+  padding: 3px 50px;
   justify-content: space-between;
   align-items: center;
+  border: none;
   border-bottom: 2px solid rgba(0, 146, 93, 0.70);
   background: linear-gradient(348deg, rgba(0, 146, 93, 0.10) 10.16%, rgba(255, 255, 255, 0.00) 66.56%);
+  color: #FFF;
+  outline-style: none;
   }
 }
 
 
-@media (max-width: 767px) {
+
+::placeholder{
+  font-size: 13px;
+  margin-top: -15px;
+}
+/* @media (max-width: 767px) {
   .input_placeholder{
     color: #838383;
     font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -499,7 +526,7 @@ align-self: stretch;
   font-weight: 500;
   line-height: normal;
   }
-}
+} */
 
 
 @media (max-width: 767px) {
@@ -516,6 +543,7 @@ align-self: stretch;
   padding: 24px 0px;
   align-items: center;
   gap: 8px;
+  cursor: pointer;
   }
 }
 
@@ -556,6 +584,13 @@ align-self: stretch;
   }
 }
 
+select{
+  background: black;
+    color: white;
+    outline: none !important;
+    cursor: pointer;
+    border: none;
+}
 
 
 @media (max-width: 767px) {
@@ -565,7 +600,9 @@ align-self: stretch;
 }
 @media (min-width: 768px) {
   .search_img{
-    height: 20px;
+    height: 22px;
+    margin-left: 480px;
+    margin-top: -10px;
   }
 }
 

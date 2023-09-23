@@ -77,13 +77,15 @@
         <circle cx="24" cy="24" r="24" fill="#00925D"/>
       </svg>
               </div>
+              <!-- <router-link :to="{ name: 'homecollapsed'}"> -->
               <div class="arrow_box">
                 <div>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-    <path d="M10.8284 12.0007L15.7782 16.9504L14.364 18.3646L8 12.0007L14.364 5.63672L15.7782 7.05093L10.8284 12.0007Z" fill="black"/>
+                  <svg style="height: 20px;" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+    <path d="M10.8284 12.0007L15.7782 16.9504L14.364 18.3646L8 12.0007L14.364 5.63672L15.7782 7.05093L10.8284 12.0007Z" fill="black" />
   </svg>
                 </div>
               </div>
+              <!-- </router-link> -->
         </div>
       </div>
 
@@ -137,32 +139,43 @@
         <p>Cobb steals information from his targets by entering their dreams. Saito offers to wipe clean Cobb's criminal history as payment for performing an inception on his sick competitor's son.</p>
         <div class="btns_container">
 
-          <div class="play_btn_box">
+          <!-- play-btn -->
+          <div class="cover_play">
+          <button class="play_btn_box">
             <div>
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <svg class="banner_img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
   <path d="M19.376 12.4158L8.77735 19.4816C8.54759 19.6348 8.23715 19.5727 8.08397 19.3429C8.02922 19.2608 8 19.1643 8 19.0656V4.93408C8 4.65794 8.22386 4.43408 8.5 4.43408C8.59871 4.43408 8.69522 4.4633 8.77735 4.51806L19.376 11.5838C19.6057 11.737 19.6678 12.0474 19.5146 12.2772C19.478 12.3321 19.4309 12.3792 19.376 12.4158Z" fill="white"/>
 </svg>
             </div>
             <div class="txt_play_now">Play Now</div>
-          </div>
+          </button>
+        </div>
+
           <!-- watch-trailer-btn -->
-          <div class="trailer_btn_box">
+          <div class="cover_trailer">
+
+          <button class="trailer_btn_box">
             <div>
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <svg class="banner_img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
   <path d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20ZM10.6219 8.41459L15.5008 11.6672C15.6846 11.7897 15.7343 12.0381 15.6117 12.2219C15.5824 12.2658 15.5447 12.3035 15.5008 12.3328L10.6219 15.5854C10.4381 15.708 10.1897 15.6583 10.0672 15.4745C10.0234 15.4088 10 15.3316 10 15.2526V8.74741C10 8.52649 10.1791 8.34741 10.4 8.34741C10.479 8.34741 10.5562 8.37078 10.6219 8.41459Z" fill="white"/>
 </svg>
             </div>
             <div class="txt_play_now">Watch Trailer</div>
-          </div>
+          </button>
+        </div>
+
           <!-- watchlist-btn -->
-          <div class="watchlist_btn_box">
+          <div class="cover_wtch_list">
+          <button class="watchlist_btn_box">
             <div>
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <svg class="banner_img"  xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
   <path d="M5 2H19C19.5523 2 20 2.44772 20 3V22.1433C20 22.4194 19.7761 22.6434 19.5 22.6434C19.4061 22.6434 19.314 22.6168 19.2344 22.5669L12 18.0313L4.76559 22.5669C4.53163 22.7136 4.22306 22.6429 4.07637 22.4089C4.02647 22.3293 4 22.2373 4 22.1433V3C4 2.44772 4.44772 2 5 2ZM18 4H6V19.4324L12 15.6707L18 19.4324V4Z" fill="white"/>
 </svg>
             </div>
             <div class="txt_play_now">Add Watchlist</div>
-          </div>
+          </button>
+        </div>
+
         </div>
         <!-- mobile-view-buttons-banner -->
 
@@ -218,7 +231,7 @@
 
               <div class="movie_posters">
                   <div class="card_one">
-                     <div><img src="/crystal-clear/images/movie_poster_mob.png" alt=""></div>
+                     <div class="poster_div"><img src="/crystal-clear/images/movie_poster_mob.png" alt=""></div>
                       <div class="movie_details">
 
                           <div class="title_part">
@@ -236,8 +249,20 @@
                           </div>
                       </div>
                   </div> 
+                  <!-- big-screen -->
                   <div class="movie_card">
-              <div><img src="/crystal-clear/images/new_theme_movie_poster.png" alt=""></div>
+              <div><img src="/crystal-clear/images/new_theme_movie_poster.png" alt="">
+              </div>
+              <div class="card_btns">
+              <div class="card_ply_btn">
+                <div>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <path d="M19.376 12.4158L8.77735 19.4816C8.54759 19.6348 8.23715 19.5727 8.08397 19.3429C8.02922 19.2608 8 19.1643 8 19.0656V4.93408C8 4.65794 8.22386 4.43408 8.5 4.43408C8.59871 4.43408 8.69522 4.4633 8.77735 4.51806L19.376 11.5838C19.6057 11.737 19.6678 12.0474 19.5146 12.2772C19.478 12.3321 19.4309 12.3792 19.376 12.4158Z" fill="white"/>
+</svg>
+                </div>
+                <div class="card_ply_txt">Play Now</div>
+              </div>
+            </div>
               <div class="movie_title_container">
                 <div class="title_section">
                   <div class="title">Opponheimer</div>
@@ -253,11 +278,12 @@
                 </div>
               </div>
             </div>
+           
 
                   <!-- card2 -->
 
                   <div class="card_one">
-                     <div><img src="/crystal-clear/images/movie_poster_mob.png" alt=""></div>
+                     <div class="poster_div"><img src="/crystal-clear/images/movie_poster_mob.png" alt=""></div>
                       <div class="movie_details">
 
                           <div class="title_part">
@@ -276,7 +302,18 @@
                       </div>
                   </div> 
                   <div class="movie_card">
-              <div><img src="/crystal-clear/images/new_theme_movie_poster.png" alt=""></div>
+              <div><img src="/crystal-clear/images/new_theme_movie_poster.png" alt="">
+              </div>
+              <div class="card_btns">
+              <div class="card_ply_btn">
+                <div>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <path d="M19.376 12.4158L8.77735 19.4816C8.54759 19.6348 8.23715 19.5727 8.08397 19.3429C8.02922 19.2608 8 19.1643 8 19.0656V4.93408C8 4.65794 8.22386 4.43408 8.5 4.43408C8.59871 4.43408 8.69522 4.4633 8.77735 4.51806L19.376 11.5838C19.6057 11.737 19.6678 12.0474 19.5146 12.2772C19.478 12.3321 19.4309 12.3792 19.376 12.4158Z" fill="white"/>
+</svg>
+                </div>
+                <div class="card_ply_txt">Play Now</div>
+              </div>
+            </div>
               <div class="movie_title_container">
                 <div class="title_section">
                   <div class="title">Opponheimer</div>
@@ -296,7 +333,7 @@
                   <!-- card3 -->
 
                   <div class="card_one">
-                     <div><img src="/crystal-clear/images/movie_poster_mob.png" alt=""></div>
+                     <div class="poster_div"><img src="/crystal-clear/images/movie_poster_mob.png" alt=""></div>
                       <div class="movie_details">
 
                           <div class="title_part">
@@ -315,7 +352,18 @@
                       </div>
                   </div> 
                   <div class="movie_card">
-              <div><img src="/crystal-clear/images/new_theme_movie_poster.png" alt=""></div>
+              <div><img src="/crystal-clear/images/new_theme_movie_poster.png" alt="">
+              </div>
+              <div class="card_btns">
+              <div class="card_ply_btn">
+                <div>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <path d="M19.376 12.4158L8.77735 19.4816C8.54759 19.6348 8.23715 19.5727 8.08397 19.3429C8.02922 19.2608 8 19.1643 8 19.0656V4.93408C8 4.65794 8.22386 4.43408 8.5 4.43408C8.59871 4.43408 8.69522 4.4633 8.77735 4.51806L19.376 11.5838C19.6057 11.737 19.6678 12.0474 19.5146 12.2772C19.478 12.3321 19.4309 12.3792 19.376 12.4158Z" fill="white"/>
+</svg>
+                </div>
+                <div class="card_ply_txt">Play Now</div>
+              </div>
+            </div>
               <div class="movie_title_container">
                 <div class="title_section">
                   <div class="title">Opponheimer</div>
@@ -335,7 +383,7 @@
                   <!-- card4 -->
 
                   <div class="card_one">
-                     <div><img src="/crystal-clear/images/movie_poster_mob.png" alt=""></div>
+                     <div class="poster_div"><img src="/crystal-clear/images/movie_poster_mob.png" alt=""></div>
                       <div class="movie_details">
 
                           <div class="title_part">
@@ -354,7 +402,18 @@
                       </div>
                   </div> 
                   <div class="movie_card">
-              <div><img src="/crystal-clear/images/new_theme_movie_poster.png" alt=""></div>
+              <div><img src="/crystal-clear/images/new_theme_movie_poster.png" alt="">
+              </div>
+              <div class="card_btns">
+              <div class="card_ply_btn">
+                <div>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <path d="M19.376 12.4158L8.77735 19.4816C8.54759 19.6348 8.23715 19.5727 8.08397 19.3429C8.02922 19.2608 8 19.1643 8 19.0656V4.93408C8 4.65794 8.22386 4.43408 8.5 4.43408C8.59871 4.43408 8.69522 4.4633 8.77735 4.51806L19.376 11.5838C19.6057 11.737 19.6678 12.0474 19.5146 12.2772C19.478 12.3321 19.4309 12.3792 19.376 12.4158Z" fill="white"/>
+</svg>
+                </div>
+                <div class="card_ply_txt">Play Now</div>
+              </div>
+            </div>
               <div class="movie_title_container">
                 <div class="title_section">
                   <div class="title">Opponheimer</div>
@@ -374,7 +433,7 @@
                                     <!-- card5 -->
 
                                     <div class="card_one">
-                     <div><img src="/crystal-clear/images/movie_poster_mob.png" alt=""></div>
+                     <div class="poster_div"><img src="/crystal-clear/images/movie_poster_mob.png" alt=""></div>
                       <div class="movie_details">
 
                           <div class="title_part">
@@ -394,7 +453,18 @@
                   </div> 
 
                   <div class="movie_card">
-              <div><img src="/crystal-clear/images/new_theme_movie_poster.png" alt=""></div>
+              <div><img src="/crystal-clear/images/new_theme_movie_poster.png" alt="">
+              </div>
+              <div class="card_btns">
+              <div class="card_ply_btn">
+                <div>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <path d="M19.376 12.4158L8.77735 19.4816C8.54759 19.6348 8.23715 19.5727 8.08397 19.3429C8.02922 19.2608 8 19.1643 8 19.0656V4.93408C8 4.65794 8.22386 4.43408 8.5 4.43408C8.59871 4.43408 8.69522 4.4633 8.77735 4.51806L19.376 11.5838C19.6057 11.737 19.6678 12.0474 19.5146 12.2772C19.478 12.3321 19.4309 12.3792 19.376 12.4158Z" fill="white"/>
+</svg>
+                </div>
+                <div class="card_ply_txt">Play Now</div>
+              </div>
+            </div>
               <div class="movie_title_container">
                 <div class="title_section">
                   <div class="title">Opponheimer</div>
@@ -414,7 +484,7 @@
                                                       <!-- card6 -->
 
                                                       <div class="card_one">
-                     <div><img src="/crystal-clear/images/movie_poster_mob.png" alt=""></div>
+                     <div class="poster_div"><img src="/crystal-clear/images/movie_poster_mob.png" alt=""></div>
                       <div class="movie_details">
 
                           <div class="title_part">
@@ -434,7 +504,19 @@
                   </div> 
 
                   <div class="movie_card">
-              <div><img src="/crystal-clear/images/new_theme_movie_poster.png" alt=""></div>
+              <div><img src="/crystal-clear/images/new_theme_movie_poster.png" alt="">
+              </div>
+              <div class="card_btns">
+              <div class="card_ply_btn">
+                <div>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <path d="M19.376 12.4158L8.77735 19.4816C8.54759 19.6348 8.23715 19.5727 8.08397 19.3429C8.02922 19.2608 8 19.1643 8 19.0656V4.93408C8 4.65794 8.22386 4.43408 8.5 4.43408C8.59871 4.43408 8.69522 4.4633 8.77735 4.51806L19.376 11.5838C19.6057 11.737 19.6678 12.0474 19.5146 12.2772C19.478 12.3321 19.4309 12.3792 19.376 12.4158Z" fill="white"/>
+</svg>
+                </div>
+                <div class="card_ply_txt">Play Now</div>
+              </div>
+            </div>
+
               <div class="movie_title_container">
                 <div class="title_section">
                   <div class="title">Opponheimer</div>
@@ -454,7 +536,7 @@
                                                       <!-- card7 -->
 
                                                       <div class="card_one">
-                     <div><img src="/crystal-clear/images/movie_poster_mob.png" alt=""></div>
+                     <div class="poster_div"><img src="/crystal-clear/images/movie_poster_mob.png" alt=""></div>
                       <div class="movie_details">
 
                           <div class="title_part">
@@ -474,7 +556,18 @@
                   </div> 
 
                   <div class="movie_card">
-              <div><img src="/crystal-clear/images/new_theme_movie_poster.png" alt=""></div>
+              <div><img src="/crystal-clear/images/new_theme_movie_poster.png" alt="">
+              </div>
+              <div class="card_btns">
+              <div class="card_ply_btn">
+                <div>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <path d="M19.376 12.4158L8.77735 19.4816C8.54759 19.6348 8.23715 19.5727 8.08397 19.3429C8.02922 19.2608 8 19.1643 8 19.0656V4.93408C8 4.65794 8.22386 4.43408 8.5 4.43408C8.59871 4.43408 8.69522 4.4633 8.77735 4.51806L19.376 11.5838C19.6057 11.737 19.6678 12.0474 19.5146 12.2772C19.478 12.3321 19.4309 12.3792 19.376 12.4158Z" fill="white"/>
+</svg>
+                </div>
+                <div class="card_ply_txt">Play Now</div>
+              </div>
+            </div>
               <div class="movie_title_container">
                 <div class="title_section">
                   <div class="title">Opponheimer</div>
@@ -495,7 +588,7 @@
 
           <!-- category_section2 -->
 
-          <div class="category_one_container">
+          <div class="category_one_container2" >
               <div class="category_one_txt">
                   <div class="txt_one">Most popular movies</div>
                   <div class="view_all_part">
@@ -510,7 +603,7 @@
 
               <div class="movie_posters">
                   <div class="card_one">
-                     <div><img src="/crystal-clear/images/movie_poster_mob.png" alt=""></div>
+                     <div class="poster_div"><img src="/crystal-clear/images/movie_poster_mob.png" alt=""></div>
                       <div class="movie_details">
 
                           <div class="title_part">
@@ -529,7 +622,18 @@
                       </div>
                   </div> 
                   <div class="movie_card">
-              <div><img src="/crystal-clear/images/new_theme_movie_poster.png" alt=""></div>
+              <div><img src="/crystal-clear/images/new_theme_movie_poster.png" alt="">
+              </div>
+              <div class="card_btns">
+              <div class="card_ply_btn">
+                <div>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <path d="M19.376 12.4158L8.77735 19.4816C8.54759 19.6348 8.23715 19.5727 8.08397 19.3429C8.02922 19.2608 8 19.1643 8 19.0656V4.93408C8 4.65794 8.22386 4.43408 8.5 4.43408C8.59871 4.43408 8.69522 4.4633 8.77735 4.51806L19.376 11.5838C19.6057 11.737 19.6678 12.0474 19.5146 12.2772C19.478 12.3321 19.4309 12.3792 19.376 12.4158Z" fill="white"/>
+</svg>
+                </div>
+                <div class="card_ply_txt">Play Now</div>
+              </div>
+            </div>
               <div class="movie_title_container">
                 <div class="title_section">
                   <div class="title">Opponheimer</div>
@@ -549,7 +653,7 @@
                   <!-- card2 -->
 
                   <div class="card_one">
-                     <div><img src="/crystal-clear/images/movie_poster_mob.png" alt=""></div>
+                     <div class="poster_div"><img src="/crystal-clear/images/movie_poster_mob.png" alt=""></div>
                       <div class="movie_details">
 
                           <div class="title_part">
@@ -568,7 +672,18 @@
                       </div>
                   </div> 
                   <div class="movie_card">
-              <div><img src="/crystal-clear/images/new_theme_movie_poster.png" alt=""></div>
+              <div><img src="/crystal-clear/images/new_theme_movie_poster.png" alt="">
+              </div>
+              <div class="card_btns">
+              <div class="card_ply_btn">
+                <div>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <path d="M19.376 12.4158L8.77735 19.4816C8.54759 19.6348 8.23715 19.5727 8.08397 19.3429C8.02922 19.2608 8 19.1643 8 19.0656V4.93408C8 4.65794 8.22386 4.43408 8.5 4.43408C8.59871 4.43408 8.69522 4.4633 8.77735 4.51806L19.376 11.5838C19.6057 11.737 19.6678 12.0474 19.5146 12.2772C19.478 12.3321 19.4309 12.3792 19.376 12.4158Z" fill="white"/>
+</svg>
+                </div>
+                <div class="card_ply_txt">Play Now</div>
+              </div>
+            </div>
               <div class="movie_title_container">
                 <div class="title_section">
                   <div class="title">Opponheimer</div>
@@ -588,7 +703,7 @@
                   <!-- card3 -->
 
                   <div class="card_one">
-                     <div><img src="/crystal-clear/images/movie_poster_mob.png" alt=""></div>
+                     <div class="poster_div"><img src="/crystal-clear/images/movie_poster_mob.png" alt=""></div>
                       <div class="movie_details">
 
                           <div class="title_part">
@@ -607,7 +722,18 @@
                       </div>
                   </div> 
                   <div class="movie_card">
-              <div><img src="/crystal-clear/images/new_theme_movie_poster.png" alt=""></div>
+              <div><img src="/crystal-clear/images/new_theme_movie_poster.png" alt="">
+              </div>
+              <div class="card_btns">
+              <div class="card_ply_btn">
+                <div>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <path d="M19.376 12.4158L8.77735 19.4816C8.54759 19.6348 8.23715 19.5727 8.08397 19.3429C8.02922 19.2608 8 19.1643 8 19.0656V4.93408C8 4.65794 8.22386 4.43408 8.5 4.43408C8.59871 4.43408 8.69522 4.4633 8.77735 4.51806L19.376 11.5838C19.6057 11.737 19.6678 12.0474 19.5146 12.2772C19.478 12.3321 19.4309 12.3792 19.376 12.4158Z" fill="white"/>
+</svg>
+                </div>
+                <div class="card_ply_txt">Play Now</div>
+              </div>
+            </div>
               <div class="movie_title_container">
                 <div class="title_section">
                   <div class="title">Opponheimer</div>
@@ -627,7 +753,7 @@
                 <!-- card4 -->
 
                                     <div class="card_one">
-                     <div><img src="/crystal-clear/images/movie_poster_mob.png" alt=""></div>
+                     <div class="poster_div"><img src="/crystal-clear/images/movie_poster_mob.png" alt=""></div>
                       <div class="movie_details">
 
                           <div class="title_part">
@@ -646,7 +772,18 @@
                       </div>
                   </div> 
                   <div class="movie_card">
-              <div><img src="/crystal-clear/images/new_theme_movie_poster.png" alt=""></div>
+              <div><img src="/crystal-clear/images/new_theme_movie_poster.png" alt="">
+              </div>
+              <div class="card_btns">
+              <div class="card_ply_btn">
+                <div>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <path d="M19.376 12.4158L8.77735 19.4816C8.54759 19.6348 8.23715 19.5727 8.08397 19.3429C8.02922 19.2608 8 19.1643 8 19.0656V4.93408C8 4.65794 8.22386 4.43408 8.5 4.43408C8.59871 4.43408 8.69522 4.4633 8.77735 4.51806L19.376 11.5838C19.6057 11.737 19.6678 12.0474 19.5146 12.2772C19.478 12.3321 19.4309 12.3792 19.376 12.4158Z" fill="white"/>
+</svg>
+                </div>
+                <div class="card_ply_txt">Play Now</div>
+              </div>
+            </div>
               <div class="movie_title_container">
                 <div class="title_section">
                   <div class="title">Opponheimer</div>
@@ -666,7 +803,7 @@
                   <!-- card5 -->
 
                   <div class="card_one">
-                     <div><img src="/crystal-clear/images/movie_poster_mob.png" alt=""></div>
+                     <div class="poster_div"><img src="/crystal-clear/images/movie_poster_mob.png" alt=""></div>
                       <div class="movie_details">
 
                           <div class="title_part">
@@ -685,7 +822,18 @@
                       </div>
                   </div>
                   <div class="movie_card">
-              <div><img src="/crystal-clear/images/new_theme_movie_poster.png" alt=""></div>
+              <div><img src="/crystal-clear/images/new_theme_movie_poster.png" alt="">
+              </div>
+              <div class="card_btns">
+              <div class="card_ply_btn">
+                <div>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <path d="M19.376 12.4158L8.77735 19.4816C8.54759 19.6348 8.23715 19.5727 8.08397 19.3429C8.02922 19.2608 8 19.1643 8 19.0656V4.93408C8 4.65794 8.22386 4.43408 8.5 4.43408C8.59871 4.43408 8.69522 4.4633 8.77735 4.51806L19.376 11.5838C19.6057 11.737 19.6678 12.0474 19.5146 12.2772C19.478 12.3321 19.4309 12.3792 19.376 12.4158Z" fill="white"/>
+</svg>
+                </div>
+                <div class="card_ply_txt">Play Now</div>
+              </div>
+            </div>
               <div class="movie_title_container">
                 <div class="title_section">
                   <div class="title">Opponheimer</div>
@@ -705,7 +853,7 @@
                                                       <!-- card6 -->
 
                                                       <div class="card_one">
-                     <div><img src="/crystal-clear/images/movie_poster_mob.png" alt=""></div>
+                     <div class="poster_div"><img src="/crystal-clear/images/movie_poster_mob.png" alt=""></div>
                       <div class="movie_details">
 
                           <div class="title_part">
@@ -724,7 +872,18 @@
                       </div>
                   </div> 
                   <div class="movie_card">
-              <div><img src="/crystal-clear/images/new_theme_movie_poster.png" alt=""></div>
+              <div><img src="/crystal-clear/images/new_theme_movie_poster.png" alt="">
+              </div>
+              <div class="card_btns">
+              <div class="card_ply_btn">
+                <div>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <path d="M19.376 12.4158L8.77735 19.4816C8.54759 19.6348 8.23715 19.5727 8.08397 19.3429C8.02922 19.2608 8 19.1643 8 19.0656V4.93408C8 4.65794 8.22386 4.43408 8.5 4.43408C8.59871 4.43408 8.69522 4.4633 8.77735 4.51806L19.376 11.5838C19.6057 11.737 19.6678 12.0474 19.5146 12.2772C19.478 12.3321 19.4309 12.3792 19.376 12.4158Z" fill="white"/>
+</svg>
+                </div>
+                <div class="card_ply_txt">Play Now</div>
+              </div>
+            </div>
               <div class="movie_title_container">
                 <div class="title_section">
                   <div class="title">Opponheimer</div>
@@ -744,7 +903,7 @@
                                                       <!-- card7 -->
 
                                                       <div class="card_one">
-                     <div><img src="/crystal-clear/images/movie_poster_mob.png" alt=""></div>
+                     <div class="poster_div"><img src="/crystal-clear/images/movie_poster_mob.png" alt=""></div>
                       <div class="movie_details">
 
                           <div class="title_part">
@@ -764,7 +923,18 @@
                   </div>
                   
                   <div class="movie_card">
-              <div><img src="/crystal-clear/images/new_theme_movie_poster.png" alt=""></div>
+              <div><img src="/crystal-clear/images/new_theme_movie_poster.png" alt="">
+              </div>
+              <div class="card_btns">
+              <div class="card_ply_btn">
+                <div>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <path d="M19.376 12.4158L8.77735 19.4816C8.54759 19.6348 8.23715 19.5727 8.08397 19.3429C8.02922 19.2608 8 19.1643 8 19.0656V4.93408C8 4.65794 8.22386 4.43408 8.5 4.43408C8.59871 4.43408 8.69522 4.4633 8.77735 4.51806L19.376 11.5838C19.6057 11.737 19.6678 12.0474 19.5146 12.2772C19.478 12.3321 19.4309 12.3792 19.376 12.4158Z" fill="white"/>
+</svg>
+                </div>
+                <div class="card_ply_txt">Play Now</div>
+              </div>
+            </div>
               <div class="movie_title_container">
                 <div class="title_section">
                   <div class="title">Opponheimer</div>
@@ -800,7 +970,7 @@
 
               <div class="movie_posters">
                   <div class="card_one">
-                     <div><img src="/crystal-clear/images/movie_poster_mob.png" alt=""></div>
+                     <div class="poster_div"><img src="/crystal-clear/images/movie_poster_mob.png" alt=""></div>
                       <div class="movie_details">
 
                           <div class="title_part">
@@ -820,7 +990,18 @@
                   </div> 
 
                   <div class="movie_card">
-              <div><img src="/crystal-clear/images/new_theme_movie_poster.png" alt=""></div>
+              <div><img src="/crystal-clear/images/new_theme_movie_poster.png" alt="">
+              </div>
+              <div class="card_btns">
+              <div class="card_ply_btn">
+                <div>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <path d="M19.376 12.4158L8.77735 19.4816C8.54759 19.6348 8.23715 19.5727 8.08397 19.3429C8.02922 19.2608 8 19.1643 8 19.0656V4.93408C8 4.65794 8.22386 4.43408 8.5 4.43408C8.59871 4.43408 8.69522 4.4633 8.77735 4.51806L19.376 11.5838C19.6057 11.737 19.6678 12.0474 19.5146 12.2772C19.478 12.3321 19.4309 12.3792 19.376 12.4158Z" fill="white"/>
+</svg>
+                </div>
+                <div class="card_ply_txt">Play Now</div>
+              </div>
+            </div>
               <div class="movie_title_container">
                 <div class="title_section">
                   <div class="title">Opponheimer</div>
@@ -840,7 +1021,7 @@
                   <!-- card2 -->
 
                   <div class="card_one">
-                     <div><img src="/crystal-clear/images/movie_poster_mob.png" alt=""></div>
+                     <div class="poster_div"><img src="/crystal-clear/images/movie_poster_mob.png" alt=""></div>
                       <div class="movie_details">
 
                           <div class="title_part">
@@ -860,7 +1041,18 @@
                   </div>
                   
                   <div class="movie_card">
-              <div><img src="/crystal-clear/images/new_theme_movie_poster.png" alt=""></div>
+              <div><img src="/crystal-clear/images/new_theme_movie_poster.png" alt="">
+              </div>
+              <div class="card_btns">
+              <div class="card_ply_btn">
+                <div>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <path d="M19.376 12.4158L8.77735 19.4816C8.54759 19.6348 8.23715 19.5727 8.08397 19.3429C8.02922 19.2608 8 19.1643 8 19.0656V4.93408C8 4.65794 8.22386 4.43408 8.5 4.43408C8.59871 4.43408 8.69522 4.4633 8.77735 4.51806L19.376 11.5838C19.6057 11.737 19.6678 12.0474 19.5146 12.2772C19.478 12.3321 19.4309 12.3792 19.376 12.4158Z" fill="white"/>
+</svg>
+                </div>
+                <div class="card_ply_txt">Play Now</div>
+              </div>
+            </div>
               <div class="movie_title_container">
                 <div class="title_section">
                   <div class="title">Opponheimer</div>
@@ -880,7 +1072,7 @@
                   <!-- card3 -->
 
                   <div class="card_one">
-                     <div><img src="/crystal-clear/images/movie_poster_mob.png" alt=""></div>
+                     <div class="poster_div"><img src="/crystal-clear/images/movie_poster_mob.png" alt=""></div>
                       <div class="movie_details">
 
                           <div class="title_part">
@@ -900,7 +1092,18 @@
                   </div>
                   
                   <div class="movie_card">
-              <div><img src="/crystal-clear/images/new_theme_movie_poster.png" alt=""></div>
+              <div><img src="/crystal-clear/images/new_theme_movie_poster.png" alt="">
+              </div>
+              <div class="card_btns">
+              <div class="card_ply_btn">
+                <div>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <path d="M19.376 12.4158L8.77735 19.4816C8.54759 19.6348 8.23715 19.5727 8.08397 19.3429C8.02922 19.2608 8 19.1643 8 19.0656V4.93408C8 4.65794 8.22386 4.43408 8.5 4.43408C8.59871 4.43408 8.69522 4.4633 8.77735 4.51806L19.376 11.5838C19.6057 11.737 19.6678 12.0474 19.5146 12.2772C19.478 12.3321 19.4309 12.3792 19.376 12.4158Z" fill="white"/>
+</svg>
+                </div>
+                <div class="card_ply_txt">Play Now</div>
+              </div>
+            </div>
               <div class="movie_title_container">
                 <div class="title_section">
                   <div class="title">Opponheimer</div>
@@ -920,7 +1123,7 @@
                 <!-- card4 -->
 
                                     <div class="card_one">
-                     <div><img src="/crystal-clear/images/movie_poster_mob.png" alt=""></div>
+                     <div class="poster_div"><img src="/crystal-clear/images/movie_poster_mob.png" alt=""></div>
                       <div class="movie_details">
 
                           <div class="title_part">
@@ -940,7 +1143,18 @@
                   </div> 
 
                   <div class="movie_card">
-              <div><img src="/crystal-clear/images/new_theme_movie_poster.png" alt=""></div>
+              <div><img src="/crystal-clear/images/new_theme_movie_poster.png" alt="">
+              </div>
+              <div class="card_btns">
+              <div class="card_ply_btn">
+                <div>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <path d="M19.376 12.4158L8.77735 19.4816C8.54759 19.6348 8.23715 19.5727 8.08397 19.3429C8.02922 19.2608 8 19.1643 8 19.0656V4.93408C8 4.65794 8.22386 4.43408 8.5 4.43408C8.59871 4.43408 8.69522 4.4633 8.77735 4.51806L19.376 11.5838C19.6057 11.737 19.6678 12.0474 19.5146 12.2772C19.478 12.3321 19.4309 12.3792 19.376 12.4158Z" fill="white"/>
+</svg>
+                </div>
+                <div class="card_ply_txt">Play Now</div>
+              </div>
+            </div>
               <div class="movie_title_container">
                 <div class="title_section">
                   <div class="title">Opponheimer</div>
@@ -960,7 +1174,7 @@
                   <!-- card5 -->
 
                   <div class="card_one">
-                     <div><img src="/crystal-clear/images/movie_poster_mob.png" alt=""></div>
+                     <div class="poster_div"><img src="/crystal-clear/images/movie_poster_mob.png" alt=""></div>
                       <div class="movie_details">
 
                           <div class="title_part">
@@ -980,7 +1194,18 @@
                   </div> 
 
                   <div class="movie_card">
-              <div><img src="/crystal-clear/images/new_theme_movie_poster.png" alt=""></div>
+              <div><img src="/crystal-clear/images/new_theme_movie_poster.png" alt="">
+              </div>
+              <div class="card_btns">
+              <div class="card_ply_btn">
+                <div>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <path d="M19.376 12.4158L8.77735 19.4816C8.54759 19.6348 8.23715 19.5727 8.08397 19.3429C8.02922 19.2608 8 19.1643 8 19.0656V4.93408C8 4.65794 8.22386 4.43408 8.5 4.43408C8.59871 4.43408 8.69522 4.4633 8.77735 4.51806L19.376 11.5838C19.6057 11.737 19.6678 12.0474 19.5146 12.2772C19.478 12.3321 19.4309 12.3792 19.376 12.4158Z" fill="white"/>
+</svg>
+                </div>
+                <div class="card_ply_txt">Play Now</div>
+              </div>
+            </div>
               <div class="movie_title_container">
                 <div class="title_section">
                   <div class="title">Opponheimer</div>
@@ -1000,7 +1225,7 @@
                                                       <!-- card6 -->
 
                                                       <div class="card_one">
-                     <div><img src="/crystal-clear/images/movie_poster_mob.png" alt=""></div>
+                     <div class="poster_div"><img src="/crystal-clear/images/movie_poster_mob.png" alt=""></div>
                       <div class="movie_details">
 
                           <div class="title_part">
@@ -1020,7 +1245,18 @@
                   </div> 
 
                   <div class="movie_card">
-              <div><img src="/crystal-clear/images/new_theme_movie_poster.png" alt=""></div>
+              <div><img src="/crystal-clear/images/new_theme_movie_poster.png" alt="">
+              </div>
+              <div class="card_btns">
+              <div class="card_ply_btn">
+                <div>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <path d="M19.376 12.4158L8.77735 19.4816C8.54759 19.6348 8.23715 19.5727 8.08397 19.3429C8.02922 19.2608 8 19.1643 8 19.0656V4.93408C8 4.65794 8.22386 4.43408 8.5 4.43408C8.59871 4.43408 8.69522 4.4633 8.77735 4.51806L19.376 11.5838C19.6057 11.737 19.6678 12.0474 19.5146 12.2772C19.478 12.3321 19.4309 12.3792 19.376 12.4158Z" fill="white"/>
+</svg>
+                </div>
+                <div class="card_ply_txt">Play Now</div>
+              </div>
+            </div>
               <div class="movie_title_container">
                 <div class="title_section">
                   <div class="title">Opponheimer</div>
@@ -1040,7 +1276,7 @@
                                                       <!-- card7 -->
 
                                                       <div class="card_one">
-                     <div><img src="/crystal-clear/images/movie_poster_mob.png" alt=""></div>
+                     <div class="poster_div"><img src="/crystal-clear/images/movie_poster_mob.png" alt=""></div>
                       <div class="movie_details">
 
                           <div class="title_part">
@@ -1060,7 +1296,18 @@
                   </div> 
 
                   <div class="movie_card">
-              <div><img src="/crystal-clear/images/new_theme_movie_poster.png" alt=""></div>
+              <div><img src="/crystal-clear/images/new_theme_movie_poster.png" alt="">
+              </div>
+              <div class="card_btns">
+              <div class="card_ply_btn">
+                <div>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <path d="M19.376 12.4158L8.77735 19.4816C8.54759 19.6348 8.23715 19.5727 8.08397 19.3429C8.02922 19.2608 8 19.1643 8 19.0656V4.93408C8 4.65794 8.22386 4.43408 8.5 4.43408C8.59871 4.43408 8.69522 4.4633 8.77735 4.51806L19.376 11.5838C19.6057 11.737 19.6678 12.0474 19.5146 12.2772C19.478 12.3321 19.4309 12.3792 19.376 12.4158Z" fill="white"/>
+</svg>
+                </div>
+                <div class="card_ply_txt">Play Now</div>
+              </div>
+            </div>
               <div class="movie_title_container">
                 <div class="title_section">
                   <div class="title">Opponheimer</div>
@@ -1084,13 +1331,41 @@
 
 <script>
 import MainHeader from '/src/views/app/crystal-clear/header.vue'
-export default {
-  components:{
-    MainHeader,
-  }
-}
 
+export default {
+  // data() {
+  //   return {
+  //     isHovered: {},
+  //     posters: [
+  //       { id: 1, imageUrl: '/crystal-clear/images/new_theme_movie_poster.png' },
+  //       { id: 2, imageUrl: '/crystal-clear/images/new_theme_movie_poster.png' },
+  //       { id: 3, imageUrl: '/crystal-clear/images/new_theme_movie_poster.png' },
+  //       { id: 4, imageUrl: '/crystal-clear/images/new_theme_movie_poster.png' },
+  //       { id: 5, imageUrl: '/crystal-clear/images/new_theme_movie_poster.png' },
+  //       { id: 6, imageUrl: '/crystal-clear/images/new_theme_movie_poster.png' },
+  //       { id: 7, imageUrl: '/crystal-clear/images/new_theme_movie_poster.png' },
+
+  //       { id: 8, imageUrl: '/crystal-clear/images/new_theme_movie_poster.png' },
+  //       { id: 9, imageUrl: '/crystal-clear/images/new_theme_movie_poster.png' },
+  //       { id: 10, imageUrl: '/crystal-clear/images/new_theme_movie_poster.png' },
+  //       { id: 11, imageUrl: '/crystal-clear/images/new_theme_movie_poster.png' },
+  //       { id: 12, imageUrl: '/crystal-clear/images/new_theme_movie_poster.png' },
+  //       { id: 13, imageUrl: '/crystal-clear/images/new_theme_movie_poster.png' },
+  //       { id: 14, imageUrl: '/crystal-clear/images/new_theme_movie_poster.png' },
+  //     ],
+  //   };
+  // },
+  components: {
+    MainHeader,
+  },
+  // methods: {
+  //   setHovered(posterId,value) {
+  //     this.$set(this.isHovered, posterId, value);
+  //   }
+  // }
+}
 </script>
+
 <style>
   @import '/crystal-clear/style/style.css';
 
@@ -1116,10 +1391,18 @@ export default {
         overflow-x: hidden;
         scroll-behavior: smooth;
 }
+::-webkit-scrollbar {
+  width: 15px;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 146, 93, 0.10); 
+  border-radius: 3px;
+}
 }
 body{
   background-color: #000000;
 }
+
 
 @media (max-width: 767px) {
 .header_div_main{
@@ -1168,7 +1451,7 @@ body{
 .header_div{
     display: flex;
     width: 100%;
-    padding: 6px 50px;
+    padding: 6px 70px;
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid #838383;
@@ -1236,7 +1519,6 @@ body{
     display: flex;
   align-items: center;
   gap: 10px;
-    margin-right: -32px;
   }
 }
 
@@ -1251,6 +1533,7 @@ body{
   .movie_category{
     display: flex;
   align-items: flex-start;
+  padding: 20px 15px;
   }
 }
 
@@ -1276,6 +1559,9 @@ body{
   font-style: normal;
   font-weight: 500;
   line-height: normal;
+  }
+  .category_1 :hover{
+    border-bottom: 3px solid #00925D;
   }
 }
 
@@ -1291,7 +1577,7 @@ body{
 @media (min-width: 768px) {
   .items{
     display: flex;
-    padding: 24px 48px;
+    padding: 3px 25px;
     justify-content: center;
     align-items: center;
     gap: 8px;
@@ -1412,6 +1698,8 @@ body{
 @media (min-width: 768px) {
   .search_img{
     height: 20px;
+    cursor: pointer;
+
   }
 }
 
@@ -1521,16 +1809,21 @@ line-height: normal;
 .sidebar_container{
     display: inline-flex;
     height: 100vh;
-    margin-top: 1px;
+    margin-top: 4px;
     width: 235px;
     flex-direction: column;
     align-items: flex-start;
-    gap: 200px;
+    gap: 120px;
     flex-shrink: 0;
     border-right: 1px solid #D9D9D9;
     background: #0D0C0F;
     position: fixed;
   }
+  .menu_section_one :hover{
+    border-right: 5px solid #00925D;
+background: rgba(0, 146, 93, 0.10); 
+   cursor: pointer;
+  }
 }
 
 
@@ -1552,6 +1845,7 @@ line-height: normal;
 }
 
 
+
 @media (max-width: 767px) {
   .menu_one{
     display: flex;
@@ -1564,11 +1858,12 @@ line-height: normal;
 @media (min-width: 768px) {
   .menu_one{
     display: flex;
-    width: 230px;
-    padding: 20px 64px 20px 40px;
+    width: 235px;
+    padding: 20px 64px 13px 40px;
     align-items: center;
     gap: 12px;
   }
+
 }
 
 
@@ -1581,6 +1876,8 @@ line-height: normal;
 @media (min-width: 768px) {
   .img_home{
     height: 20px;
+    pointer-events: none !important;
+
   }
 }
 
@@ -1606,6 +1903,8 @@ line-height: normal;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
+  pointer-events: none;
+
   }
 }
 
@@ -1622,8 +1921,8 @@ line-height: normal;
 @media (min-width: 768px) {
   .coming_soon_menu{
     display: flex;
-    width: 231px;
-      padding: 20px 5px 20px 40px;
+    width: 235px;
+    padding: 15px 5px 15px 40px;
   align-items: center;
   gap: 10px;
   }
@@ -1642,6 +1941,8 @@ line-height: normal;
     display: flex;
   align-items: center;
   gap: 12px;
+  pointer-events: none;
+
   }
 }
 
@@ -1655,6 +1956,8 @@ line-height: normal;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
+  pointer-events: none;
+
   }
 }
 @media (min-width: 768px) {
@@ -1666,6 +1969,8 @@ line-height: normal;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
+  pointer-events: none;
+
   }
 }
 
@@ -1679,6 +1984,8 @@ line-height: normal;
 @media (min-width: 768px) {
   .green_circle{
     height: 25px;
+    pointer-events: none;
+
   }
 }
 
@@ -1696,6 +2003,8 @@ line-height: normal;
     width: 28px;
   height: 28px;
   flex-shrink: 0;
+  pointer-events: none;
+
   }
 }
 
@@ -1722,8 +2031,9 @@ line-height: normal;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
-  margin-top: -22px;
-  text-align: center;}
+  margin-top: -24px;
+  text-align: center;
+}
   .coming_soon_img{
   height: 20px;
   }
@@ -1744,9 +2054,14 @@ line-height: normal;
     display: flex;
     flex-direction: column;
     align-items: start;
-    gap: 3px;
+    /* gap: 3px; */
   }
 }
+.menu_section_two :hover{
+    border-right: 5px solid #00925D;
+background: rgba(0, 146, 93, 0.10); 
+   cursor: pointer;
+  }
 
 
 @media (max-width: 767px) {
@@ -1761,8 +2076,8 @@ line-height: normal;
 @media (min-width: 768px) {
   .menu_two{
       display: flex;
-      width: 230px;
-      padding: 20px 40px 20px 40px;
+      width: 235px;
+      padding: 15px 40px 15px 40px;
       align-items: center;
       gap: 12px;
   }
@@ -1778,6 +2093,8 @@ line-height: normal;
 @media (min-width: 768px) {
   .img_home2{
     height: 20px;
+    pointer-events: none;
+
   }
 }
 
@@ -1803,6 +2120,8 @@ line-height: normal;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
+  pointer-events: none;
+
   }
 }
 
@@ -1839,13 +2158,14 @@ line-height: normal;
 @media (min-width: 768px) {
   .arrow_box{
     display: flex;
-  width: 24px;
-  height: 24px;
+  width: 25px;
+  height: 25px;
   justify-content: center;
   align-items: center;
   flex-shrink: 0;
   margin-top: -25px;
       margin-left: 10px;
+      cursor: pointer;
   }
 }
 
@@ -2107,11 +2427,13 @@ p{
 @media (min-width: 768px) {
 p{
   width: 22%;
-    color: darkgray;
-    font-size: 11px;
-    letter-spacing: 1px;
-    font-family: 'Roboto';
+  color: #8C8B8B;
+    font-size: 12px;
+    letter-spacing: 0px;
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     word-spacing: 1px;
+    font-weight: 400;
+    line-height: normal;
 
 }
 }
@@ -2132,9 +2454,26 @@ display: none;
 align-items: flex-start;
 gap: 24px;
 }
+/* .btns_container :hover{
+  background: #005335;
+} */
 }
 
+@media (max-width: 767px) {
+.cover_play{
+display: none;
+}
+}
+@media (min-width: 768px) {
+.cover_play :hover{
+  background: #005335 !important;
+  transition: background-color 0.3s; 
+}
+}
 
+.banner_img{
+  height: 20px;
+}
 
 @media (max-width: 767px) {
 .play_btn_box{
@@ -2149,13 +2488,24 @@ background: #00925D;
 @media (min-width: 768px) {
 .play_btn_box{
   display: flex;
-  padding: 10px 15px;
+  padding: 7px 15px;
 justify-content: center;
 align-items: center;
 gap: 8px;
 background: #00925D;
+cursor: pointer;
+border: none;
+
+color: #FFF;
+  font-family :system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+font-size: 14px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+outline: none !important;
 }
 }
+
 
 
 @media (max-width: 767px) {
@@ -2168,16 +2518,17 @@ font-weight: 600;
 line-height: normal;
 }
 }
-@media (min-width: 768px) {
+/* @media (min-width: 768px) {
 .txt_play_now{
   color: #FFF;
   font-family :system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-font-size: 18px;
+font-size: 14px;
 font-style: normal;
 font-weight: 600;
 line-height: normal;
+pointer-events: none;
 }
-}
+} */
 
 
 @media (max-width: 767px) {
@@ -2193,12 +2544,28 @@ background: #3A3A3A;
 @media (min-width: 768px) {
 .trailer_btn_box{
   display: flex;
-  padding: 10px 15px;
+  padding: 6px 10px;
 justify-content: center;
 align-items: center;
 gap: 8px;
 background: #3A3A3A;
+cursor: pointer;
+    border: none;
+
+color: #FFF;
+font-family :system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+font-size: 18px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+outline: none !important;
 }
+}
+
+.cover_trailer :hover{
+  background: #2E2C2C !important;
+  transition: background-color 0.3s; 
+
 }
 
 
@@ -2214,11 +2581,26 @@ border: 1px solid #838383;
 @media (min-width: 768px) {
 .watchlist_btn_box{
   display: flex;
-  padding: 10px 15px;
+  padding: 6px 10px;
 align-items: flex-start;
 gap: 8px;
 border: 1px solid #838383;
+cursor: pointer;
+background-color: transparent;
+
+color: #FFF;
+  font-family :system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+font-size: 18px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+outline: none !important;
 }
+}
+
+.cover_wtch_list :hover{
+background: #2E2C2C;
+transition: background-color 0.3s; 
 }
 
 /* mobile-view-buttons */
@@ -2372,13 +2754,33 @@ align-items: flex-start;
 gap: 25px;
 }
 }
+/* 2 */
+/* @media (max-width: 767px) {
+.category_one_container2{
+    display: flex;
+    width: 420px;
+flex-direction: column;
+align-items: flex-start;
+gap: 25px;
+}
+}
+@media (min-width: 768px) {
+.category_one_container2{
+    display: flex;
+    width: 100%;
+flex-direction: column;
+align-items: flex-start;
+gap: 25px;
+}
+} */
+
 
 
 @media (max-width: 767px) {
 .category_one_txt{
     display: flex;
     align-items: center;
-    gap: 50px;
+    gap: 170px;
     align-self: stretch;
 }
 }
@@ -2386,8 +2788,9 @@ gap: 25px;
 .category_one_txt{
     display: flex;
     align-items: center;
-    gap: 875px;
+    /* gap: 840px; */
     align-self: stretch;
+    justify-content: space-between;
 }
 }
 
@@ -2409,6 +2812,8 @@ font-size: 15px;
 font-style: normal;
 font-weight: 600;
 line-height: normal;
+cursor: pointer;
+
 }
 }
 
@@ -2423,6 +2828,8 @@ align-items: center;
 .view_all_part{
     display: flex;
 align-items: center;
+cursor: pointer;
+
 }
 }
 
@@ -2577,10 +2984,244 @@ gap: 3px;
   gap: 16px;
   }
 }
+           
+/* 2 */
+
+@media (max-width: 767px) {
+.movie_card2{
+    display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  }
+}
+@media (min-width: 768px) {
+.movie_card2{
+    display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  }
+}
+/* 3 */
+@media (max-width: 767px) {
+.movie_card3{
+    display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  }
+}
+@media (min-width: 768px) {
+.movie_card3{
+    display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  }
+}
+/* 4 */
+@media (max-width: 767px) {
+.movie_card4{
+    display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  }
+}
+@media (min-width: 768px) {
+.movie_card4{
+    display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  }
+}
+/* 5 */
+@media (max-width: 767px) {
+.movie_card5{
+    display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  }
+}
+@media (min-width: 768px) {
+.movie_card5{
+    display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  }
+}
+/* 6 */
+@media (max-width: 767px) {
+.movie_card6{
+    display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  }
+}
+@media (min-width: 768px) {
+.movie_card6{
+    display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  }
+}
+/* 7 */
+@media (max-width: 767px) {
+.movie_card7{
+    display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  }
+}
+@media (min-width: 768px) {
+.movie_card7{
+    display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  }
+}
+
+
+
 
 
 
 @media (max-width: 767px) {
+.poster_div img{
+  aspect-ratio: 1/1.5;
+    object-fit: cover;
+}
+}
+@media (min-width: 768px) {
+.poster_div img{
+  aspect-ratio: 2/4;
+    object-fit: contain;
+    cursor: pointer;
+}
+}
+
+
+/* @media (max-width: 767px) {
+.poster_div{
+  overflow: hidden;
+  position: relative;
+}
+}
+@media (min-width: 768px) {
+.poster_div{
+  overflow: hidden;
+  position: relative;
+}
+} */
+
+@media (max-width: 767px) {
+.card_btns{
+  display: flex;
+flex-direction: column;
+align-items: flex-start;
+gap: 18px;
+position: absolute;
+display: none;
+}
+}
+@media (min-width: 768px) {
+.card_btns{
+  display: flex;
+flex-direction: column;
+align-items: flex-start;
+gap: 18px;
+
+
+}
+}
+
+
+/* @media (max-width: 767px) {
+.show-card-btns {
+  opacity: 1;
+  pointer-events: auto; 
+}
+}
+@media (min-width: 768px) {
+.show-card-btns {
+  opacity: 1;
+  pointer-events: auto; 
+}
+}
+
+@media (max-width: 767px) {
+.show-card-btns2 {
+  opacity: 1;
+  pointer-events: auto; 
+}
+}
+@media (min-width: 768px) {
+.show-card-btns2 {
+  opacity: 1;
+  pointer-events: auto; 
+}
+} */
+
+
+
+
+
+@media (max-width: 767px) {
+.card_ply_btn{
+  display: flex;
+padding: 14px 24px;
+justify-content: center;
+align-items: center;
+gap: 8px;
+background: #00925D;
+display: none;
+}
+}
+@media (min-width: 768px) {
+.card_ply_btn{
+  display: flex;
+padding: 14px 24px;
+justify-content: center;
+align-items: center;
+gap: 8px;
+background: #00925D;
+display: none;
+}
+}
+
+
+
+@media (max-width: 767px) {
+.card_ply_txt{
+  color: #FFF;
+font-family: Inter;
+font-size: 18px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+display: none;
+}
+}
+@media (min-width: 768px) {
+.card_ply_txt{
+  color: #FFF;
+  font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+font-size: 12px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+}
+}
+
+/* @media (max-width: 767px) {
   .movie_card img{
     height: 190px;
   }
@@ -2588,8 +3229,9 @@ gap: 3px;
 @media (min-width: 768px) {
   .movie_card img{
     height: 190px;
+    
   }
-}
+} */
 
 @media (max-width: 767px) {
   .movie_title_container{

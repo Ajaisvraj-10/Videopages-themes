@@ -1,499 +1,920 @@
-
 <template>
-  <div class="main-content capcee-profile" :class="$root.mode=='light'?'mode_change':''">
-    
-    <div class="site-wrapper"> 
-        <MainHeader :edit="edit" :blocks="blocks" :current_block="current_block" v-if="$root.is_preview"></MainHeader>
-        <div class="profile-container">
-          
-          <div class=" profile-body ">
-            <b-card no-body>
-              <b-tabs pills card vertical>
-                <b-tab title="My Profile" active>
-                  <div class="profile-tab" v-if="view_profile">
-                    <div class="pb-4 tabs-heading">
-                      <h4 class="font-weight-600">My Profile</h4>
-                    </div>
-                    <div class="flex-align3 py-4" style="gap:15px;">
-                      <h6 class="profile-pic">{{profile.username?profile.username[0]:''}}</h6>
-                      <div class="profile-head">
-                        <h5 class="text-20 font-weight-600">{{profile.username}}</h5>
-                        <h6 class="text-info text-13 mt-1" @click="view_profile=false">Edit Profile</h6>
+<div class="main_profile_frame">
 
-                      </div>
-                    </div>
-                  </div>
-                  <div class="profile-editing-tab"  v-else>
-                    <div class="pb-4 tabs-heading">
-                      <h4 class="font-weight-600">Edit Profile</h4>
-                    </div>
-                    <form ref="updateProfile" @submit.prevent="updateProfile()">
-                        <div class="edit-profile col-lg-6" style="">
-                              <label class="input my-3">
-                                <input class="input__field" type="text" v-model="profile.username" name="username" placeholder=" " required />
-                                <span class="input__label">Your full name</span>
-                              </label>
-                              <label class="input my-3">
-                                <input class="input__field" type="number" v-model="profile.phone" name="phone" placeholder=" " />
-                                <span class="input__label">Mobile number</span>
-                              </label>
-                              <label class="input my-3">
-                                <input class="input__field" type="date" v-model="profile.dob" name="dob" placeholder=" " />
-                                <span class="input__label">Date of birth</span>
-                              </label>
-                              <div class=" p-0">
-                                <label class="text-14">Gender</label>
-                                <div class="my-3 d-flex" style="gap:10px;">
-                                  <button type="button" class="gender-btn btn" v-for="gender in genders" :class="profile.gender==gender?'active_btn':''" @click="profile.gender=gender">{{gender}}</button>
-                                  <input type="hidden" name="gender" v-model="profile.gender">
-                                </div>
-                              </div>
-                        </div>
-                        <div class=" col-lg-6" style="border-top: 0.5px solid #484848!important;">
-                           
-                            <div class="my-3 d-flex" style="gap:10px;">
-                                <button type="button" class="gender-btn btn" @click="view_profile=true" style="aspect-ratio: 2/.45;">Go back</button>
-                              <button type="submit" class="gender-btn btn active_btn" style="aspect-ratio: 2/.45;">Save changes</button>
-                            </div>
-                        </div>
-                    </form>
-                  </div>
-                </b-tab>
-                <b-tab title="My Watchlist" @click="userWatch()">
-                  <div class="pb-4 tabs-heading">
-                    <h4 class="font-weight-600">My Watchlist</h4>
-                  </div>
-                  <div class="profile-tab">
-                     <div class="row">
-                        <div class="col-2" v-for="watch in user_watchs">
-                            <div class="image-row" >
-                              <div class="hover-modal image" >
-                                  <router-link :to="edit?'':{name:'video',params: { type: slugify(watch.movie_detail.type), category: slugify(watch.movie_detail.category_detail.name), slug: watch.movie_detail.slug }, query: {language:watch.movie_detail.language_detail.name}}">
-                                      <div class="position-relative" >
-                                          <img :src="api_url+watch.movie_detail.thumbnail">
-                                                  
-                                          <div class="hover-modal-div">
-                                                     
-                                              <div class="small-details">
-                                                  <h5 class="text-14 font-weight-600 mt-1 text-dark2">{{watch.movie_detail.name}}</h5>
-                                                  <h5 class="text-10 font-weight-600 mt-1 text-dark"><span class=" pr-2"></span>{{dateFormate(watch.created_on)}}</h5>
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </router-link>
-                              </div>          
-                            </div> 
-                        </div>
-                    </div>
-                  </div>
-                </b-tab>
-                <b-tab title="My Subcription" @click="mySubscription()">
-                  <div class="pb-4 tabs-heading">
-                    <h4 class="font-weight-600">My Subscription</h4>
-                  </div>
-                  <div class="profile-tab">
-                    <table class="table table-striped">
-                        <tr class="bg-dark">
-                            <th>Plan</th>
-                            <th>Price</th>
-                            <th>Validity</th>
-                            <th>Date</th>
-                            <th>Status</th>
-                        </tr>
-                        <tr v-for="(subscription,key) in subscriptions">
-                            <th>{{subscription.plan_detail.name}}</th>
-                            <th>{{subscription.plan_detail.currency_symbol}}{{subscription.plan_detail.price}}</th>
-                            <th>{{subscription.plan_detail.duration}}{{subscription.plan_detail.date_type}}{{checkMult(subscription.plan_detail.duration)}}</th>
-                            <th>{{dateFormate(subscription.created_on)}}</th>
-                            <th>
-                              <span v-if="key==0" class="badge badge-success">Current</span>
-                              <span v-else class="badge badge-danger">Expired</span>
-                            </th>
-                        </tr>
-                    </table>
-                  </div>
-                </b-tab>
-                <b-tab title="My Rentals" @click="myRents()">
-                  <div class="pb-4 tabs-heading">
-                    <h4 class="font-weight-600">My Rentals</h4>
-                  </div>
-                  <div class="profile-tab">
-                    <table class="table table-striped">
-                        <tr class="bg-dark">
-                            <th>Video</th>
-                            <th>Price</th>
-                            <th>Validity</th>
-                            <th>Date</th>
-                            <th>Status</th>
-                        </tr>
-                        <tr v-for="(rent,key) in rents">
-                            <th>{{rent.movie_detail.name}}</th>
-                            <th>{{rent.movie_detail.currency_symbol}}{{rent.price}}</th>
-                            <th>{{rent.movie_detail.rent_video.validity}} {{rent.movie_detail.rent_video.duration}}{{checkMult(rent.movie_detail.rent_video.validity)}}</th>
-                            <th>{{dateFormate(rent.created_on)}}</th>
-                            <th>
-                              <span v-if="rent.active" class="badge badge-success">Active</span>
-                              <span v-else class="badge badge-danger">Expired</span>
-                            </th>
-                        </tr>
-                    </table>
-                  </div>
-                </b-tab>
-                <b-tab title="My Transactions" @click="myTransactions()">
-                  <div class="pb-4 tabs-heading">
-                    <h4 class="font-weight-600">My Transactions</h4>
-                  </div>
-                  <div class="profile-tab">
-                    <table class="table table-striped">
-                        <tr class="bg-dark">
-                            <th>Payment Id</th>
-                            <th>Payment</th>
-                            <th>Payment Method</th>
-                            <th>Amount</th>
-                            <th>Date</th>
-                            <th>Status</th>
-                        </tr>
-                        <tr v-for="(transaction,key) in transactions">
-                            <th>{{transaction.payment_id}}</th>
-                            <th>{{transaction.name}}</th>
-                            <th>{{transaction.payment_type}}</th>
-                            <th>{{transaction.details?transaction.details.data.currency+' '+transaction.amount:''}}</th>
-                            <th>{{dateFormate(transaction.created_on)}}</th>
-                            <th>
-                              <span v-if="transaction.status=='Success'" class="badge badge-success">{{transaction.status}}</span>
-                              <span v-else class="badge badge-danger">{{transaction.status}}</span>
-                            </th>
-                        </tr>
-                    </table>
-                  </div>
-                </b-tab>
-              </b-tabs>
-            </b-card>
+  <MainHeader></MainHeader>
+      <!-- sidebar-section -->
+
+      <div class="sidebar_container">
+        <div class="menu_section_one">
+          <div class="menu_one">
+            <div><svg class="img_home" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+    <path d="M17.3333 25.3329H25.3333V13.3039L16 6.0446L6.66667 13.3039V25.3329H14.6667V17.3329H17.3333V25.3329ZM28 26.6663C28 27.4027 27.4031 27.9996 26.6667 27.9996H5.33333C4.59696 27.9996 4 27.4027 4 26.6663V12.6517C4 12.2403 4.18996 11.8519 4.51475 11.5993L15.1815 3.30299C15.6629 2.92851 16.3371 2.92851 16.8185 3.30299L27.4852 11.5993C27.81 11.8519 28 12.2403 28 12.6517V26.6663Z" fill="white"/>
+  </svg></div>
+            <div class="txt_home">Home</div>
           </div>
-          
+  
+          <div class="menu_one">
+            <div><svg class="img_home" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+    <path d="M16 29.3334C8.63616 29.3334 2.66663 23.3638 2.66663 16C2.66663 8.63622 8.63616 2.66669 16 2.66669C23.3637 2.66669 29.3333 8.63622 29.3333 16C29.3333 23.3638 23.3637 29.3334 16 29.3334ZM16 26.6667C21.891 26.6667 26.6666 21.8911 26.6666 16C26.6666 10.109 21.891 5.33335 16 5.33335C10.1089 5.33335 5.33329 10.109 5.33329 16C5.33329 21.8911 10.1089 26.6667 16 26.6667ZM22 10L18.6666 18.6667L9.99996 22L13.3333 13.3334L22 10ZM16 17.3334C16.7364 17.3334 17.3333 16.7364 17.3333 16C17.3333 15.2636 16.7364 14.6667 16 14.6667C15.2636 14.6667 14.6666 15.2636 14.6666 16C14.6666 16.7364 15.2636 17.3334 16 17.3334Z" fill="white"/>
+  </svg></div>
+            <div class="txt_home">Discover</div>
+          </div>
+  
+          <div class="menu_one">
+            <div><svg class="img_home" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+    <path d="M16 30.6667C21.5228 30.6667 26 26.1895 26 20.6667C26 19.5127 25.6929 18.4043 25.3333 17.3728C23.1111 19.5687 21.4223 20.6667 20.2667 20.6667C25.5939 11.3333 22.6667 7.33333 14.6667 2C15.3333 8.66601 10.9387 11.6983 9.14905 13.3821C7.21048 15.206 6 17.7949 6 20.6667C6 26.1895 10.4771 30.6667 16 30.6667ZM16.9459 6.97997C21.2681 10.647 21.2888 13.4964 17.9507 19.3448C16.936 21.1225 18.2197 23.3333 20.2667 23.3333C21.1845 23.3333 22.1121 23.0656 23.0919 22.5401C22.2639 25.6827 19.4025 28 16 28C11.9499 28 8.66667 24.7168 8.66667 20.6667C8.66667 18.6144 9.51039 16.7035 10.9763 15.3243C11.1443 15.1663 11.9967 14.4108 12.033 14.3781C12.5982 13.8695 13.0637 13.4217 13.5239 12.929C15.1644 11.1724 16.3428 9.22175 16.9459 6.97997Z" fill="white"/>
+  </svg></div>
+            <div class="txt_home">Trending</div>
+          </div>
+          <div class="coming_soon_menu">
+            <div class="sub_coming_soon">
+                <div><svg class="coming_soon_img" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+      <path d="M15.9988 29.3335C9.37144 29.3335 3.99886 23.961 3.99886 17.3335C3.99886 10.7061 9.37144 5.33351 15.9988 5.33351C22.6263 5.33351 27.9988 10.7061 27.9988 17.3335C27.9988 23.961 22.6263 29.3335 15.9988 29.3335ZM15.9988 26.6668C21.1535 26.6668 25.3321 22.4882 25.3321 17.3335C25.3321 12.1788 21.1535 8.00018 15.9988 8.00018C10.8442 8.00018 6.66552 12.1788 6.66552 17.3335C6.66552 22.4882 10.8442 26.6668 15.9988 26.6668ZM17.3321 17.3335H21.3321V20.0002H14.6655V10.6668H17.3321V17.3335ZM2.32812 8.37682L7.04218 3.66278L8.92779 5.54839L4.21375 10.2624L2.32812 8.37682ZM24.9556 3.66278L29.6696 8.37682L27.784 10.2624L23.0699 5.54839L24.9556 3.66278Z" fill="white"/>
+    </svg>
+                </div>
+                <div class="txt_coming_soon">Coming Soon</div>
+            </div>
+  
+            <div class="notifications">
+              <div>
+                <svg class="green_circle" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
+    <circle cx="14" cy="14" r="14" fill="#00925D"/>
+  </svg>
+              </div>
+              <div class="num_five">5</div>
+            </div>
+          </div>
+        </div>
+  
+        <!-- sidebar-section-2 -->
+  
+        <div class="menu_section_two">
+          <div class="menu_two">
+            <div><svg class="img_home" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+    <path d="M5.33329 25.3333V6.66667H12.781L15.4477 9.33333H26.6666V25.3333H5.33329ZM28 6.66667H16.5522L13.8856 4H3.99996C3.26359 4 2.66663 4.59696 2.66663 5.33333V26.6667C2.66663 27.4031 3.26359 28 3.99996 28H28C28.7364 28 29.3333 27.4031 29.3333 26.6667V8C29.3333 7.26363 28.7364 6.66667 28 6.66667ZM20.001 16.8893L13.4958 12.5525C13.4082 12.4941 13.3053 12.4629 13.2 12.4629C12.9054 12.4629 12.6666 12.7017 12.6666 12.9962V21.6699C12.6666 21.7752 12.6978 21.8781 12.7562 21.9657C12.9196 22.2108 13.2508 22.2771 13.4958 22.1136L20.001 17.7768C20.0596 17.7377 20.1098 17.6875 20.1489 17.6289C20.3124 17.3839 20.2461 17.0527 20.001 16.8893Z" fill="white"/>
+  </svg></div>
+            <div class="txt_home2">Library</div>
+          </div>
+  
+          <div class="menu_two">
+            <div><svg class="img_home" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+    <path d="M2.66663 15.9997C2.66663 14.8471 2.81289 13.7285 3.08789 12.6617C4.54159 12.7371 5.9846 12.0135 6.76236 10.6664C7.53952 9.32033 7.44537 7.71028 6.65491 6.48934C8.24468 4.92705 10.2244 3.76029 12.4347 3.14844C13.0962 4.44513 14.4444 5.33309 16 5.33309C17.5556 5.33309 18.9037 4.44513 19.5653 3.14844C21.7756 3.76029 23.7553 4.92705 25.345 6.48934C24.5545 7.71028 24.4604 9.32033 25.2376 10.6664C26.0153 12.0135 27.4584 12.7371 28.9121 12.6617C29.187 13.7285 29.3333 14.8471 29.3333 15.9997C29.3333 17.1524 29.187 18.2709 28.9121 19.3377C27.4584 19.2624 26.0153 19.986 25.2376 21.3331C24.4604 22.6792 24.5545 24.2892 25.345 25.5101C23.7553 27.0724 21.7756 28.2392 19.5653 28.8511C18.9037 27.5544 17.5556 26.6664 16 26.6664C14.4444 26.6664 13.0962 27.5544 12.4347 28.8511C10.2244 28.2392 8.24468 27.0724 6.65491 25.5101C7.44537 24.2892 7.53952 22.6792 6.76236 21.3331C5.9846 19.986 4.54159 19.2624 3.08789 19.3377C2.81289 18.2709 2.66663 17.1524 2.66663 15.9997ZM9.07176 19.9997C9.91189 21.4549 10.1527 23.1279 9.8242 24.6981C10.3679 25.0851 10.9467 25.4203 11.5531 25.6988C12.749 24.6283 14.3189 23.9997 16 23.9997C17.681 23.9997 19.2509 24.6283 20.4468 25.6988C21.0532 25.4203 21.632 25.0851 22.1757 24.6981C21.8472 23.1279 22.088 21.4549 22.9282 19.9997C23.7682 18.5447 25.0966 17.4997 26.6206 16.9991C26.6512 16.6687 26.6666 16.3355 26.6666 15.9997C26.6666 15.6641 26.6512 15.3308 26.6206 15.0005C25.0966 14.4999 23.7682 13.4549 22.9282 11.9998C22.088 10.5446 21.8472 8.8717 22.1757 7.3014C21.632 6.9145 21.0532 6.57929 20.4468 6.30069C19.2509 7.37125 17.681 7.99976 16 7.99976C14.3189 7.99976 12.749 7.37125 11.5531 6.30069C10.9467 6.57929 10.3679 6.9145 9.8242 7.3014C10.1527 8.8717 9.91189 10.5446 9.07176 11.9998C8.23164 13.4549 6.90335 14.4999 5.37931 15.0005C5.34872 15.3308 5.33329 15.6641 5.33329 15.9997C5.33329 16.3355 5.34872 16.6687 5.37931 16.9991C6.90335 17.4997 8.23164 18.5447 9.07176 19.9997ZM16 19.9997C13.7908 19.9997 12 18.2089 12 15.9997C12 13.7907 13.7908 11.9998 16 11.9998C18.2092 11.9998 20 13.7907 20 15.9997C20 18.2089 18.2092 19.9997 16 19.9997ZM16 17.3331C16.7364 17.3331 17.3333 16.7361 17.3333 15.9997C17.3333 15.2633 16.7364 14.6664 16 14.6664C15.2636 14.6664 14.6666 15.2633 14.6666 15.9997C14.6666 16.7361 15.2636 17.3331 16 17.3331Z" fill="white"/>
+  </svg></div>
+            <div class="txt_home2">Settings</div>
+          </div>
+  
+          <div class="menu_two">
+            <div><svg class="img_home" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+    <path d="M16 29.3333C8.63616 29.3333 2.66663 23.3637 2.66663 16C2.66663 8.63616 8.63616 2.66663 16 2.66663C23.3637 2.66663 29.3333 8.63616 29.3333 16C29.3333 23.3637 23.3637 29.3333 16 29.3333ZM16 26.6666C21.891 26.6666 26.6666 21.891 26.6666 16C26.6666 10.1089 21.891 5.33329 16 5.33329C10.1089 5.33329 5.33329 10.1089 5.33329 16C5.33329 21.891 10.1089 26.6666 16 26.6666ZM14.6666 20H17.3333V22.6666H14.6666V20ZM17.3333 17.8068V18.6666H14.6666V16.6666C14.6666 15.9302 15.2636 15.3333 16 15.3333C17.1045 15.3333 18 14.4378 18 13.3333C18 12.2287 17.1045 11.3333 16 11.3333C15.0297 11.3333 14.2208 12.0243 14.0384 12.941L11.423 12.4179C11.8485 10.2789 13.736 8.66663 16 8.66663C18.5773 8.66663 20.6666 10.756 20.6666 13.3333C20.6666 15.4473 19.2609 17.233 17.3333 17.8068Z" fill="white"/>
+  </svg></div>
+            <div class="txt_home2">About & Help</div>
+          </div>
+        </div>
+  
+  
+        <div class="arrow_section">
+              <div><svg class="green_circle" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
+        <circle cx="24" cy="24" r="24" fill="#00925D"/>
+      </svg>
+              </div>
+              <div class="arrow_box">
+                <div>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+    <path d="M10.8284 12.0007L15.7782 16.9504L14.364 18.3646L8 12.0007L14.364 5.63672L15.7782 7.05093L10.8284 12.0007Z" fill="black"/>
+  </svg>
+                </div>
+              </div>
+        </div>
+      </div>
+      <!-- end-of-sidebar -->
 
-          <footer class="footer py-4 px-5"  v-if="$root.is_preview">
-                    <div class="flex-align">
-                        <div class="flex-align3" style="gap:10px;">
-                            <h6 class="text-14">Download Apps</h6>
-                            <img src="/crystal-clear/images/play_store.png">
-                            <img src="/crystal-clear/images/app_store.png">
+      <!-- segments_top -->
 
-                        </div>
-                        <div class="flex-align3 social2" >
-                            <h6 class="text-14 mr-2">Connect with us</h6>
-                            <a v-for="social_link in social_links" :href="social_link.link" target="_blank"><i :class="social_link.icon"></i></a>
-                        </div>
-                    </div>
-                                  
-          </footer>
+      <div class="segment_section">
+        <div class="segment_box1">
+          <div >
+            <svg class="left_arrow" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <path d="M7.82843 10.9999H20V12.9999H7.82843L13.1924 18.3638L11.7782 19.778L4 11.9999L11.7782 4.22168L13.1924 5.63589L7.82843 10.9999Z" fill="white"/>
+</svg>
+          </div>
+          <div class="segment_inner_one">
+            <div class="txt_one">Profile</div>
+          </div>
         </div>
 
+        <div class="segment_box2">
+          <div class="segment_inner_two">
+            <div class="txt_two">Purchase History</div>
+          </div>
+        </div>
 
+        <div class="segment_box2">
+          <div class="segment_inner_two">
+            <div class="txt_two">Payment & Billing</div>
+          </div>
+        </div>
 
-    </div>
-    
-    
-  </div>
+        <div class="segment_box2">
+          <div class="segment_inner_three">
+            <div class="txt_two">Pricing & Plans</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- profile_main_container -->
+
+      <div class="profile_container">
+        <div class="profile_section">
+          <div class="main_txt">My Public Info </div>
+          <div class="main_dtls_section">
+            <div class="prof_pic">
+              <img src="/crystal-clear/images/new_theme_prof_pic.png" alt="">
+            </div>
+            <div class="email_dtls">
+              <div class="txt_two">user@1234</div>
+              <div class="txt_one">example@gmail.com</div>
+            </div>
+            <!-- button -->
+            <div>
+            <button class="change_btn">Change Avatar</button>
+          </div>
+          </div>
+        </div>
+
+        <!-- profile_section2 -->
+
+        <div class="more_dtls_section">
+
+        </div>
+      </div>
+</div>
 </template>
 
+
+
+
+
+
 <script>
-import MainHeader from '/src/views/app/crystal-clear/header'
+import MainHeader from '/src/views/app/crystal-clear/header.vue'
 export default {
-  props: ['edit','blocks','current_block'],
-  metaInfo: {
-    title: "Movies"
-  },
   components:{
     MainHeader,
-  },
-  data() {
-    return {
-      start:false,
-      current_page:{},
-      profile:{},
-      subscriptions:[],
-      rents:[],
-      transactions:[],
-      user_watchs:[],
-      view_profile:true,
-      genders:['Male','Female','Other'],
-    };
-  },
-  mounted(){
-   this.getProfile()
-  },
-  methods: {
-    getProfile() {
-        var headers = new Headers();
-        headers.append("Authorization", "Bearer "+this.$root.token);
-        fetch(this.api_url+'/users/users/'+this.userId+'/', {
-            method : 'get',
-            headers: headers,
-        })
-        .then((response) => {
-            return response.json()
-        })
-        .then((jsonData) => {
-            this.profile = jsonData
-        })
-    },
-    updateProfile() {
-        var formdata = new FormData(this.$refs['updateProfile'])
-        var headers = new Headers();
-        headers.append("Authorization", "Bearer "+this.$root.token);
-        fetch(this.api_url+'/customer/profile/'+this.userId+'/', {
-            method : 'put',
-            body : formdata,
-            headers: headers,
-        })
-        .then((response) => {
-            return response.json()
-        })
-        .then((jsonData) => {
-            if(jsonData.id>0){
-                this.showAlert('Successfully Saved')
-                this.profile = jsonData
-            }
-        })
-    },
-    mySubscription() {
-        var headers = new Headers();
-        headers.append("Authorization", "Bearer "+this.$root.token);
-        fetch(this.api_url+'/customer/subscription/', {
-            method : 'get',
-            headers: headers,
-        })
-        .then((response) => {
-            return response.json()
-        })
-        .then((jsonData) => {
-            this.subscriptions = jsonData
-        })
-    },
-    myRents() {
-        var headers = new Headers();
-        headers.append("Authorization", "Bearer "+this.$root.token);
-        fetch(this.api_url+'/customer/rents/', {
-            method : 'get',
-            headers: headers,
-        })
-        .then((response) => {
-            return response.json()
-        })
-        .then((jsonData) => {
-            this.rents = jsonData
-        })
-    },
-    myTransactions() {
-        var headers = new Headers();
-        headers.append("Authorization", "Bearer "+this.$root.token);
-        fetch(this.api_url+'/customer/transactions/', {
-            method : 'get',
-            headers: headers,
-        })
-        .then((response) => {
-            return response.json()
-        })
-        .then((jsonData) => {
-            this.transactions = jsonData
-        })
-    },
-    userWatch() {
-        var headers = new Headers();
-        headers.append("Authorization", "Bearer "+this.$root.token);
-        fetch(this.api_url+'/customer/user_watch/', {
-            method : 'get',
-            headers: headers,
-        })
-        .then((response) => {
-            return response.json()
-        })
-        .then((jsonData) => {
-            this.user_watchs = jsonData
-        })
-    },
-  },
-};
+  }
+}
+
 </script>
-<style scoped>
-  
-  @import '/crystal-clear/style/style.css';
 
-</style>
 <style>
-  .active_btn{
-    background-color: #8230c6!important;
-    border: 1px solid #8230c6!important;
-  }
-  .capcee-profile .site-wrapper{
-  background:#0f0617;
-  position: absolute;
-    width: 100%;
-    height: 100%;
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
-  .capcee-profile .site-wrapper .tabs.row.no-gutters
 
-.profile-container{
-  z-index: 9999999;
-    position: absolute;
+@media (max-width: 767px) {
+.main_profile_frame{
+    width: calc(114.33% - 20px);
+    background: #000000;
     height: 100vh;
-    overflow: auto;
-    width: 100%;
-   
-    padding-top: 120px;
-    overflow: auto;
-    height: calc(100vh - 72px);
+    overflow-x: hidden;
+    overflow-y: auto;
 }
-.profile-tab{
-    overflow:auto;
 }
-.profile-body{
-  margin:40px 80px;
-}
-.profile-body .tab-content.col{
-  background-color: #0f0617;
-}
-.profile-body .card-header {
-    
-    background-color: #1b1223;
-    padding: 20px 0;
-    min-width:200px;
 
+@media (min-width: 768px) {
+.main_profile_frame{
+  margin: 0 auto;
+        width: 100%;
+        height: 100vh;
+        background: #0D0C0F;
+        overflow-y: auto;
+        overflow-x: hidden;
+        scroll-behavior: smooth;
 }
-.profile-body .card {
-    border-radius: 0px;
-    border: initial;
 }
-.profile-body .nav-pills .nav-link {
-    
-    color: #999999;
-    padding: 10px 30px;
-    margin: 10px 0px;
-    white-space: nowrap;
+body{
+  background-color: #000000;
+}
 
-}
-.profile-body .nav-pills .nav-link.active, .profile-body .nav-pills .show > .nav-link {
-    color: #fff;
-    background-color: initial;
-    border-right: 1px solid white;
-    border-radius: 0rem!important;
-    font-weight:800;
 
+/* sidebar-section */
+@media (max-width: 767px) {
+.sidebar_container{
+    display: inline-flex;
+    height: 100vh;
+    margin-top: 69px;
+    width: 15%;flex-direction: column;
+    align-items: flex-start;
+    gap: 200px;
+    flex-shrink: 0;
+    border-right: 1px solid #D9D9D9;
+    background: #0D0C0F;
+    position: fixed;
+    display: none;
+  }
 }
-.profile-body .no-gutters {
-  
-    border: .5px solid #484848!important;
+@media (min-width: 768px) {
+.sidebar_container{
+    display: inline-flex;
+    height: 100vh;
+    margin-top: 82px;
+    width: 235px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 120px;
+    flex-shrink: 0;
+    border-right: 1px solid #D9D9D9;
+    background: #0D0C0F;
+    position: fixed;
+  }
 }
-.profile-body .tabs-heading{
-   border-bottom: .5px solid #484848!important;
+@media (max-width: 767px) {
+.span2{
+    color: #FFF;
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+font-size: 24px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+}
+}
+@media (min-width: 768px) {
+.span2{
+    color: #FFF;
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+font-size: 24px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+}
+}
 
-}
-.text-info {
-    color: #8230c6!important;
-}
-.profile-pic {
-    background-color: #8230c6;
-    width: 50px;
-    height: 50px;
+
+
+@media (max-width: 767px) {
+  .menu_section_one{
     display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 3px;
+  }
+}
+@media (min-width: 768px) {
+  .menu_section_one{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 3px;
+  }
+}
+
+
+@media (max-width: 767px) {
+  .menu_one{
+    display: flex;
+    width: 230px;
+    padding: 20px 64px 20px 40px;
     align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    font-weight: 600;
-}
-
-
-
-
-
-
-
-
-.profile-body .input {
-  position: relative;
- 
-    width: 100%;
-}
-.profile-body .input__label {
-  position: absolute;
-  left:20px;
-  top: 50%;
-  transform:translateY(-50%);
-  background: pink;
-  white-space: nowrap;
- 
-  transform-origin: 0 0;
-  background: var(--color-background);
-  transition: transform 120ms ease-in;
-  font-weight: 400;
-  font-size:14px;
-  line-height: 1.2;
-
-}
-.profile-body .input__field {
-   
-    box-sizing: border-box;
-    display: block;
-    width: 100%;
-    border: 1px solid #bdbdbd;
-  
-   
-    background: transparent;
-    color:gray;
-    font-size: 1rem;
-    padding: 0 20px;
-    height: 48px;
-    border-radius: 6px;
-}
-
-.profile-body .input__field:focus + .input__label, .input__field:not(:placeholder-shown) + .input__label {
-  transform: translate(0.25rem, -150%) scale(0.8);
-  color: var(--color-accent);
-  background-color:#0f0617;
-  padding:2px 10px;
-  font-weight:100;
-}
-
-.edit-profile{
-  margin:40px 0;
-}
-.gender-btn.btn {
-    border: 1px solid #bdbdbd;
-    background-color: #0f0617;
-    color: white;
-    border-radius: 6px;
-    width:100%;
+    gap: 12px;
   }
-@media (max-width: 990px) {
-    .profile-body {
-    margin: 20px;
 }
-}
-@media (max-width: 660px) {
-  .profile-body .card-header{
+@media (min-width: 768px) {
+  .menu_one{
     display: flex;
-    flex-direction: row!important;
-    overflow: auto;
-    width: 100vw;
+    width: 230px;
+    padding: 20px 64px 20px 40px;
+    align-items: center;
+    gap: 12px;
   }
-  .profile-body {
-    margin: 0px;
 }
-.profile-body .nav-pills .nav-link.active, .profile-body .nav-pills .show > .nav-link {
-   
-    border-right: initial;
-   
+
+
+
+@media (max-width: 767px) {
+  .img_home{
+    height: 20px;
+  }
 }
-.profile-body .nav-pills .nav-link {
-    
-    padding: 0px 30px;
-   
+@media (min-width: 768px) {
+  .img_home{
+    height: 20px;
+  }
+}
+
+
+
+@media (max-width: 767px) {
+  .txt_home{
+    color: #FFF;
+   font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  ;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  }
+}
+@media (min-width: 768px) {
+  .txt_home{
+    color: #FFF;
+   font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  ;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  }
+}
+
+
+@media (max-width: 767px) {
+  .coming_soon_menu{
+    display: flex;
+    width: 231px;
+      padding: 20px 5px 20px 40px;
+  align-items: center;
+  gap: 10px;
+  }
+}
+@media (min-width: 768px) {
+  .coming_soon_menu{
+    display: flex;
+    width: 231px;
+      padding: 20px 5px 20px 40px;
+  align-items: center;
+  gap: 10px;
+  }
+}
+
+
+@media (max-width: 767px) {
+  .sub_coming_soon{
+    display: flex;
+  align-items: center;
+  gap: 12px;
+  }
+}
+@media (min-width: 768px) {
+  .sub_coming_soon{
+    display: flex;
+  align-items: center;
+  gap: 12px;
+  }
+}
+
+
+@media (max-width: 767px) {
+  .txt_coming_soon{
+    color: #FFF;
+   font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  ;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  }
+}
+@media (min-width: 768px) {
+  .txt_coming_soon{
+    color: #FFF;
+   font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  ;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  }
+}
+
+
+
+@media (max-width: 767px) {
+  .green_circle{
+    height: 25px;
+  }
+}
+@media (min-width: 768px) {
+  .green_circle{
+    height: 25px;
+  }
+}
+
+
+
+@media (max-width: 767px) {
+  .notifications{
+    width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  }
+}
+@media (min-width: 768px) {
+  .notifications{
+    width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  }
+}
+
+
+@media (max-width: 767px) {
+  .num_five{
+    color: #10141D;
+   font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  margin-top: -22px;
+  text-align: center;}
+  .coming_soon_img{
+  height: 20px;
+  }
+}
+@media (min-width: 768px) {
+  .num_five{
+    color: #10141D;
+   font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  margin-top: -22px;
+  text-align: center;}
+  .coming_soon_img{
+  height: 20px;
+  }
+}
+
+
+
+@media (max-width: 767px) {
+  .menu_section_two{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 3px;
+  }
+}
+@media (min-width: 768px) {
+  .menu_section_two{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 3px;
+  }
+}
+
+
+@media (max-width: 767px) {
+  .menu_two{
+      display: flex;
+      width: 230px;
+      padding: 20px 40px 20px 40px;
+      align-items: center;
+      gap: 12px;
+  }
+}
+@media (min-width: 768px) {
+  .menu_two{
+      display: flex;
+      width: 230px;
+      padding: 20px 40px 20px 40px;
+      align-items: center;
+      gap: 12px;
+  }
+}
+
+
+
+@media (max-width: 767px) {
+  .img_home2{
+    height: 20px;
+  }
+}
+@media (min-width: 768px) {
+  .img_home2{
+    height: 20px;
+  }
+}
+
+
+
+@media (max-width: 767px) {
+  .txt_home2{
+    color: #FFF;
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  ;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  }
+}
+@media (min-width: 768px) {
+  .txt_home2{
+    color: #FFF;
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  ;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  }
+}
+
+
+@media (max-width: 767px) {
+  .arrow_section{
+    position: absolute;
+  right: -24px;
+  top: 320px;
+  }
+}
+@media (min-width: 768px) {
+  .arrow_section{
+    position: absolute;
+  right: -24px;
+  top: 320px;
+  }
+}
+
+
+
+@media (max-width: 767px) {
+  .arrow_box{
+    display: flex;
+  width: 24px;
+  height: 24px;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  margin-top: -25px;
+      margin-left: 10px;
+  }
+}
+@media (min-width: 768px) {
+  .arrow_box{
+    display: flex;
+  width: 24px;
+  height: 24px;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  margin-top: -25px;
+      margin-left: 10px;
+  }
+}
+
+/* end of sidebar */
+
+/* segment-section */
+@media (max-width: 767px) {
+.segment_section{
+display: none;
+}
+}
+@media (min-width: 768px) {
+.segment_section{
+  display: flex;
+  width: 1285px;
+padding-left: 30px;
+align-items: flex-start;
+gap: 24px;
+margin-top: 80px;
+margin-left: 235px;
+border-bottom: 1px solid #8C8B8B;
+background: #0D0C0F;
+}
+}
+
+@media (max-width: 767px) {
+.segment_box1{
+display: none;
+}
+}
+@media (min-width: 768px) {
+.segment_box1{
+  display: flex;
+align-items: center;
+gap: 24px;
+}
+}
+
+@media (max-width: 767px) {
+.segment_inner_one{
+display: flex;
+padding: 24px 18px;
+justify-content: center;
+align-items: center;
+gap: 8px;
+display: none;
+}
+}
+@media (min-width: 768px) {
+.segment_inner_one{
+display: flex;
+padding: 24px 18px;
+justify-content: center;
+align-items: center;
+gap: 8px;
+border-bottom: 5px solid #00925D;
+}
+}
+
+@media (max-width: 767px) {
+.left_arrow{
+display: none;
+}
+}
+
+@media (min-width: 768px) {
+.left_arrow{
+  height: 18px;
 }
 }
 
 
 
+@media (max-width: 767px) {
+.txt_one{
+  color: #838383;
+  font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+font-size: 13px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+display: none;
+
+}
+}
+@media (min-width: 768px) {
+.txt_one{
+  color: #FFF;
+  font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+font-size: 13px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+cursor: pointer;
+}
+}
+
+@media (max-width: 767px) {
+.segment_box2{
+  display: flex;
+align-items: center;
+gap: 24px;
+display: none;
+}
+}
+@media (min-width: 768px) {
+.segment_box2{
+  display: flex;
+align-items: center;
+gap: 24px;
+}
+}
+
+@media (max-width: 767px) {
+.segment_inner_two{
+  display: flex;
+padding: 24px 18px;
+justify-content: center;
+align-items: center;
+gap: 8px;
+display: none;
+}
+}
+@media (min-width: 768px) {
+.segment_inner_two{
+  display: flex;
+padding: 24px 18px;
+justify-content: center;
+align-items: center;
+gap: 8px;
+}
+}
+
+
+@media (max-width: 767px) {
+.segment_inner_three{
+  display: flex;
+padding: 24px 18px;
+justify-content: center;
+align-items: center;
+gap: 8px;
+border-bottom: 8px solid #00925D; 
+display: none;
+}
+}
+@media (min-width: 768px) {
+.segment_inner_three{
+  display: flex;
+padding: 24px 18px;
+justify-content: center;
+align-items: center;
+gap: 8px;
+}
+}
+
+@media (max-width: 767px) {
+.txt_two{
+  color: #838383;
+  font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+font-size: 13px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+display: none;
+}
+}
+@media (min-width: 768px) {
+.txt_two{
+  color: #ffffff;
+  font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+font-size: 13px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+cursor: pointer;
+}
+}
+/* end of segment */
+
+
+/* profile_main_container */
+
+@media (max-width: 767px) {
+.profile_container{
+  display: inline-flex;
+height: 837px;
+flex-direction: column;
+align-items: flex-start;
+gap: 32px;
+flex-shrink: 0;
+}
+}
+@media (min-width: 768px) {
+.profile_container{
+  display: inline-flex;
+height: 837px;
+flex-direction: column;
+align-items: flex-start;
+gap: 32px;
+flex-shrink: 0;
+margin-left: 320px;
+    margin-top: 50px;
+}
+}
+
+@media (max-width: 767px) {
+.profile_section{
+  display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: flex-start;
+gap: 24px;
+}
+}
+@media (min-width: 768px) {
+.profile_section{
+  display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: flex-start;
+gap: 24px;
+}
+}
+
+@media (max-width: 767px) {
+.main_txt{
+  color: #FFF;
+  font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+font-size: 24px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+}
+}
+@media (min-width: 768px) {
+.main_txt{
+  color: #FFF;
+  font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+font-size: 24px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+font-size: 20px;
+}
+}
+
+
+
+@media (max-width: 767px) {
+.main_dtls_section{
+  display: flex;
+width: 689px;
+justify-content: space-between;
+align-items: center;
+}
+}
+@media (min-width: 768px) {
+.main_dtls_section{
+  display: flex;
+width: 689px;
+gap: 45px;
+align-items: center;
+}
+}
+
+
+@media (max-width: 767px) {
+.prof_pic img{
+  height: 60px;
+
+}
+}
+@media (min-width: 768px) {
+.prof_pic img{
+  height: 60px;
+
+}
+}
+
+
+
+@media (max-width: 767px) {
+.email_dtls{
+  display: flex;
+flex-direction: column;
+align-items: flex-start;
+gap: 16px;
+}
+}
+@media (min-width: 768px) {
+.email_dtls{
+  display: flex;
+flex-direction: column;
+align-items: flex-start;
+gap: 16px;
+}
+}
+
+
+
+@media (max-width: 767px) {
+.change_btn{
+  display: flex;
+  padding: 7px 7px;
+justify-content: center;
+align-items: center;
+gap: 8px;
+background: #00925D;
+
+color: #FFF;
+font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+font-size: 15px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+}
+}
+@media (min-width: 768px) {
+.change_btn{
+  display: flex;
+  padding: 7px 7px;
+justify-content: center;
+align-items: center;
+gap: 8px;
+background: #00925D;
+cursor: pointer;
+
+
+color: #FFF;
+font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+font-size: 15px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+}
+}
+
+/* second_section */
+@media (max-width: 767px) {
+.more_dtls_section{
+  display: flex;
+height: 437px;
+flex-direction: column;
+align-items: flex-start;
+gap: 32px;
+flex-shrink: 0;
+}
+}
+@media (min-width: 768px) {
+.more_dtls_section{
+  display: flex;
+height: 437px;
+flex-direction: column;
+align-items: flex-start;
+gap: 32px;
+flex-shrink: 0;
+}
+}
 </style>
